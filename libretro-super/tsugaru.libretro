@@ -1,0 +1,15 @@
+# libretro-super recipe for the Tsugaru (FM Towns) core
+#
+# To submit this core to libretro's official buildbot:
+#   1. Fork https://github.com/libretro/libretro-super
+#   2. Add this file (and tsugaru.info) under recipes/
+#   3. Open a PR to libretro/libretro-super
+#
+# The core repo is a fork of upstream TOWNSEMU with the libretro integration
+# under src/main_libretro/. The standard Makefile entry invokes the CMake build.
+
+name = tsugaru
+repo = https://github.com/duskgao/Tsugaru-libretro.git
+build_rules = make
+build_subdir = src/main_libretro
+sources =
