@@ -16,6 +16,8 @@ src/build_libretro/
 *.bak
 *.log
 nobackup/
+readme.upstream.md
+*.upstream.md
 *towns_trace*
 *towns_dbg*
 *towns_static_load*
