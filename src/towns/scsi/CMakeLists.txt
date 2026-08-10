@@ -1,0 +1,10 @@
+add_library(townsscsi scsi.h scsi.cpp)
+target_link_libraries(townsscsi device discimg cpputil towns townsdef)
+target_include_directories(townsscsi PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+if(UNIX)
+target_link_libraries(townsscsi device discimg cpputil towns townsdef pthread)
+endif()
+# libretro core 单线程模型：禁用 SCSI 后台 IO 线程，避免 winpthread 死锁
+if(BUILD_LIBRETRO)
+target_compile_definitions(townsscsi PRIVATE TOWNS_LIBRETRO_SYNC_SCSI=1)
+endif()

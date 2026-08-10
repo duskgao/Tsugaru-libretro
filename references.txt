@@ -1,0 +1,12 @@
+[1] Intel i486TM Microprocessor Programmer's Reference Manual, Intel, 1990
+[2] Noriaki Chiba, FM TOWNS Technical Databook, 3rd Edition, ASCII, 1994
+[3] towns_cd.h, Linux for FM TOWNS source code.
+[4] X86 Opcode and Instruction Reference Home, http://ref.x86asm.net/coder32.html (As of February 9 2020)
+[5] Intel 80386 Programmre's Reference Manual, Intel, 1986
+[6] https://github.com/nabe-abk/free386/blob/master/doc-ja/dosext/coco_nsd.txt
+[7] http://www.ctyme.com/rbrown.htm
+[8] SEGA Genesis Software Manual
+[9] http://www.mit.edu/afs/sipb.mit.edu/contrib/doc/specs/protocol/scsi-2/s2-r10l.txt (As of May 3 2020)
+[10] List of Floppy Disk Formats, https://en.wikipedia.org/wiki/List_of_floppy_disk_formats, (As of May 23 2020)
+[11] YM2608 OPNA Application Manual
+[12] Source code of Artane's FM Towns emulator project https://github.com/Artanejp

@@ -1,0 +1,121 @@
+#include "townstips.h"
+
+
+
+std::vector <std::string> TownsTips::GetTips(void)
+{
+	std::vector <std::string> tips;
+
+	tips.push_back(
+		"Asuka 120% Burning Fest and Mad Stalker will freeze unless you\n"
+		"unplug a mouse from the game ports in real FM TOWNS or Tsugaru.\n"
+		"Make sure to unplug a mouse from the game ports when you run\n"
+		"these game titles.\n"
+		"In Tsugaru, go to Game-Port options and make sure no mouse is\n"
+		"selected, or you can select ASUKA120 from application-specific\n"
+		"augmentation.\n"
+	);
+
+	tips.push_back(
+		"Brandish does not run on 486SX, 486, and Pentium TOWNS models.\n"
+		"It first identifies if the CPU is 80386DX, if not Brandish\n"
+		"assumes the CPU is 80386SX.  If the cpu is 80486SX or newer,\n"
+		"Brandish wrongfully identifies the cpu as 80386SX and subsequently\n"
+		"messes up.\n"
+		"In Tsugaru, use 'Pretend 80386DX' option, or choose BRANDISH from\n"
+		"application-specific augmentation.\n"
+	);
+
+	tips.push_back(
+		"RUN386.EXE in Towns OS V2.1 L10 does not run with 80486 or newer CPU.\n"
+		"Use 'Pretend 80386DX' option to run Towns OS V2.1 L10 on Tsugaru.\n"
+		"Freeware Collection 4 Disc B boots up in this version Towns OS.\n"
+	);
+
+	tips.push_back(
+		"Sherlock Holmes's Consulting Detective crashes if the CD is\n"
+		"faster than 1X speed.  Please select 1X speed in the option if you\n"
+		"want to run it.  (In real TOWNS, use the compatible mode.)\n"
+		"If the CD is too fast, the read-ahead buffer fills up too fast\n"
+		"and overflows.\n"
+	);
+
+	tips.push_back(
+		"You might notice a dark horizontal line about 1/3 from the bottom\n"
+		"of the Tsugaru window.  It is emulating what's called a damper-wire\n"
+		"line.  Fujitsu selected the best-quality monitor available for FM TOWNS,\n"
+		"which was SONY's Trinitron CRT.  The only hiccup was the trinitron CRT had \n"
+		"a wire inside the tube called damper wire, which cast a shadow on the\n"
+		"monitor.  However, it was a signature of a high-quality monitor in 1989.\n"
+		"So, Tsugaru emulates it by default.  If you don't like to see the damper-\n"
+		"wire line, please turn off 'Damper-Wire Line' option.\n"
+	);
+
+	tips.push_back(
+		"Tsugaru supports Windows 3.1, Windows 95, Linux, and OSASK in addition to Towns OS.\n"
+		"To use those operating systems, please check 'High-Fidelity Mode' option.  Many of\n"
+		"the 80386's protection features are unnecessary for running majority of Towns-OS \n"
+		"games, so Tsugaru runs faster with this option turned off.  However, other operating\n"
+		"systems, namely pre-emptive multi-tasking operating systems, require those CPU \n"
+		"features, which will be enabled with 'High-Fidelity Mode' option."
+	);
+
+	tips.push_back(
+		"If the mouse does not work, or jumping around, or uncontrollable, try differential\n"
+		"mouse integration.  It is enabled when you press mouse middle button, and disabled"
+		"when you press the middle button again.\n"
+		"Also you can control mouse by keyboard arrow keys, or a USB game pad.\n"
+		"Go to Game-Port options, and select appropriate mouse mode.\n"
+	);
+
+	tips.push_back(
+		"Does your CD audio sound 2 to 4 seconds lagged?  Check your .CUE file.\n"
+		"There seems to be a disagreement in interpretation of the PREGAP keyword in\n"
+		".CUE file between the ripping programs.  I confirmed with ImgBurn and\n"
+		"Alcohol 52%.  Tsugaru aligns with ImgBurn, which apparently is consistent\n"
+		"with CDRWIN.  If your .CUE file has a PREGAP keyword, the program \n"
+		"used for generating your .CUE file may be using a different interpretation\n"
+		"from Tsugaru.  Consider using .MDS or .CCD.  If your .CUE file does not\n"
+		"have a PREGAP keyword, your .CUE file should be ok.\n"
+	);
+
+	tips.push_back(
+		"Rocket Ranger crashes unless you specify slow CPU speed.  What happens is the\n"
+		"opening movie ends before the opening music play back.  However, sound driver\n"
+		"will not be correctly terminated unless the opening music plays all the way.\n"
+		"Therefore, the sound driver crashes.  Miraculously the game itself continues,\n"
+		"but with no music because the sound driver crashed.\n"
+		"To prevent crash, please select CPU speed 4 to 5MHz\n"
+		"Because of this bug, I did not know Rocket Ranger had such a great soundtrack\n"
+		"until 2024.\n"
+	);
+
+	tips.push_back(
+		"Did you know that you can select boot device by holding down:\n"
+		"C+D keys or Pad A button for CD\n"
+		"F+0 keys or Pad B button for Floppy Drive 0\n"
+		"F+1 keys for Floppy Drive 1\n"
+		"H+0 keys for SCSI Drive 0\n"
+		"H+1 keys for SCSI Drive 1\n"
+		"H+2 keys for SCSI Drive 2\n"
+		"H+3 keys for SCSI Drive 3\n"
+		"H+4 keys for SCSI Drive 4\n"
+		"I+C+M keys for IC Memory Card\n"
+		"?"
+		"You can also use temporary boot-device menu by holding down\n"
+		"Pad A+B buttons.\n"
+		"Also D+E+B+U+G keys will open the debug menu.\n"
+		"Valid after FM TOWNS II CX and later models."
+		"In Tsugaru, you can use this feature from the BOOT tab in the GUI\n"
+		"or -BOOTKEY option in the CUI.\n"
+	);
+
+	tips.push_back(
+		"Tsugaru does not recognize a raw floppy disk image unless the disk image size is\n"
+		"exactly 1232KB (1261568 bytes), 1440KB (1474560 bytes), 640KB (655360 bytes), or\n"
+		"720KB (737280 bytes).  If the size is different by 1 byte, it does not recognize it.\n"
+	);
+
+	return tips;
+}
+

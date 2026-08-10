@@ -1,0 +1,20 @@
+build\gentest.obj 
+build\f6f7.obj 
+build\test_r_i.obj 
+build\aadaam.obj 
+build\btx.obj 
+build\imul.obj 
+build\bitshift.obj 
+build\cbw_cwde.OBJ
+build\adcsbb.OBJ
+build\adcsbbsp.OBJ
+build\bt_mem_r.OBJ
+build\daadas.obj 
+build\binaryop.obj
+build\mov.obj
+build\shldshrd.obj
+-lib D:\hc386\small\hce.lib 
+-lib D:\hc386\townslib\lib\tbios.lib 
+-exe build\gentest.exp
+-stack 16384
+-symbols

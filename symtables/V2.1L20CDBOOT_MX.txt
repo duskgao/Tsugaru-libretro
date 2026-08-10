@@ -1,0 +1,2660 @@
+/begin0
+T 1
+* 0000000C:000011AC
+# 
+R 
+L VSGP:Write Sprite(spriteIndex,attrib,xy)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000000C:0000D47C
+# 
+R 
+L VSGP:Set Sprite Index for 1/100 sec. 1st param is 1/100 sec count
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000000C:0000D4F4
+# 
+R 
+L VSGP:(Prob)Set Sprite Indices for Stop Watch.
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000000C:0000FFB4
+# 
+R 
+L VSGP:Read Shift Key State (04H->Shift Key pressed)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000000C:0001FD28
+# 
+R 
+L TMENU:(PROB)MOS_rdpos
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000000C:000234FC
+# 
+R 
+L TMENU:(PROB)CHECK_MOUSE_EVENT
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000000C:00057046
+# 
+R 
+L DATA_LIBRARY_APP:INT E4H Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:00011B60
+# 
+R 
+L MOUSEBIOS:BRANCH_TO_FUNCTION
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:00011D50
+# 
+R 
+L MOUSEBIOS:MOS_rdpos
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000110:00013A2C
+# 
+R 
+L SOUND:Write to YM Register 27H Reset A Enable A Load A
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000110:00013A54
+# 
+R 
+L SOUND:Write to YM Register 27H Reset B Enable B Load B
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000110:00013A7C
+# 
+R 
+L SOUND:GET_YM2612_STATUS_IN_DL
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000110:00013B3C
+# 
+R 
+L SOUND:Write AL to YM2612 Reg AH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:00016980
+# 
+R 
+L MOUSEBIOS:INTERVAL_CALLBACK
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:000169C9
+# Jump if FLAG_A of YM2612 Status is 0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:000169EA
+# Jump if FLAG_B of YM2612 Status is 0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:00017014
+# 
+R 
+L MOUSEBIOS:ENTRY
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:000171A5
+# 
+R 
+L MOUSEBIOS:REAL_ENTRY
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:00017271
+# 
+R 
+L MOUSEBIOS:OR_IO3AF4H_WITH_FIRST_PARAM
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:000172B0
+# 
+R 
+L MOUSEBIOS:ESI=00018680H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000118:00000510
+# 
+R 
+L MOUSEBIOS:CURSOR_POSITION
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000118:00000528
+# 
+R 
+L MOUSEBIOS:BUTTON_STATE
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000118:00000700
+# 
+R 
+L YM2612 register values
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 000003A4:00001579
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 000003A4:0000157E
+# BUSY?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 000003A4:00001582
+# MSG or C/D?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 000003A4:00001586
+# DMA Terminal Count or End?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 000003A4:00001592
+# Turn off SCSI DMA Channel
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 000003A4:000015A1
+# BUSY?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 000003A4:00001734
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 00000421:00000046
+# CDROM:[BP+12]=ES
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000047
+# CDROM:[BP+10]=DS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000048
+# CDROM:[BP+0E]=DI
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000049
+# CDROM:[BP+0C]=SI
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000004A
+# CDROM:[BP+0A]=BP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000004B
+# CDROM:[BP+08]=DX
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000004C
+# CDROM:[BP+06]=CX
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000004D
+# CDROM:[BP+04]=BX
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000004E
+# CDROM:[BP+02]=AX
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000004F
+# CDROM:[BP+00]=FLAGS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000000BD
+# 
+R 
+L DISKBIOS:BRANCH_TO_DEVICE
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000000E2
+# [BP+03H]=Incoming AH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000421:000000EB
+# 
+R 
+L DISKBIOS:Branch to Function
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000001F8
+# 
+R 
+L DISKBIOS:AH=02H Get Disk Status
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000205
+# [BP+06H]=Incoming CX
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000209
+# [BP+02H]=Incoming AL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000020C
+# Restore
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000421:00000243
+# Track 0
+R 
+L DISKBIOS:(Prob)Find Media Type Loop?
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000245
+# Side 0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000247
+# DS:[0040H-] Buffer for sector info.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000024F
+# Read Address Marks
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000251
+# DS:[044EH]=Error Code
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000292
+# [BP+02H]=Incoming AL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000295
+# AL=Drive
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000002AE
+# Bit2:Double-Sided
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000002C6
+# [BP+8]=Outgoing DL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000002F3
+# 
+R 
+L DISKBIOS:(Prob)Cycle media type?
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000036C
+# 
+R 
+L DISKBIOS:AH=09H Read Sector Info
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000053A
+# 
+R 
+L DISKBIOS:Get Drive-Status Structure Pointer in SI (AL=drive)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000069E
+# [044DH]=Error Code
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000072A
+# (Prob)Device Number Error
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000791
+# 
+R 
+L DISKBIOS:(Prob)Clear Timer [0441H] ?BL=02H?
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000079A
+# 
+R 
+L DISKBIOS:(Prob)Clear Timer [0440H] ?BL=02H?
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000007CE
+# (Prob)AL=Incoming AL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000858
+# Tentatively no error
+R 
+L DISKBIOS:Wait for DMA transfer
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000085E
+# Tentatively no error
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000867
+# CS:0D17 is a callback function (7FH->DS:[0443H])
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000086A
+# (Prob)012CH=300 ticks
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000421:00000873
+# DS:[0487H] is cleared in FDC IRQ.
+R 
+L Wait timer up or command finished
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000881
+# (Prob)Error Details=Time Over
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000887
+# (Prob)Hard Error
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000008A1
+# DS:[0453H] is the zero-ext of last FDC status (I/O 0200H)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000008A4
+# Clear INDEX/DRQ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000008AC
+# Clear except NOTRDY,RECNOTFOUND,CRCERR,BUSY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000008CD
+# [044DH]=Error code
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000008EA
+# (Prob)[SI+02H]=Value written to I/O 020CH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000093E
+# (Prob)[SI+0BH] is track.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000A56
+# 
+R 
+L DISKBIOS:(Prob)Reset MODE-B and HISPD for all drives.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000A59
+# (Prob)DS:[04D2H-] Pointers for drive-info structures.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000A8C
+# 
+R 
+L DISKBIOS:Wait drive ready
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000A91
+# Jump if busy
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000AEE
+# 
+R 
+L DISKBIOS:Issue FDC Command
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000AF1
+# (Prob)[SI+03H] remembers last-issued FDC command.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000B97
+# 
+R 
+L DISKBIOS:Check Disk Change if [SI]==1
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000BA8
+# 
+R 
+L DISKBIOS:Select Side([BP+09H])
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000BB7
+# (Prob)[SI+01H] is value written to I/O 0208H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000BC5
+# 
+R 
+L DISKBIOS:Wait for 59us or 100us
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000BD1
+# (Prob)Wait for 59(3BH) or 100(64H)us
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000BDB
+# 
+R 
+L DISKBIOS:Read I/O 200H (FDC Status) in AL
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000BE0
+# 
+R 
+L DISKBIOS:Read I/O 208H 3 times.
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000BE7
+# 
+R 
+L DISKBIOS:Check DMA Error
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000BF9
+# 
+R 
+L DISKBIOS:Write AL to I/O 0208H (Drive Control)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000BFE
+# 
+R 
+L DISKBIOS:Select Drive and Latch HISPD and MODE-B
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000C0D
+# 
+R 
+L DISKBIOS:Unsel Drv, Select Drv,Latch MODE-B and HISPD, then Unsel Drv.
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000C1A
+# 
+R 
+L DISKBIOS:Wait drv ready, Enable IRQ, then write command
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000C22
+# (Prob)[SI+01H] remembers value written to I/O 0208H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000C33
+# 
+R 
+L DISKBIOS:Zero-Ext Status Byte (I/O 200H) to DS:[453H], then FDC CMD D0H(abort).
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000C4D
+# 
+R 
+L DISKBIOS:Write AL to I/O 202H (Track)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000C52
+# 
+R 
+L DISKBIOS:Write AL to I/O 206H (Data)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000C67
+# 
+R 
+L DISKBIOS:Setup DMA
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000D17
+# 
+R 
+L DISKBIOS:Callback 7FH->0D47:[0443H]
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000D21
+# 
+R 
+L DISKBIOS:Set up timer.
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000D78
+# 
+R 
+L DISKBIOS:(Prob)Clear Timer
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000D7D
+# [0443H] is timer-up flag. 80=Not yet  7F=Up
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000D89
+# [0443H] is timer-up flag. 80=Not yet  7F=Up
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000D93
+# 
+R 
+L DISKBIOS:Floppy Disk IRQ Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000D97
+# (Prob)DS:[0457H]=Drive?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000E09
+# 
+R 
+L DISKBIOS:(Prob)Checking HDD Capacity?
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000E36
+# BX|DX=HDD Capacity
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000E41
+# BX|DX=HDD Capacity/256
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001181
+# (Prob)AH=Status Byte
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001186
+# (Prob)AL=Message Byte
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000126D
+# 
+R 
+L DISKBIOS:Set up timer
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000126E
+# Call back. IF [0529H]==80H THEN [0529H]=81H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000012D7
+# 
+R 
+L DISKBIOS:SCSI (Prob) Issue command, return result.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000012E1
+# [0512H]=SCSI Command Pointer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000012E4
+# [0514H]=SCSI Command Segment
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000012E7
+# [0516H]=(Prob)Data Destination Pointer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000012EA
+# [0518H]=(Prob)Data Destination Segment
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000134B
+# [SI+02H]=0C32H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000421:0000134F
+# 
+R 
+L DISKBIOS:SCSI Data Transfer Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001351
+# Jump if (MSG==1 || C/D==1(CMD/STA/MSG))
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001355
+# Jump if REQ==0 (No Transfer Request)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001357
+# MSG=0 && C/D==0 && REQ==1 to come here. (Data phase)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001367
+# [SI+02H]=0C32H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000136D
+# Jump if BUSY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000136F
+# (Prob)Status Byte
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001373
+# (Prob)Message Byte
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00001379
+# [0516H]=(Prob)Data Destination Pointer
+R 
+L DISKBIOS:SCSI DMA Transfer
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000137D
+# [0518H]=(Prob)Data Destination Segment
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000138B
+# [SI+0AH]=00A4H DMA Address Register Low
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001391
+# [SI+0CH]=00A4H DMA Address Register High
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000139A
+# Don't cross 64KB boundary. (Why?)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000013A5
+# [SI+08H]=00A2H DMA Count Register
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000421:000013B5
+# 
+R 
+L Wait for DMA transfer end?
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000013BE
+# [SI+02H]=0C32H SCSI Status
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000013C5
+# Jump if Ready
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000013C9
+# Jump if MSG or CMD/STA/MSG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000013EB
+# Jump if Ready
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000013EF
+# Jump if MSG or CMD/STA/MSG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000140B
+# 
+R 
+L DISKBIOS:SCSI Wait Ready or TimeOut
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000140D
+# [SI+02H]=0C32H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00001445
+# [0511H] is it SCSI ID bits?
+R 
+L DISKBIOS:(Prob)Set SCSI ID Bits and SEL
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001450
+# [SI+04H]=0C30H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001456
+# [SI+02H]=0C32H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000145C
+# Jump if BUSY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001464
+# [SI+04H]=0C30H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000146B
+# [051CH]=Command Counter
+R 
+L DISKBIOS:INT 48H Command Out Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000146F
+# [SI]=0C30H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001472
+# [0512H]=SCSI Command Pointer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00001483
+# [SI]=0C30H
+R 
+L DISKBIOS:INT 48H Status Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001486
+# [051AH]=Status byte?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000148A
+# [SI]=0C30H
+R 
+L DISKBIOS:INT 48H Message-IN Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000148D
+# [051BH]=Message byte?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00001492
+# 
+R 
+L DISKBIOS:SCSI Select DMA Channel
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00001498
+# 
+R 
+L DISKBIOS:SCSI Prepare DMA Not setting ADDR
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000014AF
+# 
+R 
+L DISKBIOS:SCSI Set DMA Mode
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000014BA
+# 
+R 
+L DISKBIOS:SCSI (Prob)SEG:OFFSET to Physical Addr
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000014CB
+# 
+R 
+L DISKBIOS:Wait SCSI BUSY or TimeOut
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000014DF
+# Jump if Ready (BUSY=0)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000014F9
+# 
+R 
+L DISKBIOS:IF [0529H]!=80H THEN [0529H]=82H:Erase Timer
+P 
+% 0
+M 0
+/end
+/begin0
+T 4
+* 00000421:0000150D
+# 
+R 
+L Jump Table for SCSI Phase
+P 
+% 16
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000151D
+# 
+R 
+L DISKBIOS:SCSI INT 48H Handler (CMD, STA, MSG-IN Phases)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001525
+# [SI+02H]=0C32H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000152B
+# Jump if no REQ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000152F
+# AL=IO|MSG|CD|0 Defines Phase [2] pp.263
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000153B
+# 
+R 
+L DISKBIOS:SCSI Timer Call Back. IF [0529H]==80H THEN [0529H]=81H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000015AD
+# 
+R 
+L CDROM:BIOS_ENTRY
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001609
+# 
+R 
+L CDROM:BRANCH_TO_FUNCTION
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000173F
+# 
+R 
+L CDROM:FUNCTION_AH=05_READ_SECTOR_HSG
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000196E
+# 
+R 
+L CDROM:AH=53H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001973
+# Incoming CH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000197A
+# Incoming CL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000019AE
+# CDROM:Incoming DS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000019B1
+# CDROM:Incoming DI
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000421:000019C1
+# 
+R 
+L CDROM:AL=0 Not Playing CDDA
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000019D3
+# CDROM:Incoming DS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000019D6
+# CDROM:Incoming DI
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000421:000019EA
+# 
+R 
+L CDROM:AL=1 Is Playing CDDA
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001BD5
+# 
+R 
+L CDROM:PROBABLY_DRIVE_AND_MPU_RESET
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001C83
+# 
+R 
+L CDROM:ISSUE_A0H(08,01)_THEN_3FH(02,00,0B,08)_SETUP_IRQ_DATA_BLOCK
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001D5C
+# 
+R 
+L CDROM:READ_SECTOR_MAIN
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001D75
+# 
+R 
+L CDROM:
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002053
+# 
+R 
+L CDROM:MSF_TO_HSG
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002077
+# 
+R 
+L CDROM:HSG_TO_MSF
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000020AC
+# 
+R 
+L CDROM:BIN_TO_BCD
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000020C5
+# 
+R 
+L CDROM:BCD_AL_TO_BIN_AL
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000020E8
+# 
+R 
+L CDROM:MODE2READ_2336(920H)_BYTES
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000020F4
+# 
+R 
+L CDROM:MODE1READ_2048(800H)_BYTES
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002100
+# 
+R 
+L CDROM_RAWREAD_2340(924H)_BYTES
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000210C
+# 
+R 
+L CDROM:ISSUE_DATA_TRANSFER_COMMAND_WAIT_FOR_COMPLETION
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002194
+# 
+R 
+L CDROM:READ_TOC
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000219E
+# 
+R 
+L CDROM:
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000022A3
+# 
+R 
+L CDROM:Read CDDA Play State
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000022D7
+# 
+R 
+L CDROM:CHECK_STATUS_CONVERT_TO_ERROR_IF_NOT_SUBQ_17H_18H_19H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002401
+# 
+R 
+L CDROM:ISSUE_COMMAND_A0H_SETSTATE_WITH_STATUS_REQUEST
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002408
+# 
+R 
+L CDROM:ISSUE_COMMAND_A0H_SETSTATE_WITH_STATUS_REQUEST
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002411
+# 
+R 
+L CDROM:ISSUE_COMMAND_A4(CDDASTOP)_THEN_A0_WAIT_FOR_ERR_OR_(2NDBYTE&0DH)!=0
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002451
+# 
+R 
+L CDROM:ISSUE_COMMAND_3FH_UNKNOWN_COMMAND
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002473
+# 
+R 
+L CDROM_ISSUE_COMMAND_A1(CDDASET)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000248F
+# 
+R 
+L CDROM:CHECK_STATUS_ERROR_IF_AL!=0_CHECK_SUBSEQUENT_STATUSCODE==AL
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000024C1
+# 
+R 
+L CDROM:CLEAR_8BYTES_FROM_DS:57FH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000024D7
+# 
+R 
+L CDROM:CONVERT_8BYTES_TO_BCD_THEN_ISSUE_COMMAND_IN_DS:57EH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000024DD
+# 
+R 
+L CDROM:CONVERT_1BYTE_TO_BCD_THEN_ISSUE_COMMAND_IN_DS:57EH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000024E7
+# 
+R 
+L CDROM:CONVERT_PARAMS_TO_BCD_WAIT_DRY_THEN_ISSUE_COMMAND_IN_DS:57EH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000251F
+# 
+R 
+L CDROM:IF_STATUS_REQ_THEN_READ_TO_DS:587H_OR_HARD_ERROR_21H_0DH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002565
+# 
+R 
+L CDROM:IF_AH==0_CLEAR_ERROR_CODE_IN_DS:568H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000256E
+# 
+R 
+L CDROM:SETUP_DMA
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000025E2
+# 
+R 
+L CDROM:STATUS_BYTES_IN_587H_TO_BIOS_ERROR_AH_CX
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000026F6
+# 
+R 
+L CDROM:PROBABLY_CHECK_MEDIA_CHANGE_AND_CACHE_TOC_IF_CHANGED
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000275F
+# 
+R 
+L CDROM:CACHE_TOC_DS:564,565,567=1,MEDIA_CHANGED_ERROR
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000277C
+# 
+R 
+L CDROM:PROBABLY_CHECK_DRIVE_AND_MEDIA_STATUS
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000278A
+# CDROM:BH=1st Status Byte  BL=2nd Status Byte
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002792
+# CDROM:Return Error if the first status byte is non-zero.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000421:000027CF
+# 
+R 
+L RETURN
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000027D2
+# 
+R 
+L CDROM:COPY_8BYTES_FROM_DS:57FH_TO_DS:599H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000027DC
+# 
+R 
+L CDROM:COPY_8BYTES_FROM_DS:599H_TO_DS:57FH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000027F3
+# 
+R 
+L CDROM:INT_FDH_CX=1EH_Probably_30us_WAIT
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000027FB
+# 
+R 
+L CDROM:SETUP_TIMER_FOR_TIMEOUT
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002845
+# 
+R 
+L CDROM:TIMEOUT_TIMER_CALLBACK
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002850
+# 
+R 
+L CDROM:INTERRUPT_HANDLER
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002926
+# 
+R 
+L CDROM:Probably_CACHE_TOC_IN_INTERNAL_BUFFER
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000F45:000007BD
+# (Prob)[538H] is SCSI device exist flag.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:00000219
+# Last Usable Page (actually +1)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:0000618B
+# DS:[44H] last usable page. Where is it written?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:00006194
+# 1674:000F will be the last usable page (C000H default)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:0000619D
+# This is where MSDOS.SYS is temporarily copied.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:000061AA
+# Adding IO.SYS segment.  Maybe meaningful.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00000000
+# 
+R 
+L MSDOS.SYS:Entry
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004D9
+# SI=Last Usable Memory Location
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004E1
+# (Prob)1679:02DE may also be the first usable page.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004F0
+# (Prob)1679:0024 may be the first usable page
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000050A
+# (Prob)1DBE:0003 is the maximum usable pages
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000199C
+# 
+R 
+L MSDOS.SYS:(Prob)Making Memory Allocation Table?
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000199E
+# RealMode INT Vector Table
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019A2
+# INT 22H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019A8
+# TO 24H (2 Words for 1 INT)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019B1
+# AX=LastAddr-?Addr
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019D0
+# CD 20 = INT 20H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019DB
+# CD 21 = INT 21H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C9C
+# (Prob)This can be the first usable conventional memory location
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CA2
+# Last Usable Conventional Memory Location
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00002A19:0000002C
+# 
+R 
+L ?:SHOOT INT E4H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005844:00000BA0
+# DOS:Get Current Process ID (Get Current PSP)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005844:00000BFA
+# Jump by RETF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005A27:0000011B
+# DOS 4AH=Resize Memory Block
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005A27:0000017A
+# (Prob)DS:SI=Param to RUN386.EXE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005A27:00000190
+# 'NO'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005A27:00000197
+# '87'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005A27:0000019F
+# '='
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005A27:000001CF
+# DI is the (strlen(ExeFName)+1)&(~1)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005A27:000001E6
+# Copy file name to local var.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005A27:00000238
+# Print String
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00005A27:0000120C
+# 
+R 
+L CONTROL.EXE:Clear upper 16-bits of 32-bit registers.
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00002A99
+# 
+R 
+L SYSROM:(Prob)Read SCSI Sector(s)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002AA9
+# ABH=DMA Status
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002AB1
+# C32H=SCSI Status
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002AB7
+# Jump if not in Data Phase
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002ABB
+# Jump if Busy
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002AC5
+# C32H=SCSI Status
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002AC9
+# SCSI Busy?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002ACB
+# Jump if not Busy
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002ACD
+# Checking Phase
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002ACF
+# Loop if in Data Phase
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00002AE4
+# 
+R 
+L SYSROM:Set DMA Address=CH:BX Count=FFFFH
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* FFFF0000:000015AD
+# 
+R 
+L INT 93H AL=C0H (CD-ROM)
+P 
+% 0
+M 0
+/end

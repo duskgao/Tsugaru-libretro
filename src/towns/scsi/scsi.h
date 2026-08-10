@@ -1,0 +1,367 @@
+#ifndef SCSI_IS_INCLUDED
+#define SCSI_IS_INCLUDED
+/* { */
+
+#include <vector>
+#include <string>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+
+#include "discimg.h"
+#include "outside_world.h"
+
+/*
+Phase and I/O [0xC32] read
+ PHASE_BUSFREE:       C_D=0x10  MSG=0x20  I_O=0x40     I/O [0xC32]  0x0*
+ PHASE_DATA_OUT:      C_D=0x10  MSG=0x20  I_O=0x40     I/O [0xC32]  0x0*
+ PHASE_COMMAND:       C_D=0x10  MSG=0x20  I_O=0x40     I/O [0xC32]  0x1*
+                                                                   (0x2*)
+ PHASE_MESSAGE_OUT:   C_D=0x10  MSG=0x20  I_O=0x40     I/O [0xC32]  0x3*
+ PHASE_DATA_IN:       C_D=0x10  MSG=0x20  I_O=0x40     I/O [0xC32]  0x4*
+ PHASE_STATUS:        C_D=0x10  MSG=0x20  I_O=0x40     I/O [0xC32]  0x5*
+                                                                   (0x6*)
+ PHASE_MESSAGE_IN:    C_D=0x10  MSG=0x20  I_O=0x40     I/O [0xC32]  0x7*
+*/
+
+
+class TownsSCSI : public Device
+{
+private:
+	class FMTownsCommon *townsPtr;
+public:
+	virtual const char *DeviceName(void) const{return "SCSI";}
+
+
+	class SCSIIOThread
+	{
+	public:
+		enum
+		{
+		CMD_NONE,
+		CMD_FILEREAD,
+		CMD_CDREAD,
+		// CMD_WRITE,
+		CMD_QUIT,
+		};
+
+		mutable std::mutex mutex;
+		std::condition_variable cond;
+		std::thread thr;
+
+		/*! 同步模式开关：libretro core（单线程模型）启用后，不创建后台线程，
+		   所有 IO 在调用线程（主线程）内同步执行，彻底消除 winpthread 线程/锁
+		   在 RA 环境下的死锁。默认关闭（保持原异步行为）。 */
+		static bool syncMode;
+
+		unsigned int cmd=CMD_NONE;
+
+		bool dataReady=false;
+		std::string fName;
+		uint64_t filePtr,length;
+		const DiscImage *discImgPtr=nullptr;
+		std::vector <unsigned char> data;
+
+		/*! Must be created in the main thread.
+		*/
+		SCSIIOThread();
+
+		/*! Send CMD_QUIT to the thread func and wait for the function to be done.
+		*/
+		~SCSIIOThread();
+
+		void ThreadFunc(void);
+
+		/*! Called from the main thread to check if the thread is busy.
+		*/
+		bool IsBusy(void) const;
+
+		/*! Wait until the thread is ready.
+		*/
+		void WaitReady(void);
+
+		/*! Called from the main thread.  Set up CMD_FILEREAD.
+		    It will block until the thread is ready to take a command.
+		*/
+		void SetUpFileRead(std::string fName,uint64_t filePtr,uint64_t length);
+
+		/*! Called from the main thread.  Set up CMD_FILEREAD.
+		    It will block until the thread is ready to take a command.
+		*/
+		void SetUpCDRead(const DiscImage *discImgPtr,uint64_t LBA,uint64_t LEN);
+
+		/*! Called from the main thread to get the data.
+		    It returns nullptr if the data is not ready.
+		*/
+		const std::vector <unsigned char> *GetData(void);
+	};
+
+
+	enum
+	{
+		COMMAND_REQUEST_INTERVAL=500000,
+		DATA_INTERVAL=500000,
+		COMMAND_DELAY=500000,
+		MESSAGE_DELAY=500000,
+		STATUS_DELAY=500000,
+		IOTHREAD_WAIT_INTERVAL=100000,
+
+		FAST_SCSI_INTERVAL=5000,  // 5us.  Changed 1us to 5us on request from BCC.  1us is too fast for Linux, but 5us looks ok.
+		FAST_SCSI_MESSAGE_DELAY=100000, // 100us.  For Linux Debian 2.0.33
+	};
+
+	bool fastMode=false;
+	unsigned int CommandRequestInterval(void)
+	{
+		return (true==fastMode ? FAST_SCSI_INTERVAL : COMMAND_REQUEST_INTERVAL);
+	}
+	unsigned int DataInterval(void)
+	{
+		return (true==fastMode ? FAST_SCSI_INTERVAL : DATA_INTERVAL);
+	}
+	unsigned int CommandDelay(void)
+	{
+		return (true==fastMode ? FAST_SCSI_INTERVAL : COMMAND_DELAY);
+	}
+	unsigned int MessageDelay(void)
+	{
+		return (true==fastMode ? FAST_SCSI_MESSAGE_DELAY : MESSAGE_DELAY);
+	}
+	unsigned int StatusDelay(void)
+	{
+		return (true==fastMode ? FAST_SCSI_INTERVAL : STATUS_DELAY);
+	}
+
+
+	enum
+	{
+		HARDDISK_SECTOR_LENGTH=512,
+		CDROM_SECTOR_LENGTH=2048
+	};
+
+	enum
+	{
+		PHASE_BUSFREE,
+		PHASE_ARBITRATION,
+		PHASE_SELECTION,
+		PHASE_RESELECTION,
+		PHASE_MESSAGE_OUT,
+		PHASE_MESSAGE_IN,
+		PHASE_COMMAND,
+		PHASE_DATA_IN,
+		PHASE_DATA_OUT,
+		PHASE_STATUS,
+		PHASE_STATUS_TO_BUSFREE,
+	};
+	enum
+	{
+		SCSIDEVICE_NONE,
+		SCSIDEVICE_HARDDISK,
+		SCSIDEVICE_CDROM,
+	};
+	enum
+	{
+		MAX_NUM_SCSIDEVICES=7,
+		MAX_NUM_COMMAND_BYTES=64, // ?
+	};
+
+	// [9] 7.2 Command descriptor block
+	enum
+	{
+		SCSICMD_TEST_UNIT_READY =0x00,  // [9] 8.2.16 TEST UNIT READY Command
+		SCSICMD_REZERO_UNIT     =0x01,  // [9] 9.2.13 REZERO UNIT command
+		SCSICMD_SENSE           =0x03,  // [9] 8.2.14 REQUEST SENSE Command
+		SCSICMD_READ_6          =0x08,  // [9] 9.2.5 READ(6) command
+		SCSICMD_WRITE_6         =0x0A,  // [9] 9.2.20 WRITE(6) command
+		SCSICMD_SEEK_6          =0x0B,  // [9] 9.2.15 SEEK(6) and SEEK(10) commands
+		SCSICMD_INQUIRY         =0x12,
+		SCSICMD_COPY            =0x18,  // [9] 8.2.3 Copy Command
+		SCSICMD_MODE_SELECT     =0x15,
+		SCSICMD_MODE_SENSE      =0x1A,
+		SCSICMD_START_STOP_UNIT =0x1B,
+		SCSICMD_PREVENT_REMOVAL =0x1E,  // [9] 9.2.4 PREVENT ALLOW MEDIUM REMOVAL command
+		SCSICMD_READ_CAPACITY   =0x25,  // [9] 9.2.7 READ CAPACITY command
+		SCSICMD_READ_10         =0x28,  // [9] 9.2.6 READ(10) command
+		SCSICMD_WRITE_10        =0x2A,  // [9] 9.2.21 WRITE(10) command
+		SCSICMD_SEEK_10         =0x2B,  // [9] 9.2.15 SEEK(6) and SEEK(10) commands
+		SCSICMD_VERIFY_10       =0x2F,  // [9] 9.2.19 VERIFY command
+		SCSICMD_COPY_AND_VERIFY =0x3A,  // [9] 8.2.4 Copy and Verify Command
+		SCSICMD_READ_SUBCHANNEL =0x42,  // [9] 14.2.10 READ SUB-CHANNEL command
+		SCSICMD_READTOC         =0x43,
+		SCSICMD_PLAY_AUDIO_LBA  =0x45,
+		SCSICMD_PLAY_AUDIO_MSF  =0x47,
+		SCSICMD_PAUSE_RESUME    =0x4B,  // [9] 14.2.1 PAUSE RESUME command.
+		// When adding a support for command, don't forget to add commandLength[]= in the constructor.
+	};
+
+	// [9] Table 27 - Status byte code
+	enum
+	{
+		STATUSCODE_GOOD                      =0,
+		STATUSCODE_CHECK_CONDITION           =0x02,
+		STATUSCODE_CONDITION_MET             =0x04,
+		STATUSCODE_BUSY                      =0x08,
+		STATUSCODE_INTERMEDIATE              =0x10,
+		STATUSCODE_INTERMEDIATE_CONDITION_MET=0x14,
+		STATUSCODE_RESERVATION_CONFLICT      =0x18,
+		STATUSCODE_COMMAND_TERMINATED        =0x22,
+		STATUSCODE_QUEUE_FULL                =0x28,
+	};
+
+	// [9] 8.2.14.3 Sense key and sense code definitions
+	enum
+	{
+		SENSEKEY_NO_SENSE         =0x00,
+		SENSEKEY_RECOVERED_ERROR  =0x01,
+		SENSEKEY_NOT_READY        =0x02,
+		SENSEKEY_MEDIUM_ERROR     =0x03,
+		SENSEKEY_HARDWARE_ERROR   =0x04,
+		SENSEKEY_ILLEGAL_REQUEST  =0x05,
+		SENSEKEY_UNIT_ATTENTION   =0x06,
+		SENSEKEY_DATA_PROTECT     =0x07,
+		SENSEKEY_BLANK_CHECK      =0x08,
+		SENSEKEY_VENDOR_SPECIFIC  =0x09,
+		SENSEKEY_COPY_ABORTED     =0x0A,
+		SENSEKEY_ABORTED_COMMAND  =0x0B,
+		SENSEKEY_EQUAL            =0x0C,
+		SENSEKEY_VOLUME_OVERFLOW  =0x0D,
+		SENSEKEY_MISCOMPARE       =0x0E,
+		SENSEKEY_RESERVED         =0x0F,
+	};
+
+
+	unsigned int commandLength[256];
+	bool breakOnSCSICommand[256];
+	bool breakOnDMATransfer=false;
+
+
+
+	enum
+	{
+		CDDA_IDLE,
+		CDDA_PLAYING,
+		CDDA_PAUSED,
+		CDDA_STOPPING,
+		CDDA_ENDED,
+	};
+
+	class SCSIDevice
+	{
+	public:
+		unsigned int devType=SCSIDEVICE_NONE;
+		std::string imageFName;
+		long long int imageSize=0;
+		DiscImage discImg;
+
+		DiscImage::MinSecFrm CDDABeginTime,CDDAEndTime;
+		int CDDAState=CDDA_IDLE;
+		std::vector <uint8_t> CDDAWave;
+		size_t CDDAPlayPointer=0;
+
+		bool lidClosed,lidLocked; // For CD-ROM drive.
+	};
+
+	class State
+	{
+	public:
+		SCSIDevice dev[MAX_NUM_SCSIDEVICES];
+
+		bool deviceConnected=false;
+
+		unsigned int nCommandFilled=0;
+		unsigned char commandBuffer[MAX_NUM_COMMAND_BYTES];
+		unsigned int bytesTransferred=0;
+
+		bool REQ,I_O,MSG,C_D,BUSY,INT,PERR;
+		bool DMAE,SEL,ATN,IMSK,WEN;
+
+		unsigned int selId;
+		unsigned int phase=PHASE_BUSFREE;
+		unsigned int lastDataByte=0;
+
+		unsigned char status=0,message=0;
+		unsigned int senseKey=0;
+
+		void PowerOn(void);
+		void Reset(void);
+	};
+
+	State state;
+	bool monitorSCSICmd=false;
+
+	SCSIIOThread ioThread;
+
+
+	TownsSCSI(class FMTownsCommon *townsPtr);
+
+	/*! 主动停止后台 IO 线程并 join。libretro core 在 retro_deinit 调用，
+	   避免 DLL 卸载时全局对象析构里的 join 卡死（PROCESS_DETACH 时 CRT 已关闭）。 */
+	void StopIOThread(void);
+
+	virtual void PowerOn(void);
+	virtual void Reset(void);
+
+	bool LoadHardDiskImage(unsigned int scsiId,std::string fName);
+	bool LoadCDImage(unsigned int scsiId,std::string fName);
+
+	static std::string PhaseToStr(unsigned int phase);
+
+	inline bool IRQEnabled(void)
+	{
+		// [2] tells IMSK meahs:
+		//    true:  IRQ disabled
+		//    false: IRQ enabled
+		// It disagrees with the BIOS disassembly.
+		return state.IMSK;
+	}
+
+	inline bool CDDAIsPlaying(void) const
+	{
+		for(auto &d : state.dev)
+		{
+			if(SCSIDEVICE_CDROM==d.devType && CDDA_PLAYING==d.CDDAState)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	void AddWaveForNumSamples(unsigned char waveBuf[],unsigned int numSamples,int outSamplingRate);
+	// Will be called from FMTownsCommon::LoadState
+	void ResumeCDDAAfterRestore(void);
+
+
+	void SetUpIO_MSG_CDfromPhase(void);
+	void EnterBusFreePhase(void);
+	void EnterSelectionPhase(void);
+	void EnterCommandPhase(void);
+	void EnterDataInPhase(void);
+	void EnterDataOutPhase(void);
+	void EnterMessageInPhase(void);
+	void EnterStatusPhase(void);
+	void EnterStatusPhaseWithoutFollowingMessageIn(void);
+
+	virtual void IOWriteByte(unsigned int ioport,unsigned int data);
+
+	virtual unsigned int IOReadByte(unsigned int ioport);
+
+	virtual void RunScheduledTask(unsigned long long int townsTime);
+
+	unsigned char PhaseReturnData(void);
+	void ProcessPhaseData(unsigned int dataByte);
+	void ExecSCSICommand(void);
+
+	std::vector <unsigned char> MakeInquiryData(int scsiId) const;
+	std::vector <unsigned char> MakeReadCapacityData(int scsiId) const;
+	std::vector <unsigned char> MakeTOCData(int scsiId,unsigned int startTrack,unsigned int allocSize,bool MSF) const;
+
+	std::vector <std::string> GetStatusText(void) const;
+
+
+	virtual uint32_t SerializeVersion(void) const;
+	virtual void SpecificSerialize(std::vector <unsigned char> &data,std::string stateFName) const;
+	virtual bool SpecificDeserialize(const unsigned char *&data,std::string stateFName,uint32_t version);
+};
+
+/* } */
+#endif

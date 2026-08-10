@@ -1,0 +1,68 @@
+[Reminder to myself]
+
+
+Probably:
+I'm not setting carry flag correctly in SBB and ADC.  In case Carry+Op2==0x100000000, the prev and new values are equal, but it goes exactly one round.
+
+
+
+#20200123-1
+Clocks for RCL/RCR
+For REG it should be 8-30, for MEM it should be 9-31.
+But how to calculate is nowhere to find.
+For now temporarilyl I make it 10 for everything.
+
+
+
+#20200124-1
+Stack Addressing Size
+In the explanation of PUSH instructions, [1] mentions about stack addressing size.  I cannot find the same description anywhere else.  In one location I read default operand size and default addressing size depends on the D bit of CS in the protected mode, or always 16 in the real mode.  What defines stack addressing size?  Is it D bit of SS?
+
+Correct in i486.cpp:
+
+unsigned int i486DX::GetStackAddressingSize(void) const
+
+When what exactly stack addressing size is.
+
+
+
+#2020/01/25-1
+unsigned int TownsCRTC::IOReadByte(unsigned int ioport)
+Video Out Control Register (Address Latch 0472H:0473H, Data 0474H to 0477H)
+Unless bit1 of register-04 read is 0, boot ROM goes into infinite loop.
+Meaning is unknown.  For the time being, Register 0004 always returns 0.
+
+
+
+#2020/01/29-1
+When Digital-Palette register FD98-FDA0 is written, 
+it should set bit7 of 044CH Digital Palette Modify Flag.  The flat should be reset when it is read.
+This I/O is also used by Sprite controller.  Should implement when implementing sprites.
+
+
+
+#2020/02/02-1
+FDC Comman 0xFE doesn't seem to be RESET.  Meaning is unknown.  MB8877A data sheet does not tell what it is.
+I am taking it as NOP right now.
+
+
+
+#2020/02/04-1
+Probably for CPU test IO.SYS of Towns OS V2.1 L30 (in the sub-routine 03A4:00002E24) tests if Bit15-12 of FLAGS can be all 1.  i486 Programmers' reference says Bit15 should always be 0.  It is unclear if it can be made 1, or it stays zero.
+
+
+
+#2020/02/11
+DIV/IDIV: "If the resulting quotient is too large to fit in the destination, or if the division is 0, an Interrupt 0 is generated."  Really?  I thought if the quotient was too large, it just overflew and continued.  Do I remember wrong?
+
+CRTC: TOWNSIO_HSYNC_VSYNC should calculate timing better.
+
+
+
+#2020/02/21
+ROL Instruction.  Forgetting to update carry.  That made me wonder if my interpretation of carry flag setting after Right-Shift is correct.
+
+
+
+#2020/04/14
+Freeze while running F-BASIC 386 V2.1 L20 sample Penguin Sprite Animation.

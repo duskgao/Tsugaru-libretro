@@ -1,0 +1,272 @@
+UITXT
+
+# Needs to be UTF-8
+# Tags are case sensitive
+
++/ok     OK
++/cancel 取消
++/yes    はい
++/no     いいえ
++/close 閉じる
++/browse ファイルダイアログで選ぶ
++/setdefault 初期値に戻す
++/joystickid ゲームパッドID
++/button ボタン
++/axis 軸
++/none 無
+
+
++/overwritedefault デフォルトプロファイルを更新しますか?
++/overwriteprofile プロファイルを上書きしますか?
++/overwritekeymap キー割り当てファイルを上書きしますか?
++/confirmexit 津軽を終了しますか?
+
+
++/error/vmnotrunning この機能はFM TOWNS仮想マシン実行中に使用可能です。
++/error/vmalreadyrunning 既にFM TOWNS仮想マシンが実行中です。\n新しいセッションを開始するには、まず現在実行中の仮想マシンを終了してください。
++/error/loadprofile プロファイルの読み込みに失敗しました。
+
+
+# File Menu
++/file   ファイル
++/file/openprofile プロファイルを開く
++/file/saveprofile プロファイルを保存
++/file/saveprofileas プロファイルを別名で保存
++/file/saveasdefault このプロファイルをデフォルトにする
++/file/reloaddefault デフォルトプロファイルを読み込む
++/file/makerelative プロファイルのファイル名を${profiledir}からの相対パスにする
++/file/cmosram CMOS RAM
++/file/cmosram/clear CMOS RAMを消去
++/file/new 新規作成
++/file/new/1232kb 1232KBフロッピーディスクイメージ
++/file/new/1440kb 1440KBフロッピーディスクイメージ
++/file/new/640kb  640KBフロッピーディスクイメージ
++/file/new/720kb  720KBフロッピーディスクイメージ
++/file/new/hd     ハードディスクイメージ
++/file/new/keymap キーマッピングテンプレートファイル
++/file/recent 最近使ったプロファイル
++/file/exit 終了
+
+# View Menu
++/view   表示
++/view/profiledialog プロファイルダイアログ
++/view/showtip 使い方のヒントを表示
+
+# State Menu
++/state  どこでもセーブ
++/state/save ステートセーブ
++/state/load ステートロード
++/state/loadandpause ステートロードして一時停止
++/state/loadlaststate 最後に読み込んだステートをロード
++/state/loadlaststateandpause 最後に読み込んだステートをロードして一時停止
++/state/savetomem メモリにステートセーブ
++/state/loadfrommem メモリからステートロード
++/state/loadfrommemandpause メモリからステートロードして一時停止
+
+# FM TOWNS Menu
++/towns  FM TOWNS
++/towns/start FM TOWNS起動!
++/towns/startandclosegui FM TOWNS起動してGUIをクローズ
++/towns/reset リセット
++/towns/rebootfrom 指定デバイスから再起動
++/towns/rebootfrom/cd 内蔵CD
++/towns/rebootfrom/f0 フロッピーディスク0
++/towns/rebootfrom/f1 フロッピーディスク1
++/towns/rebootfrom/f2 フロッピーディスク2
++/towns/rebootfrom/f3 フロッピーディスク3
++/towns/rebootfrom/h0 SCSI ID 0
++/towns/rebootfrom/h1 SCSI ID 1
++/towns/rebootfrom/h2 SCSI ID 2
++/towns/rebootfrom/h3 SCSI ID 3
++/towns/rebootfrom/h4 SCSI ID 4
++/towns/rebootfrom/icm ICメモリカード
++/towns/rebootfrom/debug デバッグモード
++/towns/rebootfrom/pada 内蔵CD(Pad Aボタン)
++/towns/rebootfrom/padb フロッピーディスク1(Pad Bボタン)
++/towns/rebootfrom/padab 起動メニュー
++/towns/poweroff 電源オフ
++/towns/pause 一時停止
++/towns/resume 一時停止解除
++/towns/cpufreq CPU周波数
++/towns/keyboardmode キーボードモード
++/towns/keyboard/direct ダイレクトモード(ゲーム等用)
++/towns/keyboard/trans1 トランスモード(テキスト・コマンド入力用 ESC->ESC+BREAK)
++/towns/keyboard/trans2 トランスモード(テキスト・コマンド入力用 ESC->ESC)
++/towns/keyboard/trans3 トランスモード(テキスト・コマンド入力用 ESC->BREAK)
++/towns/savescrnshot スクリーンショットをセーブ
+
+# CD-ROM Menu
++/cdrom    CD-ROM
++/cdrom/selectimage CDイメージファイルを選択
++/cdrom/openclose CDを開いて閉じたことにする
++/cdrom/eject 取り出し
++/cdrom/stopcdda 音楽演奏停止
+
+# FD0 Menu
++/fd0      FD0
++/fd/selectimage ディスクイメージを選択
++/fd/writeprotect 書込禁止
++/fd/writeenable 書込許可
++/fd/eject 取り出し
+
+# FD1 Menu
++/fd1      FD1
+
+# Devices Menu
++/devices  デバイス
++/devices/gameport0 ジョイスティックポート0
++/devices/gameport1 ジョイスティックポート1
++/devices/autoshot 連射
++/devices/autoshot/8persec 8連射/秒
++/devices/autoshot/12persec 12連射/秒
++/devices/autoshot/16persec 16連射/秒
+
+# Sound Menu
++/sound    サウンド
++/sound/selectwavforsampling 津軽VMに送り込むWAVファイルを選択
++/sound/startwavcapture WAVキャプチャ開始
++/sound/stopwavcapture WAVキャプチャ終了
++/sound/savewavcapture キャプチャしたWAVをファイルに保存
++/sound/startvgmcapture VGMキャプチャ開始
++/sound/stopvtmcapture VGMキャプチャ終了
++/sound/savevgmcapture キャプチャしたVGMをファイルに保存
+
+# Automation Menu
++/auto  自動化
++/auto/beginrecording 記録開始
++/auto/endrecording 記録終了
++/auto/makerepeat 記録した操作を繰り返しにする
++/auto/playback 記録した操作を再生
++/auto/stopplayback 操作の再生の中止
++/auto/saverecording 記録した操作をファイルに保存
++/auto/openrecording ファイルから操作記録を読み込む
+
+# Help Menu
++/help        ヘルプ
+
+
+
+# Profile Dialog
++/profile          プロファイル
++/profile/main     主要
++/profile/main/romdir  ROMの場所
++/profile/main/browsing_inst (ファイルセレクタでは、ROMファイルのうちのひとつを選ぶことでディレクトリを指定できます。)
++/profile/main/cmosfile CMOS RAMイメージファイル
++/profile/main/cmos_inst (空欄にすると、デフォルトイメージファイルを使います。)
++/profile/main/freq_info (高すぎる周波数指定はかえってVMの実行速度を遅くする場合があります。)
++/profile/main/cpufreq CPU周波数(MHz)
++/profile/main/ramsize メモリ容量(MB)
++/profile/main/enable387 浮動小数点演算プロセッサ有効
++/profile/main/cpufidelity CPUの再現性
++/profile/main/whatsfidelity 何これ?
++/profile/main/pretend386dx 80386DXのふりをする(Towns OS V2.1 L10等用)
++/profile/main/cdimage CDイメージファイル
++/profile/main/cdspeed CDスピード
++/profile/main/writeprotect 書込禁止
++/profile/main/scaling 表示倍率(%)
++/profile/main/autoscaling ウィンドウに合わせて倍率を調節する
++/profile/main/maintainaspect 縦横比を維持する
++/profile/main/model モデル
++/profile/main/scanline 15KHz画面モードでスキャンライン効果
++/profile/main/damperwireline ダンパーワイヤー線を表示してトリニトロン管を懐かしむ
++/profile/main/loadstate 保存したステートから開始
++/profile/main/cpufidelity_info MEDIUMレベルの再現性のCPUは、一部の例外処理を省略することで、CPUの実行速度を速くすることができます。\nMEDIUMレベルで大半のTowns OSアプリ (DOS6を含む)を実行することができますが、Windows 3.1, Windows 95,\nLinux等のOSを実行することはできません。\nHIGHレベルの再現性のCPUは、例外処理やページ処理などを厳格化することで、Windows 3.1, Windows 95,\nLinux, OSASK等のOSを実行することができますが、実行速度はやや遅くなります。
++/profile/main/fmt3631 Windowsアクセラレータカード
+
+
++/profile/rs232c   RS232C
++/profile/rs232c/tcpfwd RS232CをTCP/IPにフォワード
++/profile/rs232c/tcpfwd_addr IPアドレス:ポート
++/profile/rs232c/tcpfwd_warning !!注意!! 通信は暗号化されていません!!!!\n!!注意!! 他人に知られて困る情報をTCP/IPフォワードで送受信しないでください!!\n!!注意!! 個人情報が漏洩したりしても、僕は責任を取りません。
+
++/profile/scsi     SCSI
++/profile/scsi/fast  高速SCSI(互換性が下がりますが、HDD読書速度が上がります。)
+
++/profile/gameport ジョイスティックポート
++/profile/gameport/port ポート
++/profile/gameport/maxbtnholdtime 最大ボタン押下時間(ms)
++/profile/gameport/maxbtnholdtime_info 最大ボタン押下時間にゼロ以外を指定すると、シングルクリックしやすくなります。\n一部のゲームで、マウスボタンを押してすぐ放さないと望まないメニュー選択が発生\nして、現実的にプレイ不能になります。そのような場合、この最大ボタン押下時間を\n指定すると、津軽はボタンを押して指定時間経過すると仮想的にボタンをリリースす\nることで、その問題が起きにくくします。
++/profile/gameport/mouse_integ_speed マウス移動速度
++/profile/gameport/mouse_integ_info (マウスカーソルが飛び回る場合は遅くしてみてください)
++/profile/gameport/slow 遅い
++/profile/gameport/fast 速い
++/profile/gameport/considervramoffset VRAMオフセットを考慮する
++/profile/gameport/diff_mouse_integ マウスカーソルが動かないときはこのチェックボックスで直る鴨しれない
+
++/profile/keyboard1 キーボード1
++/profile/keyboard1/mode モード (TRANS1:ESC->ESC+BREAK, TRANS2:ESC->ESC, TRANS3:ESC->BREAK)
++/profile/keyboard1/virtualkey 仮想キー(ゲームパッドのボタンをキーに割り当て)
++/profile/keyboard1/joistickid ゲームパッドID
++/profile/keyboard1/button ボタン
+
++/profile/keyboard2 キーボード2
++/profile/keyboard2/keymappingfile キー割り当てファイル(ファイルメニューの新規作成でテンプレートを作成できます)
+
++/profile/sound     サウンド
++/profile/sound/fmvolume FM音源音量
++/profile/sound/pcmvolume PCM音源音量
++/profile/sound/maxdoublebuf ダブルバッファ最大
++/profile/sound/num_midi_cards MIDIカード枚数
++/profile/sound/midi_info 現時点では、Windows上でのみMIDIカードに対応しています。他のホストではMIDIを有効にしても音が鳴りません。
+
++/profile/boot      起動
++/profile/boot/option  起動時オプション
+
++/profile/advanced  詳細
+
++/profile/mouse_by_flightstick 操縦桿でマウス
++/profile/mouse_by_flightstick/info Wing CommanderやStrike CommanderのFM TOWNS版はマウスを操縦桿として使うことができます。\n上のオプションを有効にすると、ホストOSのジョイスティックの位置を元に津軽内のマウス位置\nをコントロールすることで、快適な操縦ができるようになります。アプリ別特殊設定も合わせて\n指定する必要があります。なお、Wing Commander 1がサイバースティックに対応してくれてさえ\nいたら完璧だったのになあ、と、30年以上思い続けて、ついにこの機能によってジョイスティッ\nクで操縦できた！と思ったら後から実は既にWing Commander 1はサイバースティックに対応して\nいたことが判明して、30年以上の思いはなんだったのだろうと思いましたが、とりあえず思いは\n果たしました。
++/profile/mouse_by_flightstick/throttle_for_stcm ホストジョイスティックのスロットル軸をStrike Commander/Wing Commanderで使う
++/profile/mouse_by_flightstick/throttle_info このオプションを有効にすると、ホストのスロットル軸でVM内に1,2,3,...,9,0キーコードを送ります。
+
++/profile/application  アプリ別特殊設定
+
++/profile/hotkeys  ショートカットキー
++/profile/hotkeys/pauseresume 一時停止/再開(メニューのオン/オフ)
++/profile/hotkeys/qssdir クイックスクリーンショット保存場所
++/profile/hotkeys/qssname クイックステートセーブファイル名
+
++/profile/tgdrv    ファイル共有
++/profile/tgdrv/info TGDRVを使うと、津軽内とホストOS間でファイルを共有することができます。共有するディレクトリを選んで、\n津軽内でTGDRV.COMを実行すると有効になります。TGDRV.COMはユーティリティディスク (TsugaruUtil.D77)に\nあります。\nなお、LinuxやmacOSから使うときは、ファイルに大文字・小文字の差があるので、アルファベットはすべて大\n文字である必要があります。ファイル名は最大で8文字＋3文字拡張子フォーマットである必要があります。\nTowns MENUから利用するためには、バージョンが2.1以上である必要があります。1.1ではTowns MENUにドライ\nブが現れません。\nファイルダイアログで共有ドライブを指定するときは、共有ドライブ内のファイルをひとつセレクタで選んで\nください。
+
++/profile/LAN LAN
++/profile/LAN/enableLAN LANカード(Ratoc REX3586)を有効にする
++profile/LAN/caution ** 警告 **\nFM TOWNSで動作するOSはいずれも今のレベルのセキュリティがありません。LAN機能を使っ\nて外部と送受信した情報は漏洩する危険があります。重要な情報は決して送受信しないよ\nうに注意してください。\nLAN機能を有効にするときは、TGDRVを無効にすることを強く推奨します。\nLAN機能は現在実験的な実装です。LAN機能のステートはセーブはできません。
+
+
+
++/profile/start FM TOWNS起動!
++/profile/autostart プロファイルを開くと同時にFM TOWNSを起動する
++/profile/separateprocess 別プロセスでVMを起動
++/profile/menu_info Scroll Lockキーを押すか、画面右下の[MENU]アイコンをクリックすることでVMからGUIに戻ることができます。
++/profile/menu_info_apple 画面右下の[MENU]アイコンをクリックすることでVMからGUIに戻ることができます。
+
+
+
++/showtip/showtiponstartup 起動時に使い方のヒントを表示する
+
+
+
++/tip0 ASUKA 120% Burning FestとMad Stalkerは、マウスを外しておかないとプログラムが途中で止まってしまいます。\nジョイスティックポートの設定で、マウスの選択を解除するか、あるいは他のゲームパッド等に割り当てを変更\nして使ってください。
+
++/tip1 Brandishは、486SX, 486, Pentium搭載FM TOWNSでは実行できません。Brandishは起動中、CPUが80386DXであるか\nをチェックして、そうでない場合は、80386SXであると仮定してしまいます。このため、486以降のCPUを搭載した\nTOWNSも80386SXと誤認して、正しくメモリマッピングができないので、動きません。\n津軽上で実行するためには、「80386DXのふりをする」オプションを有効にしてください。
+
++/tip2 Towns OS V2.1 L10に含まれるRUN386.EXEは80486以降のCPUでは動作しません。Towns OS V2.1 L10を使うためには、\n「80386DXのふりをする」オプションを有効にしてください。V2.1 L20以降はこの問題はありません。
+
++/tip3 シャーロックホームズの探偵講座は、CDが速すぎるとバッファの先読みをし過ぎてクラッシュします。\nCD-ROMの設定で、速度を1Xにして実行するようにしてください。
+
++/tip4 画面の下から3分の1ぐらいのところに、薄いグレーの線が見えることに気付いたかもしれません。これは、\nダンパーワイヤー線と言って、ソニーのトリニトロン管特有のワイヤーの影でした。普通のテレビ画像で\nはほぼ見えないものですが、コンピュータの画面では目立ってしまいます。ですが、当時はトリニトロン\n管は最高品質のモニタだったので、高品質の証明でもありました。津軽では、このダンパーワイヤー線を\n再現しています。ですが、この線を消したい場合は、画面の設定で「ダンパーワイヤー線」をオフにして\nください。
+
++/tip5 津軽はTowns OSの他に、Windows 3.1, Windows 95, Linux, OSASKをサポートしています。これらのOSを使うには、\nCPUの再現性を「HIGH」に設定してください。ほとんどのFM TOWNS用ゲームを実行するためには、80386の保護機能\nの大半は必要ありません。このため、CPUの再現性を「MEDIUM」にすると、保護機能の再現を一部省略することで、\n仮想CPUを高速に実行できるようになっています。
+
++/tip6 マウスカーソルが動かない場合、差分マウスインテグレーションモードを使うと動くかもしれません。マウスの中ボ\nタンを押すとモードが有効になり、もう一度押すと解除します。\nあるいは、ジョイスティックポートの設定で、キーボードをマウスに使う、あるいは、ゲームパッドをマウスに使う\nように設定することで、矢印キーやゲームパッドのボタンでマウスカーソルを動かすことができます。
+
++/tip7 CDオーディオが2秒から4秒遅れる場合は、.CUEファイルが正しく作成できていない可能性があります。\nAlcohol 52%とImgBurnで比較したところ、両者の間でPREGAPの解釈が違うようです。どうもネット上の情報を\n見ているとImgBurnの解釈が正しいような印象ですが、どっちが正しいのか僕にはわかりません。\nAlcohol 52%もImgBurnも割とメジャーなツールのようですが、このうち一方に合わせたらもう一方で作った\nBIN/CUEではズレが生じることになってしまって、津軽はもうこれ以上対応しきれません。\nなので、BIN/CUEフォーマットはお勧めしません。津軽は.MDSや.CCDにも対応していて、この二種類のフォー\nマットではこのような解釈の問題は発生しないので、.MDSまたは.CCDでCDをダンプすることをお勧めします。
+
++/tip8 ロケットレンジャーは、CPUスピードをかなり下げないとクラッシュします。何が起きてるかと\nいうと、オープニングムービーがオープニングBGM再生よりも速く終わってしまうのですが、\nサウンドBIOSを終了させてるのが、オープニングBGM再生が終わったタイミングなもんだから、\n正しくサウンドBIOSを終了しないまま、オープニングムービー再生プログラムが終了というか\nクラッシュ。奇跡的にゲーム自体は続行できるもののゲーム音楽史に残るであろう名曲が再生\nされません。\nこの問題を回避するには、CPU速度を4～5MHzに下げて起動してください。\nこのバグのせいで、ロケットレンジャーにこんな優れたBGMがついてたって2024年まで知らな\nかったよ。
+
++/tip9 FM TOWNS II CX以降のモデルでは、キーボードやパッドボタンを押しながら起動またはリセットボタン\nを押すことで起動デバイスを選ぶことができます。\nC+DキーまたはパッドAボタン:内蔵CDドライブ\nF+0キーまたはパッドBボタン:フロッピードライブ0\nF+1キー:フロッピードライブ1\nH+0キー:SCSI ID 0\nH+1キー:SCSI ID 1\nH+2キー:SCSI ID 2\nH+3キー:SCSI ID 3\nH+4キー:SCSI ID 4\nI+C+Mキー:IC Memory Card\nまた、パッドABボタンを両方押しながら起動することで、起動メニューに入ることができます。\nD+E+B+U+Gキーを押しながら起動するとデバッグメニューに入ることができます。
+
++/tip10 Rawフロッピーディスクイメージを使用する場合、津軽は(1261568 bytes), 1440KB (1474560 bytes), 640KB (655360 bytes), または\n720KB (737280 bytes)のディスクイメージは認識しますが、1バイトでもサイズが違ってたら認識しません。
+
+

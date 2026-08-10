@@ -1,0 +1,369 @@
+/begin0
+T 1
+* 00000110:00000280
+# 
+R 
+L EGB:Entry
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000110:000020E8
+# 
+R 
+L EGB:AH=24H_GET_BITMAP_PATTERN1
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000110:000020F8
+# 
+R 
+L EGB:AH=25H_PUT_BITMAP_PATTERN1
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000110:00002234
+# 
+R 
+L EGB:AH=28H_WRITE_GRAPHIC_CURSOR
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000110:00010250
+# 
+R 
+L MOUSEBIOS:Entry
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000110:00011170
+# 
+R 
+L SNDBIOS:Entry
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000110:00011304
+# 
+R 
+L SNDBIOS:AH=03H_SpecifyDestination
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000110:00011C14
+# 
+R 
+L SNDBIOS:AH=10H_Read_YM2612_StatusRegister
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000110:00011F58
+# 
+R 
+L SNDBIOS:?WRITE_AL_TO_04F7H_UPDATE_GS:[EBP+1A00H],[EBP+EBX+1A00H]
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000110:00011F7C
+# 
+R 
+L SNDBIOS:?WRITING_GS:[EBP+EBX?+1A00H]_TO_4F7H(PCM_Control)
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000110:00012884
+# 
+R 
+L SNDBIOS:AH=28H_Get_PCM_VoiceMode_PlayState
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000110:00012B68
+# 
+R 
+L SNDBIOS:AH=51H_VoiceModeINTHandler
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:00012B89
+# 
+R 
+L SNDBIOS:CONTINUE_PLAYING_VOICEMODE_CHANNEL_LOOP
+P 
+% 0
+/end
+/begin0
+T 0
+* 00000110:00012BAC
+# SNDBIOS:(Prob)SEGMENT_FOR_WAVE_DATA
+R 
+L 
+P 
+% 0
+/end
+/begin0
+T 0
+* 00000110:00012BB4
+# SNDBIOS:(Prob)POINTER_FOR_WAVE_DATA
+R 
+L 
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:00012BD3
+# 
+R 
+L SNDBIOS:CONTINUE_PLAYING_NEXT_CHANNEL
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000110:00013008
+# 
+R 
+L SNDBIOS:AH=2EH_PlayHighResVoiceMode
+P 
+% 0
+/end
+/begin0
+T 0
+* 00000110:00013043
+# SNDBIOS:Make BL PCM channel number
+R 
+L 
+P 
+% 0
+/end
+/begin0
+T 0
+* 00000110:000130EB
+# SNDBIOS:PCM_CH_ON_OFF(DX=04F8H)
+R 
+L 
+P 
+% 0
+/end
+/begin0
+T 0
+* 00000110:00013110
+# SNDBIOS:PCM_ST(DX=04F6H)
+R 
+L 
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000110:000131F4
+# 
+R 
+L SNDBIOS:(PROB)FILL_NEXT_WAVE_SEGMENT
+P 
+% 0
+/end
+/begin0
+T 0
+* 00000110:000131F8
+# SNDBIOS:AL=81H+EBX*2(Bank_Select)
+R 
+L 
+P 
+% 0
+/end
+/begin0
+T 0
+* 00000110:0001321B
+# SNDBIOS:(Prob)One_More_Byte?
+R 
+L 
+P 
+% 0
+/end
+/begin0
+T 0
+* 00000110:0001321C
+# SNDBIOS:One_Bank_Back
+R 
+L 
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:0001323C
+# 
+R 
+L SNDBIOS:?LOOP
+P 
+% 0
+/end
+/begin0
+T 0
+* 00000110:00013265
+# SNDBIOS:SIGNED_BYTE_TO_SIGNBIT_PLUS_ABSOLUTE
+R 
+L 
+P 
+% 0
+/end
+/begin0
+T 0
+* 00000110:00013270
+# SNDBIOS:(PROB)WRITE_TO_WAVE_RAM
+R 
+L 
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:000132C6
+# 
+R 
+L SNDBIOS:WAVE_TRANSFER_LOOP2?
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000110:00013300
+# 
+R 
+L SNDBIOS:AH=50H_EnvelopeIntHandler
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:00013AF4
+# 
+R 
+L SNDBIOS:RETURN_AL=01H_BAD_CHANNEL_NUMBER
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:00013AFA
+# 
+R 
+L SNDBIOS:RETURN_AL=02H_PCM_BUSY_PLAYING
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:00013AFF
+# 
+R 
+L SNDBIOS:RETURN_AL=03H_PARAM_ERROR
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:00013B02
+# 
+R 
+L SNDBIOS:RETURN_AL=04H
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:00013B05
+# 
+R 
+L SNDBIOS:RETURN_AL=05H
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:00013B08
+# 
+R 
+L SNDBIOS:RETURN_AL=06H_NO_DATA_LENGTH_IN_DATA
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:00013B0B
+# 
+R 
+L SNDBIOS:RETURN_AL=07H_CHANNEL_NOT_FOR_VOICE_MODE
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:00013B10
+# 
+R 
+L SNDBIOS:RETURN_AL=08H
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:00013B17
+# 
+R 
+L SNDBIOS:RETURN_AL=09H
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:00013B1C
+# 
+R 
+L SNDBIOS:RETURN_AL=0AH
+P 
+% 0
+/end
+/begin0
+T 2
+* 00000110:00013B1F
+# 
+R 
+L SNDBIOS:RETURN_AL=0DH_SOUND_HEADER_ERROR
+P 
+% 0
+/end
+/begin0
+T 1
+* 00000262:00002A0D
+# 
+R 
+L CDROM:IRQ Handler (Called from INT 49H Handler)
+P 
+% 0
+/end

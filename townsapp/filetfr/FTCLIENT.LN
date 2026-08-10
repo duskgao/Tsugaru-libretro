@@ -1,0 +1,4 @@
+build\tfrio.obj
+build\ftclient.obj
+-lib C:\hc386\small\hce.lib 
+-stack 16384

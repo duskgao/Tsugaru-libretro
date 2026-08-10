@@ -1,0 +1,172 @@
+						ASSUME	CS:CODE
+
+						PUBLIC	VNDRV_PRINT
+						PUBLIC	VNDRV_DUMP
+						PUBLIC	VNDRV_NUM_DRIVES
+						PUBLIC	VNDRV_FINDFIRST
+						PUBLIC	VNDRV_FINDNEXT
+
+CODE					SEGMENT
+
+TOWNS_VNDRV_CMD_GET_DRIVES		EQU   	00H
+TOWNS_VNDRV_CMD_FIND_FIRST		EQU		1BH
+TOWNS_VNDRV_CMD_FIND_NEXT    	EQU		1CH
+
+TOWNSIO_VNDRV_COMMAND			EQU		2F14H
+TOWNSIO_VNDRV_AUXCOMMAND		EQU		2F18H
+TOWNS_VNDRV_AUXCOMMAND_PRINT	EQU		09H
+TOWNS_VNDRV_AUXCOMMAND_DUMP		EQU		0AH
+
+
+
+VNDRV_PRINT				PROC
+;	[EBP+4] Return EIP   [EBP+8] Pointer to c_str
+						PUSH	EBP
+						MOV		EBP,ESP
+						PUSH	EAX
+						PUSH	EBX
+						PUSH	EDX
+
+						MOV		EBX,[EBP+8]
+						MOV		AL,TOWNS_VNDRV_AUXCOMMAND_PRINT
+						MOV		DX,TOWNSIO_VNDRV_AUXCOMMAND
+						OUT		DX,AL
+
+						POP		EDX
+						POP		EBX
+						POP		EAX
+						POP		EBP
+						RET
+VNDRV_PRINT				ENDP
+
+
+
+VNDRV_DUMP				PROC
+;	[EBP+4] Return EIP   [EBP+8] Pointer    [EBP+0CH] Length
+						PUSH	EBP
+						MOV		EBP,ESP
+						PUSH	EAX
+						PUSH	EBX
+						PUSH	ECX
+						PUSH	EDX
+
+						MOV		EBX,[EBP+8]
+						MOV		ECX,[EBP+0CH]
+						MOV		AL,TOWNS_VNDRV_AUXCOMMAND_DUMP
+						MOV		DX,TOWNSIO_VNDRV_AUXCOMMAND
+						OUT		DX,AL
+
+						POP		EDX
+						POP		ECX
+						POP		EBX
+						POP		EAX
+						POP		EBP
+						RET
+VNDRV_DUMP				ENDP
+
+
+
+VNDRV_NUM_DRIVES		PROC
+						PUSH	EBP
+						MOV		EBP,ESP
+						PUSH	EBX
+						PUSH	ECX
+						PUSH	EDX
+						PUSH	GS
+						PUSH	FS
+
+						MOV		AH,TOWNS_VNDRV_CMD_GET_DRIVES
+						XOR		AL,AL
+						MOV		DX,TOWNSIO_VNDRV_COMMAND
+						OUT		DX,AX
+
+						POP		FS
+						POP		GS
+						POP		EDX
+						POP		ECX
+						POP		EBX
+						POP		EBP
+						RET
+VNDRV_NUM_DRIVES		ENDP
+
+
+
+VNDRV_FINDFIRST			PROC
+;	[EBP+4] Return EIP   [EBP+8] Pointer to the return buffer   [EBP+0CH] Drive Num   [EBP+10H] Sub Directory
+						PUSH	EBP
+						MOV		EBP,ESP
+						PUSH	EBX
+						PUSH	ECX
+						PUSH	EDX
+						PUSH	EDI
+						PUSH	ESI
+						PUSH	GS
+						PUSH	FS
+
+						PUSH	DS
+						POP		GS
+						PUSH	DS
+						POP		FS
+
+						MOV		ESI,[EBP+10H]
+						MOV		EDI,[EBP+08H]
+
+						MOV		AH,TOWNS_VNDRV_CMD_FIND_FIRST
+						MOV		AL,[EBP+0CH]
+						MOV		DX,TOWNSIO_VNDRV_COMMAND
+						OUT		DX,AX
+
+						POP		FS
+						POP		GS
+						POP		ESI
+						POP		EDI
+						POP		EDX
+						POP		ECX
+						POP		EBX
+						POP		EBP
+						RET
+VNDRV_FINDFIRST			ENDP
+
+
+
+VNDRV_FINDNEXT			PROC
+;	[EBP+4] Return EIP   [EBP+8] Pointer to the return buffer   [EBP+0CH] Drive Num   [EBP+10H] Sub Directory
+						PUSH	EBP
+						MOV		EBP,ESP
+						PUSH	EBX
+						PUSH	ECX
+						PUSH	EDX
+						PUSH	EDI
+						PUSH	ESI
+						PUSH	GS
+						PUSH	FS
+
+						PUSH	DS
+						POP		GS
+						PUSH	DS
+						POP		FS
+
+						MOV		ESI,[EBP+10H]
+						MOV		EDI,[EBP+08H]
+
+						MOV		AH,TOWNS_VNDRV_CMD_FIND_NEXT
+						MOV		AL,[EBP+0CH]
+						MOV		DX,TOWNSIO_VNDRV_COMMAND
+						OUT		DX,AX
+
+						POP		FS
+						POP		GS
+						POP		ESI
+						POP		EDI
+						POP		EDX
+						POP		ECX
+						POP		EBX
+						POP		EBP
+						RET
+VNDRV_FINDNEXT			ENDP
+
+
+
+CODE					ENDS
+						END
+

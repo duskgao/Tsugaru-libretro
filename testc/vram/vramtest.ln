@@ -1,0 +1,7 @@
+build\vram.obj 
+build\vramtest.obj 
+-lib D:\hc386\small\hce.lib 
+-lib D:\hc386\townslib\lib\tbios.lib 
+-exe build\vramtest.exp
+-stack 16384
+-symbols

@@ -1,0 +1,19330 @@
+/begin0
+T 1
+* 00000010:000000C1
+# 
+R 
+L SYSROM:Native Mode Entry
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000010:000003A5
+# 
+R 
+L SYSROM:DRAW_MEMORY_TEST_MESSAGE
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000010:00000493
+# 
+R 
+L SYSROM:MEMORY_TEST_FAILED
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:000004E9
+# 
+R 
+L SYSROM:(PROB)MEMORY_TEST_FROM_EDI_FOR_ECX_BYTES
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000010:0000053F
+# 
+R 
+L SYSROM:MEMTEST_CHECK_READ_BACK
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000010:000005CD
+# 
+R 
+L SYSROM:(PROB)RETURN_MEMTEST_FAILURE
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:00000607
+# 
+R 
+L SYSROM:(PROB)DRAW_MESSAGE_BY_NUMBER
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00000B16
+# ECX=Boot Key Combination
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00000B5E
+# Check Boot Key Combination
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00000B79
+# Setting One-Time Boot Device
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00000B80
+# 4C00H=Keyboard Icon
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00000BD2
+# 4A00H=JoyPad Icon
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00000D2E
+# 4A00H=JoyPad Icon
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:000012F6
+# 
+R 
+L SYSROM:Machine Identification?
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:0000136C
+# 
+R 
+L SYSROM:Read Pad0 Trigger Bits in AL
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:00001415
+# 
+R 
+L SYSROM:(Prob)Draw Icon
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:00001D41
+# 
+R 
+L SYSROM:Get Keyboard State EBX=0b43210MNBVCXZLKJHGFDSAPOIUYTREWQ
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001DA4
+# Keyboard Command A1=Reset
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:00001DB1
+# 
+R 
+L SYSROM:Disable Keyboard IRQ and NMI
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:00001DC1
+# 
+R 
+L SYSROM:(Prob)Get 16-bit Key code
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001DC6
+# DH=Incoming_AH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001DC8
+# Keyboard Command A0=Undocumented
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001DD0
+# 1388H=5000
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001DDB
+# Keyboard Command A1=Reset
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001DFA
+# Check OBF (Keycode)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001DFD
+# Jump if no keycode
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001E1E
+# Restore Incoming_AH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:00001E26
+# 
+R 
+L SYSROM:Wait IBF ready, then Write Keyboard Command(AL)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:00001E41
+# 
+R 
+L SYSROM:(Prob)Inkey AH=Keyboard Status 602H, AL=Keycode 600H
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000010:00001E4B
+# 
+R 
+L Wait for Keyboard Buffer
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001E56
+# Keyboard Status
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001E5E
+# Check OBF (Output Buffer)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000010:00001E6A
+# 
+R 
+L OBF=1 or TimeOut
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:00001E81
+# 
+R 
+L SYSROM:Keycode to Flag|0b43210MNBVCXZLKJHGFDSAPOIUYTREWQ
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001E83
+# 11H='Q'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001E87
+# 1AH='P'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001E8B
+# Q->00H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001E8F
+# 1EH='A'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001E93
+# 26H='L'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001E97
+# A->0AH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001E9B
+# 2AH='Z'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001E9F
+# 30H='M'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001EA3
+# Z->13H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001EA7
+# 0BH='0'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001EAB
+# 0->1AH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001EAF
+# 02H='1'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001EB3
+# 05H='4'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001EB7
+# 4->1EH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:00001EDD
+# 
+R 
+L SYSROM:Wait
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:00001EFF
+# 
+R 
+L SYSROM:Wait by Freerun Timer
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:00001F32
+# 
+R 
+L SYSROM:(PROB)DRAW_STRING
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001F44
+# CRTC Control?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001F5C
+# (Prob)X
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001F6E
+# (Prob)Y
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001F7F
+# (Prob)Strlen
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000010:00001F85
+# 
+R 
+L SYSROM:DRAW_FONT_LOOP
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000010:00001FD0
+# 
+R 
+L SYSROM:HALT_AFTER_ERROR
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000010:00001FD4
+# 
+R 
+L SYSROM:Draw Half Pitch Font
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001FD6
+# CB000H:Mapped Half-Pitch Font
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00001FDF
+# AX=ASCIICode*16
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000010:00001FF5
+# 
+R 
+L SYSROM:(PROB)DRAW_HALF_PITCH_FONT_LOOP
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000010:00002027
+# FDA0H CRT Output Control
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:00002031
+# 
+R 
+L SYSROM:CRTC Control?
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:0000219D
+# 
+R 
+L SYSROM:MA/MX HIGHRES Control
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:00002442
+# 
+R 
+L SYSROM:SET_PALETTE
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:000024D0
+# 
+R 
+L SYSROM:(PROB)SJIS_TO_JIS
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:00002501
+# 
+R 
+L SYSROM:Check Shift-JIS or ASCII
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000010:0000251C
+# 
+R 
+L SYSROM:Accessing unknown I/O 479H-4FH
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000005D:0000020C
+# 
+R 
+L INT 46H(FDC)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000005D:0000028B
+# Jump to each interrupt
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:00005728
+# 
+R 
+L TBIOS:Draw_Mouse_Icon
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:00007B43
+# 
+R 
+L TBIOS:Put_32Pixel_1Bit_Pattern_In_EAX
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:0000D1E4
+# 
+R 
+L TBIOS:BitBlt
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:00011B60
+# 
+R 
+L TBIOS:MouseBIOS
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:00011D50
+# 
+R 
+L TBIOS:MOS_rdpos
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000110:00012814
+# 
+R 
+L TBIOS:Mouse:Read_Mouse_Motion
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000039A:00000458
+# 
+R 
+L Wait by I/O 006CH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000000BD
+# 
+R 
+L DISKBIOS:BRANCH_TO_DEVICE
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000000E2
+# [BP+03H]=Incoming AH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000421:000000EB
+# 
+R 
+L DISKBIOS:Branch to Function
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000001F8
+# 
+R 
+L DISKBIOS:AH=02H Get Disk Status
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000205
+# [BP+06H]=Incoming CX
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000209
+# [BP+02H]=Incoming AL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000020C
+# Restore
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000421:00000243
+# Track 0
+R 
+L DISKBIOS:(Prob)Find Media Type Loop?
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000245
+# Side 0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000247
+# DS:[0040H-] Buffer for sector info.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000024F
+# Read Address Marks
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000251
+# DS:[044EH]=Error Code
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000292
+# [BP+02H]=Incoming AL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000295
+# AL=Drive
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000002AE
+# Bit2:Double-Sided
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000002C6
+# [BP+8]=Outgoing DL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000002F3
+# 
+R 
+L DISKBIOS:(Prob)Cycle media type?
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000036C
+# 
+R 
+L DISKBIOS:AH=09H Read Sector Info
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000003BE
+# DSKCHG flag
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000053A
+# 
+R 
+L DISKBIOS:Get Drive-Status Structure Pointer in SI (AL=drive)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000069E
+# [044DH]=Error Code
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000072A
+# (Prob)Device Number Error
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000791
+# 
+R 
+L DISKBIOS:(Prob)Clear Timer [0441H] ?BL=02H?
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000079A
+# 
+R 
+L DISKBIOS:(Prob)Clear Timer [0440H] ?BL=02H?
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000007CE
+# (Prob)AL=Incoming AL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000858
+# Tentatively no error
+R 
+L DISKBIOS:Wait for DMA transfer
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000085E
+# Tentatively no error
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000867
+# CS:0D17 is a callback function (7FH->DS:[0443H])
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000086A
+# (Prob)012CH=300 ticks
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000421:00000873
+# DS:[0487H] is cleared in FDC IRQ.
+R 
+L Wait timer up or command finished
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000881
+# (Prob)Error Details=Time Over
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000887
+# (Prob)Hard Error
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000008A1
+# DS:[0453H] is the zero-ext of last FDC status (I/O 0200H)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000008A4
+# Clear INDEX/DRQ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000008AC
+# Clear except NOTRDY,RECNOTFOUND,CRCERR,BUSY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000008CD
+# [044DH]=Error code
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000008EA
+# (Prob)[SI+02H]=Value written to I/O 020CH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000093E
+# (Prob)[SI+0BH] is track.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000A56
+# 
+R 
+L DISKBIOS:(Prob)Reset MODE-B and HISPD for all drives.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000A59
+# (Prob)DS:[04D2H-] Pointers for drive-info structures.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000A8C
+# 
+R 
+L DISKBIOS:Wait drive ready
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000A91
+# Jump if busy
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000AEE
+# 
+R 
+L DISKBIOS:Issue FDC Command
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000AF1
+# (Prob)[SI+03H] remembers last-issued FDC command.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000B97
+# 
+R 
+L DISKBIOS:Check Disk Change if [SI]==1
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000BA8
+# 
+R 
+L DISKBIOS:Select Side([BP+09H])
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000BB7
+# (Prob)[SI+01H] is value written to I/O 0208H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000BC5
+# 
+R 
+L DISKBIOS:Wait for 59us or 100us
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000BD1
+# (Prob)Wait for 59(3BH) or 100(64H)us
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000BDB
+# 
+R 
+L DISKBIOS:Read I/O 200H (FDC Status) in AL
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000BE0
+# 
+R 
+L DISKBIOS:Read I/O 208H 3 times.
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000BE7
+# 
+R 
+L DISKBIOS:Check DMA Error
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000BF9
+# 
+R 
+L DISKBIOS:Write AL to I/O 0208H (Drive Control)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000BFE
+# 
+R 
+L DISKBIOS:Select Drive and Latch HISPD and MODE-B
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000C0D
+# 
+R 
+L DISKBIOS:Unsel Drv, Select Drv,Latch MODE-B and HISPD, then Unsel Drv.
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000C1A
+# 
+R 
+L DISKBIOS:Wait drv ready, Enable IRQ, then write command
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000C22
+# (Prob)[SI+01H] remembers value written to I/O 0208H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000C33
+# 
+R 
+L DISKBIOS:Zero-Ext Status Byte (I/O 200H) to DS:[453H], then FDC CMD D0H(abort).
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000C4D
+# 
+R 
+L DISKBIOS:Write AL to I/O 202H (Track)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000C52
+# 
+R 
+L DISKBIOS:Write AL to I/O 206H (Data)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000C67
+# 
+R 
+L DISKBIOS:Setup DMA
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000D17
+# 
+R 
+L DISKBIOS:Callback 7FH->0D47:[0443H]
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000D21
+# 
+R 
+L DISKBIOS:Set up timer.
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000D78
+# 
+R 
+L DISKBIOS:(Prob)Clear Timer
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000D7D
+# [0443H] is timer-up flag. 80=Not yet  7F=Up
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000D89
+# [0443H] is timer-up flag. 80=Not yet  7F=Up
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00000D93
+# 
+R 
+L DISKBIOS:Floppy Disk IRQ Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00000D97
+# (Prob)DS:[0457H]=Drive?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001181
+# (Prob)AH=Status Byte
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001186
+# (Prob)AL=Message Byte
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000126D
+# 
+R 
+L DISKBIOS:Set up timer
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000126E
+# Call back. IF [0529H]==80H THEN [0529H]=81H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000012D7
+# 
+R 
+L DISKBIOS:SCSI (Prob) Issue command, return result.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000012E1
+# [0512H]=SCSI Command Pointer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000012E4
+# [0514H]=SCSI Command Segment
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000012E7
+# [0516H]=(Prob)Data Destination Pointer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000012EA
+# [0518H]=(Prob)Data Destination Segment
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000134B
+# [SI+02H]=0C32H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000421:0000134F
+# 
+R 
+L DISKBIOS:SCSI Data Transfer Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001351
+# Jump if (MSG==1 || C/D==1(CMD/STA/MSG))
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001355
+# Jump if REQ==0 (No Transfer Request)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001357
+# MSG=0 && C/D==0 && REQ==1 to come here. (Data phase)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001367
+# [SI+02H]=0C32H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000136D
+# Jump if BUSY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000136F
+# (Prob)Status Byte
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001373
+# (Prob)Message Byte
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00001379
+# [0516H]=(Prob)Data Destination Pointer
+R 
+L DISKBIOS:SCSI DMA Transfer
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000137D
+# [0518H]=(Prob)Data Destination Segment
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000138B
+# [SI+0AH]=00A4H DMA Address Register Low
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001391
+# [SI+0CH]=00A4H DMA Address Register High
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000013A5
+# [SI+08H]=00A2H DMA Count Register
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000421:000013B5
+# 
+R 
+L Wait for DMA transfer end?
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000013BE
+# [SI+02H]=0C32H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000013C5
+# Jump if Ready
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000013C9
+# Jump if MSG or CMD/STA/MSG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000013EB
+# Jump if Ready
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000013EF
+# Jump if MSG or CMD/STA/MSG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000140B
+# 
+R 
+L DISKBIOS:SCSI Wait Ready or TimeOut
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000140D
+# [SI+02H]=0C32H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00001445
+# [0511H] is it SCSI ID bits?
+R 
+L DISKBIOS:(Prob)Set SCSI ID Bits and SEL
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001450
+# [SI+04H]=0C30H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001456
+# [SI+02H]=0C32H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000145C
+# Jump if BUSY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001464
+# [SI+04H]=0C30H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000146B
+# [051CH]=Command Counter
+R 
+L DISKBIOS:INT 48H Command Out Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000146F
+# [SI]=0C30H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001472
+# [0512H]=SCSI Command Pointer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00001483
+# [SI]=0C30H
+R 
+L DISKBIOS:INT 48H Status Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001486
+# [051AH]=Status byte?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000148A
+# [SI]=0C30H
+R 
+L DISKBIOS:INT 48H Message-IN Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000148D
+# [051BH]=Message byte?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00001492
+# 
+R 
+L DISKBIOS:SCSI Select DMA Channel
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00001498
+# 
+R 
+L DISKBIOS:SCSI Prepare DMA Not setting ADDR
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000014AF
+# 
+R 
+L DISKBIOS:SCSI Set DMA Mode
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000014BA
+# 
+R 
+L DISKBIOS:SCSI (Prob)SEG:OFFSET to Physical Addr
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000014CB
+# 
+R 
+L DISKBIOS:Wait SCSI BUSY or TimeOut
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000014DF
+# Jump if Ready (BUSY=0)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000014F9
+# 
+R 
+L DISKBIOS:IF [0529H]!=80H THEN [0529H]=82H:Erase Timer
+P 
+% 0
+M 0
+/end
+/begin0
+T 4
+* 00000421:0000150D
+# 
+R 
+L Jump Table for SCSI Phase
+P 
+% 16
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000151D
+# 
+R 
+L DISKBIOS:SCSI INT 48H Handler (CMD, STA, MSG-IN Phases)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001525
+# [SI+02H]=0C32H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000152B
+# Jump if no REQ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000152F
+# AL=IO|MSG|CD|0 Defines Phase [2] pp.263
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:0000153B
+# 
+R 
+L DISKBIOS:SCSI Timer Call Back. IF [0529H]==80H THEN [0529H]=81H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000015AD
+# 
+R 
+L CDROM:BIOS_ENTRY
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001609
+# 
+R 
+L CDROM:BRANCH_TO_FUNCTION
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000173F
+# 
+R 
+L CDROM:FUNCTION_AH=05_READ_SECTOR_HSG
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:00001782
+# 
+R 
+L CDROM:AH=0EH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001BD5
+# 
+R 
+L CDROM:PROBABLY_DRIVE_AND_MPU_RESET
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001C83
+# 
+R 
+L CDROM:ISSUE_A0H(08,01)_THEN_3FH(02,00,0B,08)_SETUP_IRQ_DATA_BLOCK
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001D5C
+# 
+R 
+L CDROM:READ_SECTOR_MAIN
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00001D75
+# 
+R 
+L CDROM:
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002053
+# 
+R 
+L CDROM:MSF_TO_HSG
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002077
+# 
+R 
+L CDROM:HSG_TO_MSF
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000020AC
+# 
+R 
+L CDROM:BIN_TO_BCD
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000020C5
+# 
+R 
+L CDROM:BCD_AL_TO_BIN_AL
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000020E8
+# 
+R 
+L CDROM:MODE2READ_2336(920H)_BYTES
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000020F4
+# 
+R 
+L CDROM:MODE1READ_2048(800H)_BYTES
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002100
+# 
+R 
+L CDROM_RAWREAD_2340(924H)_BYTES
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000210C
+# 
+R 
+L CDROM:ISSUE_DATA_TRANSFER_COMMAND_WAIT_FOR_COMPLETION
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002194
+# 
+R 
+L CDROM:READ_TOC
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000219E
+# 
+R 
+L CDROM:
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000022D7
+# 
+R 
+L CDROM:CHECK_STATUS_CONVERT_TO_ERROR_IF_NOT_SUBQ_17H_18H_19H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002401
+# 
+R 
+L CDROM:ISSUE_COMMAND_A0H_SETSTATE_WITH_STATUS_REQUEST
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002408
+# 
+R 
+L CDROM:ISSUE_COMMAND_A0H_SETSTATE_WITH_STATUS_REQUEST
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002411
+# 
+R 
+L CDROM:ISSUE_COMMAND_A4(CDDASTOP)_THEN_A0_WAIT_FOR_ERR_OR_(2NDBYTE&0DH)!=0
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002451
+# 
+R 
+L CDROM:ISSUE_COMMAND_3FH_UNKNOWN_COMMAND
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002473
+# 
+R 
+L CDROM_ISSUE_COMMAND_A1(CDDASET)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000248F
+# 
+R 
+L CDROM:CHECK_STATUS_ERROR_IF_AL!=0_CHECK_SUBSEQUENT_STATUSCODE==AL
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000024C1
+# 
+R 
+L CDROM:CLEAR_8BYTES_FROM_DS:57FH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000024D7
+# 
+R 
+L CDROM:CONVERT_8BYTES_TO_BCD_THEN_ISSUE_COMMAND_IN_DS:57EH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000024DD
+# 
+R 
+L CDROM:CONVERT_1BYTE_TO_BCD_THEN_ISSUE_COMMAND_IN_DS:57EH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000024E7
+# 
+R 
+L CDROM:CONVERT_PARAMS_TO_BCD_WAIT_DRY_THEN_ISSUE_COMMAND_IN_DS:57EH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000251F
+# 
+R 
+L CDROM:IF_STATUS_REQ_THEN_READ_TO_DS:587H_OR_HARD_ERROR_21H_0DH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002565
+# 
+R 
+L CDROM:IF_AH==0_CLEAR_ERROR_CODE_IN_DS:568H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000256E
+# 
+R 
+L CDROM:SETUP_DMA
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000421:000025AE
+# 
+R 
+L CDROM:Disk Changed or Drive Not Ready
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000025E2
+# 
+R 
+L CDROM:STATUS_BYTES_IN_587H_TO_BIOS_ERROR_AH_CX
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000026F6
+# 
+R 
+L CDROM:PROBABLY_CHECK_MEDIA_CHANGE_AND_CACHE_TOC_IF_CHANGED
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000275F
+# 
+R 
+L CDROM:CACHE_TOC_DS:564,565,567=1,MEDIA_CHANGED_ERROR
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:0000277C
+# 
+R 
+L CDROM:PROBABLY_CHECK_DRIVE_AND_MEDIA_STATUS
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000027D2
+# 
+R 
+L CDROM:COPY_8BYTES_FROM_DS:57FH_TO_DS:599H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000027DC
+# 
+R 
+L CDROM:COPY_8BYTES_FROM_DS:599H_TO_DS:57FH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000027F3
+# 
+R 
+L CDROM:INT_FDH_CX=1EH_Probably_30us_WAIT
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:000027FB
+# 
+R 
+L CDROM:SETUP_TIMER_FOR_TIMEOUT
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002845
+# 
+R 
+L CDROM:TIMEOUT_TIMER_CALLBACK
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002850
+# 
+R 
+L CDROM:INTERRUPT_HANDLER
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000421:00002926
+# 
+R 
+L CDROM:Probably_CACHE_TOC_IN_INTERNAL_BUFFER
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000679:00003974
+# SF_MODE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00000679:00006015
+# 
+R 
+L NextSF_ENTRY
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00000D47:0000057C
+# 
+R 
+L CDROMBIOS:2ND_BYTE_OF_STATUS_CODE_IF_NO_ERROR(00H_xx_xx_xx)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00000F45:00000AD0
+# 
+R 
+L IO.SYS(?):SET_PALETTE
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001048:00000000
+# 
+R 
+L IO.SYS Entry
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001048:000001DB
+# 
+R 
+L IO.SYS:MAIN
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:00000264
+# AL=40H is RAM/ROM disk
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:000002A7
+# (Prob)Jump to MSDOS.SYS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001048:00001AE7
+# 
+R 
+L DOS:Conv SJIS(AX) to JIS(AX)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:00001AE8
+# DX=SJIS in
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:00001AEA
+# AH=01 Conv SJIS to JIS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:00001AEE
+# DX=JIS out
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001048:00001B16
+# 
+R 
+L DOS:Printer Output (DL=char,BX=struct?,[BX+4]=BIOS Err Out)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001048:00001B34
+# 
+R 
+L DOS:Printer Write 18H->1BH->63H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:00002C9C
+# 
+R 
+L ????:SHOOT_INT_93H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:0000362D
+# (Prob)Jump if 1.44MB?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:00003632
+# Jump if 2D/2DD
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001048:00003697
+# 
+R 
+L (Prob)Error:Single-Sided Disk Not Supported
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:00004A89
+# 
+R 
+L NOT_CX_Bytes_From_DS:[SI]
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:00004AFB
+# 
+R 
+L Calculate_Check_Sum
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:00004C24
+# 
+R 
+L Call[FFFB:0019]
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001048:00004C2D
+# 
+R 
+L Call[FFFB:001E]
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001674:00000000
+# 
+R 
+L Hanging part of IO.SYS.  Copies itself to AF37:0000
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00000000
+# EOF_ON_INPUT,
+R 
+L Strcpy
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000046C
+# SI=Temporary DPB  DI=Permanent DPB
+R 
+L MOVDPB
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00000471
+# [046AH]=INITSS,[0468H]=INITSP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00000479
+# [DMAADD+2]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000047E
+# [DPBHEAD] Address of first DPB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00000482
+# [DPBHEAD+2]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00000487
+# [SFT_ADDR+2]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000048C
+# [NUMIO]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00000492
+# ES:[SI+DPB_NEXT_DPB+2]
+R 
+L SETFINDPB
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00000496
+# [SI+DPB_FIRST_ACCESS] Never accessed before
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000049B
+# 20H=DPBSIZ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004A3
+# [SI+DPB_NEXT_DPB+2] (Prob)Terminating the chain
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004AA
+# (Prob)SYSBUF+0FH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004AD
+# (Prob)To allow 10000H, the MSB is kept in the CF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004AF
+# But Carry is from SUB SI,20H, most likely CF=0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004B3
+# Pretty much same as saying DI=6AAH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004BD
+# [BUFHEAD+2]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004C1
+# [BUFHEAD]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004C5
+# [DI+BUFDRV]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004CB
+# (Prob)[DI+NEXTBUF]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004D0
+# (Prob)[DI+NEXTBUF+2]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004D8
+# DX=1DBE->1DBF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004D9
+# [ENDMEM]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004E1
+# ES:[CurrentPDB](Supposed to be DS:[CurrentPDB])
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004E5
+# Does nothing.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004E9
+# Probably [0350H] is CreatePDB flag, but may not be used in DOS 3.x
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004EF
+# AX=First segment of free memory (earlier DX) 1DBF->1DBE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004F0
+# [AREANA_HEAD]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004F7
+# (Prob)[ARENA_SIGNATURE],ARENA_SIGNATURE_END
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000004FC
+# (Prob)[ARENA_OWNER],ARENA_OWNER_SYSTEM
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00000502
+# [ENDMEM]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000050A
+# [ARENA_SIZE]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000050E
+# 009EH=OFFSET SFTABL+SFT_TABLE Point to sft 0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00000514
+# Adjust Refcount
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00000515
+# 0026H=OFFSET SYSINITVAR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00000ADD
+# 
+R 
+L 1679:00005382
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00000DED
+# 
+R 
+L Probably a Jump Table
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00000DEF
+# 
+R 
+L Jump Table for INT 21H functions
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001116
+# 
+R 
+L INT 31H Handler (No Code?)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000114E
+# 
+R 
+L INT 21H AH=50h SetPSP (In>BX=PSP Segment)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001154
+# 
+R 
+L INT 21H AH=62h MOV BX,CS:[02DEh], IRET (Questionable)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000115A
+# 
+R 
+L INT 21H AH=33h Extended Break Checking(In>AL=Subfunc)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001181
+# 
+R 
+L INT 20H Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001185
+# 
+R 
+L AL=0, IRET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001187
+# 
+R 
+L INT 23H,24H,28H,2AH,2BH,2CH,2DH,2EH,32H,33H,...,3FH Handler.  Just IRET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000011A2
+# 
+R 
+L INT 21H Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000011AA
+# Number of INT 21H Functions
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000011C8
+# SaveDS, SaveBX (See MSCODE.ASM)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000011D6
+# 2CFH=INDOS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000011E5
+# Current USER_SP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000011E8
+# NSP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000011EB
+# Current USER_SS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000011EE
+# NSS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000011F3
+# USER_SP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000011F7
+# USER_SS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000011FB
+# CurrentPDB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000011FF
+# DS.PSP_STACK_PTR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001203
+# DS.PSP_STACK_PTR+2
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001207
+# PROB_NO_SET_DIR (MSCODE.ASM says 'set directories on search')
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001211
+# AUXSTACK
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000121B
+# CONSWAP (for redicetion?)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000121F
+# IDLEINT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001263
+# IDLEINT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000127C
+# Restore BX from SaveBX, Set Jump PTR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001280
+# Restore DS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001284
+# Branch to INT 21H function
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000128A
+# 2CFH=INDOS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000012B2
+# 
+R 
+L restoreWorld: (Re-POP AX,BX,CX,DX,SI,DI,BP,DS,ES then RET()
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000012C5
+# 
+R 
+L saveWorld:Re-PUSH ES,DS,BP,DI,SI,DX,CX,BX,AX
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000012D8
+# 
+R 
+L LDS SI,CS:[051EH=USER_SP]
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000012E0
+# INT 21H AH=F8H Set OEM INT 21H Handler
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000133E
+# 
+R 
+L INT 25H Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000136D
+# 
+R 
+L INT 26H Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000013AB
+# 
+R 
+L Save Temporary Device Driver Poitner in CS:0524h,0526h
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000013B4
+# 
+R 
+L SYS_RET_OK
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000013BE
+# 
+R 
+L (Prob)Error End
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000013D2
+# 
+R 
+L INT 21H AH=63h XOR AL,AL, RET  (Questionable)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000013FC
+# 
+R 
+L ?Routine  Set 2D1H,2D4H,2D5H based on 2D2H, and CS:[SI]
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001401
+# Incoming DI or mapped value
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001405
+# 
+R 
+L LOOP1405
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000140E
+# LODSB+3 -> 4 bytes unit
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001477
+# 
+R 
+L CLC then RETF
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000147A
+# 
+R 
+L INT 2FH Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001487
+# 
+R 
+L INT 21H AH=64h RETF 0002h (Questionable)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000014C3
+# By default jump to 1679:1B60
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000014C7
+# 
+R 
+L INT 21H AH=2Ah Get Date(Out>CX=Year DH=Month DL=Day AL=Day of week(0=Sunday))
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000014E4
+# 
+R 
+L INT 21H AH=2Bh Set Date(In>CX=Year DH=Month DL=Day)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001504
+# 
+R 
+L INT 21H AH=2Ch Get Time(Out>CH=Hour CL=Min DH=Sec DL=1/100sec)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001515
+# 
+R 
+L INT 21H AH=2Dh Set Time(In>CH=Hour CL=Min DH=Sec DL=1/100sec)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000155C
+# procedure DATE16 in TIME.ASM of DOS2.0 Source
+R 
+L Read CLock. AX - YYYYYYYMMMMDDDDD, DX - HHHHHMMMMMMSSSSS (SSSSS=seconds/2)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001564
+# Minutes to left part of byte
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001568
+# Push hours and minutes to left end
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000156E
+# Count every two seconds
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001570
+# Combine seconds with hours and minutes
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001574
+# [MONTH] Fetch month and year
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001579
+# Push month to left to make room for day
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000157E
+# [DAY]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001583
+# 
+R 
+L Read from BCLOCK
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001585
+# 0358H=BufferPtr
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001588
+# BufferLength=6
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000158B
+# StartSector=0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001593
+# [BCLOCK]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000015AC
+# RET
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000015B3
+# Is it days since certain date?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000015BB
+# 5b5h=1461=365*4+1 Must be something to do with leap year
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000167F
+# 
+R 
+L (Word Ptr[300h]%7)->BytePtr[0302H] Day of Week? Something to do with date/time
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000169C
+# 
+R 
+L INT 21H AH=30H GetDOSVersion
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000016B5
+# 
+R 
+L INT 21H AH=54h Get Verify Flag(Out>AL=Verify Flag 0 or 1)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000016BA
+# 
+R 
+L INT 21H AH=2Eh Set Verify Flag(In>DL=0, AL=verify flag 0 or 1)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000016C1
+# 
+R 
+L INT 21H AH=38h Get/Set Country Info
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000016C3
+# AL=FFh means 16-bit country code 
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000016C5
+# If 8-bit country code, copy to BX
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000016CC
+# Make ES:DI buffer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000016D8
+# CASE FUNCTION
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001729
+# 
+R 
+L INT 21H AH=36h Get Free Disk Space(In>AL=Drive 0=curr 1=A: Out>AX=Sect/Clst BX=#FreeClst...)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001754
+# 
+R 
+L INT 21H AH=2Fh Get DTA Addr(Out>ES:BX currentDTA)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001768
+# 
+R 
+L INT 21H AH=1Ah Set DTA Address(In>DS:DX DTA)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001773
+# 
+R 
+L INT 21H AH=19h Get Current Drive(Out>AL=Drive 0=A:)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001778
+# 
+R 
+L INT 21H AH=0Eh Set Current Drive(In>DL=Drive,0=A: Out>AL=# of valid drive letters)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001785
+# NUM_CDS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000178A
+# 
+R 
+L INT 21H AH=35h Get INT Vec(In>AL=INTNum Out>ES:BX=INT Handler)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000179A
+# 
+R 
+L INT 21H AH=25h Set Int Vector(In>AL=INTNum DS:DX=Handler)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000017A2
+# 
+R 
+L DOS:
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000017B2
+# 
+R 
+L INT 21H AH=37h Get/Set \DEV\ Prefix Use or Get/Set Switch Char
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000017D7
+# 
+R 
+L INT 21H AH=59h Get Extended Error Info(In>BX=0 Out>AX Extended Error BH=ErrClass BL=RecomAction CH=ErrLocus ES:DI=?)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000017FA
+# 
+R 
+L INT 21H AH=29h Parse Filename into FCB(In>AL=Options DS:SI=Filename ES:DI=Buffer unopened FCB)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001805
+# 
+R 
+L INT 21H AH=1Bh Get Alloc Info for Current Drive(Out>AL=Sect/Clst CX=Byt/Sect DX=#Clst DS:BX=&mediaDesc)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001807
+# 
+R 
+L INT 21H AH=1Ch Get Alloc Info for Drive(In>DL=drive 0=A: Out>AL=Sect/Clst CX=Byt/Sect DX=#Clst DS:BX=&mediaDesc)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001833
+# 
+R 
+L INT 21H AH=34h Get INDOS Pointer(Out>ES:BX=INDOS Ptr)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000183F
+# 
+R 
+L INT 21H AH=52H GetSYSVARS (Out>ES:BX=SYSVARS)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000184B
+# 
+R 
+L INT 21H AH=1Fh Get DPB for Current Drive(Out>AL=0 OK DS:BX=DPB, AL=FFH Invalid Drive)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000184D
+# 
+R 
+L INT 21H AH=32h Get DPB for drive(In>DL=Drive 0=curr 1=A: Out>AL=0 DS:BX=DPB/AL=0ffh Invalid Drive)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000187C
+# 
+R 
+L INT 21H AH=0Dh Disk Reset. Write Back all buffers.
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000018B6
+# Create a valid DPB from a user-specified BPB  Input ES:BP DPB DS:SI BPB
+R 
+L INT 21H AH=53h BPBtoDPB(In>DS:SI=BPB ES:BP=Buffer for DPB)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018B8
+# Skip over dpb_drive and dpb_UNIT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018BC
+# dpb_sector_size (Bytes per logical sector)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018C2
+# dpb_cluster_mask (#sec/cluster-1 Assuming # is 2^n)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000018C7
+# 
+R 
+L LOG2LOOP
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000018D1
+# 
+R 
+L SAVLOG
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018D3
+# dpb_cluster_shift
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018D6
+# dpb_first_FAT Start of FAT (# of reserved sectors)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018D8
+# dpb_FAT_count Number of FATs
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018DC
+# dpb_root_entries Number of directory entries
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018DF
+# Directory entries per sector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018E2
+# Cause Round Up
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018EA
+# Number of directory sectors
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018ED
+# Skip dpb_first_sector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018EE
+# Total number of sectors in DSKSIZ (temp as dpb_max_cluster)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018F0
+# ES:[BP+dpb_media] Media byte
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018F4
+# Number of sectors in a FAT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018F5
+# dpb_FAT_size
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018F6
+# Space occupied by all FATs
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018F8
+# ES:[BP+dpb_first_FAT]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018FC
+# dpb_dir_sector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018FD
+# Add number of directory sectors
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000018FF
+# ES:[BP.dpb_first_sector]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001903
+# ES:[BP+DSKSIZ]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001907
+# Sectors in data area
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001909
+# dpb_cluster_shift
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000190B
+# Div by sectors/cluster
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000190E
+# ES:[BP+dpb_max_cluster]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001912
+# Current directory is root
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001918
+# (Prob)Number of free clusters (-1 if unknown)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000191F
+# 
+R 
+L INT 21H AH=55h Create Child PSP(In>DX=newPSP Seg SI=Memory Size Field for DX:[0002h])
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001925
+# CurrentPDB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000192A
+# Input SI=ENDMDM?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000192D
+# 
+R 
+L INT 21H AH=26h CreatePSP(In>DX=PSPSegment CS=segment PSP to copyo)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001930
+# 14H=user_CS of STRUC user_environ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001937
+# DX=input PDB (PSP) segment to create
+R 
+L (Prob)Create Or Reset PDB
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001940
+# Copy first 256 bytes from CurrentPDB to newPDB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000194E
+# CX=FilePerProc (PSP_FILE_LEN)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001952
+# What exactly is JFN?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001955
+# FFH means Available?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001961
+# DI.SF_MODE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000196B
+# Don't copy SFN.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000197F
+# PSP_FILE_TABLE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000199C
+# 
+R 
+L SETMEM
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000199E
+# DS=0(RIDT)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019A0
+# ES=PDP aka PSP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019A2
+# SI points to INT 22H Handler
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019A5
+# DI=Offset INT 22H,23H,24H handler addresses to be copied
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019AD
+# PDP:[0002]=ENDMEM
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019B1
+# AX=ENDMEM-PDP segment
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019B3
+# 0FFFH in segment scale is 0FFF0H (64KB)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019B8
+# Why is it capping at 64KB?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019BB
+# Subtract 10h in segment scale (256 bytes)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019BE
+# ENTRYPOINTSEG What is it?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019C5
+# Make AX bytes scale
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019C7
+# DS=PDP aka PSP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019C9
+# Supposed to be OFFSET to DOS CALL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019CC
+# Supposed to be SEGMENT to DOS CALL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019D0
+# INT 20H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019D6
+# CALLF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019DB
+# INT 21H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019E1
+# RETF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019E6
+# OFFSET to PSP_FILE_TABLE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019EC
+# FILE_TABLE_POINTER=PSP segment
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019F0
+# PSP_FILE_LEN (20=14h)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019F6
+# NEXT PSP OFFSET
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000019FC
+# NEXT PSP SEG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001A36
+# 
+R 
+L Kanji-Aware Strcpy
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001A4F
+# 
+R 
+L Kanji-Unaware Strcpy (Destroys SI and DI)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001A58
+# 
+R 
+L DOS:CAPITALIZE_AL
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001A64
+# 
+R 
+L DOS:CX=STRLEN(DS:SI)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001A72
+# 
+R 
+L DOS:CX=STRLEN(DS:SI)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001A7C
+# 
+R 
+L DOS:SWAP(DS,ES);SWAP(SI,DI)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001A83
+# NO_SET_DIR?
+R 
+L Wait by Busy Wait. CS:[001CH] is the loop count
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001AA0
+# [BP]BX [BP+2]BP [BP+4]IP [BP+6]AX [BP+8]cs:1133h [BP+A]cs:1135h
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001AC8
+# 
+R 
+L Check CurrentCDS is not NULL(0ffffh) and not REDIRECTED.
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001ADD
+# 
+R 
+L TEST SF_DEVINFO,SF_DEVFLAG_REDIRECTED(or can be SDEVTYP)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001AE4
+# 
+R 
+L DOS:NOP
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001AEC
+# 
+R 
+L DOS:NOP
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001AF4
+# 
+R 
+L NOP
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001AF5
+# 
+R 
+L INT 2AH AX=8002H
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001AFC
+# 
+R 
+L NOP
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001AFD
+# 
+R 
+L INT 2AH AX=8102H
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001B04
+# 
+R 
+L INT 21H AH=08h Direct CONIN without Echo(Out:AL=chr)
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001B18
+# 
+R 
+L RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001B19
+# 
+R 
+L INT 21H AH=09h PUTS(In>DS:DX=$-terminated string)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001B25
+# STD_CON_STRING_INPUT of MS-DOS V2.0 Source
+R 
+L INT 21H AH=0Ah Buffered Input(In>DS:DX=buffer)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B29
+# DS:SI is the input buffer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B2D
+# AL=Max num chars, AH=Num chars recall
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B30
+# IF zero, RET
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B34
+# This part is essentially MOVZX BX,AH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B38
+# JMP if max chars <= num recall
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B3A
+# If num recall < max chars, cmp buf[2+numrecall],CR (LODSW made SI=buf+2)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B3D
+# JMP if end of last input is CR (Correct Input Buffer)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B3F
+# If end of last input is not CR, BX=0, otherwise BX=length of last input
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B43
+# DX=buffer length-1
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B44
+# [CARPOS]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B48
+# [STARTPOS]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B4D
+# INBUF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B50
+# [INSMODE]=0 Insert Mode Off
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B57
+# Truncating the string to zero regardless of the recall count?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B5E
+# Probably if 0Ah, skip subsequent 0Dh
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001B60
+# 
+R 
+L GETCH_LOOP
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B65
+# Ctrl+F?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B67
+# [ESCCHAR]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B71
+# C_DEL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B75
+# c_BS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B79
+# Ctrl+Y?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B80
+# Ctrl+W?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001B8B
+# c_LF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001BA5
+# Got a char
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001BE6
+# 
+R 
+L BACKSPJ
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001BE9
+# 
+R 
+L BUFFUL
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001BF1
+# 
+R 
+L ESC
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001BF4
+# 
+R 
+L ENDLIN
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001C0A
+# 
+R 
+L PHYCRLF
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001E67
+# 
+R 
+L Print \n
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001E71
+# 
+R 
+L INT 21H AH=06h Direct CONIN/OUT In>DL=chr(In>DL=0FFh Out:AL=chr)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001E9D
+# 
+R 
+L INT 21H AH=07h Direct CONIN without Echo(Out:AL=chr)
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001EB9
+# 
+R 
+L One Char Out
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001EBA
+# 0001h=STDOUT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001ED0
+# SF_DRIVER_POINTER
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001ED3
+# 07H=SYSDEV_ATTR, 10H=SF_DEVFLAG_CHAR_INT_29_OUT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001EDC
+# 
+R 
+L CLC,RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001EDF
+# 
+R 
+L One Char Out Not INT 29h Device
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001EE4
+# 
+R 
+L Do Spooler?
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001EF4
+# Jump if not ready.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001EFE
+# 
+R 
+L INT 21H AH=01h GETCH Ret:AL=chr
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001F06
+# 
+R 
+L RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001F07
+# 
+R 
+L INT 21H AH=02H CONOUT DOS v1.25 MSDOS.ASM CONOUT
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001F09
+# 
+R 
+L (Prob)OUTMES
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001F11
+# CS:[1A7H] prob CARPOS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001F1D
+# Prob Ctrl+C Check Counter
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001F2A
+# Skip Ctrl+C Check
+R 
+L Skip Ctrl+C Check 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001F2F
+# PROB_COUT_SIMUL_PRN
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001F3A
+# 1=STDOUT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001F42
+# SF_ENTRY+5=SF_DEVFLAGS, 8000h=REDIRECTED
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001F47
+# 8000h=REDIRECTED"
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001F4B
+# 080h=NOT_BLOCK
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001F51
+# 4=STDPRN
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001F59
+# 0800H=Named Pipe
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001F66
+# 
+R 
+L POP SI,DS,BX, then RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001F69
+# 
+R 
+L Do Spooler(?), POP SI,DS,BX, then RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001F6C
+# 
+R 
+L Control Code
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001F6E
+# Enter
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001F70
+# Back Space
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001F78
+# 1A7H=CARPOS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001F8C
+# Print ' ' until X=8*N
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00001F9C
+# CARPOS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001FA4
+# 
+R 
+L BUFOUT Write one letter.  If ctrl code, do ^.
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001FB9
+# 
+R 
+L INT 21H AH=03h GETCH from STDAUX Ret:AL=chr
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001FD6
+# 
+R 
+L INT 21H AH=04h PUTCH to STDAUX In>DL=chr
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001FDC
+# 
+R 
+L INT 21H AH=05h PUTCH to PRN In>DL=chr
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001FE9
+# 
+R 
+L Do Spooler(?), POP SI,DS,BX, then RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00001FEC
+# 
+R 
+L POP SI,DS,BX, then RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001FF0
+# 
+R 
+L INT 21H AH=0Bh Get STDIN Stat(Out>AL=0 No Char avail. FFh Char Available)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00001FFA
+# 
+R 
+L INT 21H AH=0Ch Flush Buffer and Read STDIN(In>STDIN function after flushing)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00002027
+# 
+R 
+L INT 21H AH=24h Set Random Record Num FCB(In>DS:DX=Opened FCB)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000203F
+# 
+R 
+L INT 21H AH=13h Delete FCB(In>DS:DX Unopened FCB Wildcard accepted)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00002053
+# 
+R 
+L INT 21H AH=23h Get File Size FCB(In>DS:DX=Unopened FCB Out>AL=Stat)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000020A2
+# 
+R 
+L INT 21H AH=10h Close File FCB(In>DS:DX FCB Out>AL=0 OK AL=FFH ERR)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00002108
+# 
+R 
+L INT 21H AH=17h Rename FCB(In>DS:DX Unopened FCB)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000026EA
+# 
+R 
+L INT 21H AH=0Fh Open File FCB(In>DS:DX Unopened FCB Out>AL=0 OK AL=FFH ERR)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000027BB
+# 
+R 
+L INT 21H AH=16h FCRAETE FCB(In>DS:DX Unopened FCB)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000027CB
+# 
+R 
+L INT 21H AH=28h Random Block Write FCB(In>CX=#Records DS:DX=opened FCB Out>AL=Status)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000027D0
+# 
+R 
+L INT 21H AH=27h Random Block Read FCB(In>CX=#Records DS:DX=opened FCB Out>AL=Status)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000027D5
+# 
+R 
+L INT 21H AH=14h FREAD FCB(In>DS:DX FCB AL=Status)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000027DA
+# 
+R 
+L INT 21H AH=15h FWRITE FCB(In>DS:DX FCB AL=Status)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000027DF
+# 
+R 
+L INT 21H AH=21h Read Random Record FCB(In>DS:DX Out>AL=Stat)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000027E4
+# 
+R 
+L INT 21H AH=22h Write Random Record FCB(In>DS:DX opened FCB, DTA Area=Data)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000027E9
+# 
+R 
+L INT 21H AH=11h FindFirst FCB(In>DS:DX Unopened FCB Out>AL=0 OK AL=FFH ERR)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000288A
+# 
+R 
+L INT 21H AH=12h FindNext FCB(In>DS:DX Unopened FCB Out>AL=0 OK AL=FFH ERR)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000028FD
+# 
+R 
+L INT 21H AH=4Eh FindFirst(In>AL=APPEND flag? CX=AttribMask DS:DX CStr File Spec Out>CF=0 DTA with Find Struc)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000028FF
+# SATTR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000291B
+# Use DS:460H as temporary directory entry.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002940
+# SI=0475H (+15H from SDB), DI=DMApp+15H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002941
+# 15H+0BH=20H from 460h
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002945
+# SI becomes 48Bh (+2Bh from SDB), DI=DMApp+16H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000294B
+# SI becomes 491h (+31h from SDB), DI=DMApp+1Ah
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00002955
+# 
+R 
+L INT 21H AH=4Fh FindNext(In>DTA from last FindFirst or FindNext)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00002987
+# 
+R 
+L 11-byte filename+ext to plain file name.ext
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000029A6
+# '.'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000029BC
+# 
+R 
+L INT 21H AH=47h GETCWD(In>DL=Drive 0=Curr 1=A: DS:SI=64-byte CStr buffer  CF=0 AX=0100h CF=1 AX=ErrCode)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000029F0
+# Length of Drive-Letter Part
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000029F6
+# '\'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000029FB
+# Skip first backslash
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00002A36
+# 
+R 
+L INT 21H AH=3Ah RMDIR(In>DS:DX=Cstr Pathname)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00002A75
+# 
+R 
+L INT 21H AH=3Bh SETCWD(In>DS:DX=Cstr Pathname)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002A7F
+# DOSERR_DIR_NOT_FOUND
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00002AF1
+# 
+R 
+L INT 21H AH=39h MKDIR(In>DS:DX=CStr Pathname)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002B00
+# DOSERR_DIR_NOT_FOUND
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00002B29
+# 
+R 
+L INT 21H AH=44h IOCTL In>AL=0 Get Dev Info AL=1 Set Dev Info AL=2 Read CHARDEV BX=Handle
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002B36
+# DOSERR_INVALID_HANDLE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00002B38
+# 
+R 
+L Error End
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00002B3B
+# 
+R 
+L ES:DI is SF_ENTRY
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002B41
+# SF_DEVFLAGS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00002B47
+# 
+R 
+L Incoming_AL=1 Set Dev Info DX=DEV Info
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002B4B
+# DOSERR_INVALID_DATA
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002B5E
+# Overwrite SF_DEVFLAGS LoByte Only.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00002B62
+# 
+R 
+L Return SYS_RET_OK
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00002B65
+# 
+R 
+L Incoming_AL=0
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002B75
+# Is CHARDEV.  ES:DI<-SYSDEV
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002B79
+# HiByte of SYSDEV_DEVFLAGS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00002B87
+# SF_DEVFLAGS, SF_FLAG_IS_CHARDEV
+R 
+L Incoming_AL=2
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002B94
+# It's CHARDEV.  ES:DI=SYSDEV
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00002BEA
+# DOSERR_INVALID_FUNC
+R 
+L Return DOSERR_INVALID_FUNC
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00002CB1
+# SYSDEV_DEVFLAG_IOCTL_SUPPORTED
+R 
+L Shoot IOCTL Read or Write command.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002CB9
+# AL is still incoming AX=4401h or 4402h
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002CBF
+# Command 0Ch=IOCTL Write
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002CC6
+# Command 03h=IOCTL Read
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002CCB
+# Length
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002CCD
+# BL=0 if JMPed from 1679:00002B9A
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00002CF2
+# Byte Count Transferred
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00002D27
+# 
+R 
+L AH=41H DELETE Main
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003121
+# TEMPORARY_SF_ENTRY
+R 
+L TEMPORARY_SF_ENTRY->Call Open. If INT 2F, increment refcount, else, DEVCALL Open
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000031A2
+# 
+R 
+L FOPEN after MakeFullPathName
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000031AD
+# SF_ENTRY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000031B3
+# SF_MODE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000031B8
+# CurrentCDS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000031C3
+# OPEN
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000031CA
+# CDS_TYPE_REDIRECTED
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000031D4
+# OPEN
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000031E9
+# DOSERR_FILE_NOT_FOUND
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000031F1
+# DOSERR_DIR_NOT_FOUND
+R 
+L DOSERR_DIR_NOT_FOUND
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000031F6
+# DOSERR_ACCESS_DENIED
+R 
+L DOSERR_ACCESS_DENIED
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000031FB
+# 
+R 
+L Proc 41C9 Returned CF=0
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000031FD
+# Probably it is a file attribute, but then why is it fetching at 3205h?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000031FF
+# 
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003201
+# ES=Directory Buffer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003205
+# DIRENT+0Bh=File Attributes
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003209
+# Volume Label Bit
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000320D
+# ATTR_READONLY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003213
+# SF_ENTRY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000321A
+# SF_MODE_FCB_SET
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003225
+# MODE&0xF0.  Sharing?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003239
+# Jump if (MODE&0x0F)==0 Read
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003241
+# 
+R 
+L Prob AH=Attrib, CX=Mode
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003260
+# 
+R 
+L RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003276
+# SF_MODE_FCB_SET
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000327E
+# CurrentPDB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003281
+# SF_PSP_OWNER
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003285
+# 
+R 
+L RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003286
+# SF_MODE_FCB_SET
+R 
+L Called from 3258 in Proc 31A2
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000329F
+# DOSERR_SHARING_VIOLATION?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000032A4
+# 
+R 
+L Check (mode&0xF0).  Sharing?
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000032AD
+# CDS Not Ready Flag
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000032CB
+# DOSERR_INVALID_ACCESS?
+R 
+L DOSERR_INVALID_ACCESS
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000032D1
+# Get Free Disk Space (36h) Main
+R 
+L Get Free Disk Space (36h) Main
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003332
+# CurrentCDS
+R 
+L Called from AH=4Eh Find First
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000333B
+# INT2FH_FIND_FIRST_NO_CDS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003362
+# 
+R 
+L DOSERR_NO_MORE_FILES
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000033DD
+# Drive Ltter.  Bit7 is REDIRECTED
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003424
+# Drive Letter
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000342A
+# 11-byte Filename+Ext
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000342F
+# Attrib
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003434
+# Entry Count
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000343D
+# Cluster
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003461
+# CurrentPDB
+R 
+L Close All Files of Process, Also INT 2FH AX=111Dh
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003466
+# PSP_FILE_TABLE_SIZE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003477
+# INT 2Fh Close All Files of Process (Abort)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003480
+# First FCB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000034A4
+# SF_ENTRY Loop
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000034CE
+# ES:DI<-TEMPORARY_SF_TABLE_PTR
+R 
+L Really Close
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000034D2
+# SF_DEVFLAGS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000034D6
+# Redirected?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000034DF
+# Must be CLOSE call.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000034E2
+# 
+R 
+L Not Redirected Device, BX=SF_DEVFLAGS, ES:DI=SF_TABLE
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000034F3
+# PUSH PrevRefCount
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000034FB
+# DS:SI=SF_ENTRY,ES:DI=DIRENT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003504
+# SI=SF_TABLE+020H=FILE_NAME
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003514
+# 
+R 
+L Return DOSERR_FILE_NOT_FOUND
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000351B
+# 
+R 
+L Return DOSERR_FILE_NOT_FOUND
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000351F
+# Dirent.Attr
+R 
+L FCLOSE_FILE_FOUND (ES:DI=Dirent, DS:SI=SF_ENTRY)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003523
+# SF_ENTRY.Attr
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003526
+# 0506h=Saved SF_ATTR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000352F
+# Dirent.Attr|=Archive
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003534
+# Copy First Cluster to Dirent
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000353B
+# Copy Size to Dirent
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003549
+# Copy Date to Dirent
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003550
+# Copy Time to Dirent
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003557
+# ES:BX is sector buffer header.  BX+5 is FLAGS.  040h is Buffer Written.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003560
+# AL=Saved_SF_DRIVE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003568
+# DOSERR_ACCESS_DENIED
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000356C
+# 
+R 
+L DEVCALL Close and ReturnNoError
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003570
+# CS=PrevRefCount pushed at 1679:000034F3
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003575
+# Why? Because refcount is temporarily made FFFF if it becamse 0 at 1679:000034E8 
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000357D
+# 
+R 
+L DEC REFCOUNT If RefC becomes 0, make it FFFF.  AX will be previous RefCount
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000357E
+# REFCOUNT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000358A
+# LASTENT?  Skip?
+R 
+L Get Directory Pointer in the buffer ES:DI is 20h-byte DIR, ES:BX is Buffer Header for the sector buffer.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003591
+# SF_DIR_ENT_SECTOR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000359C
+# Must Pre Read
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000035AA
+# CURBUF returned from GETBUFFR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000035AF
+# If so, +05 is flags. 04H means directory sector.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000035B6
+# DI=DiskBuffer  BX=DiskBufferHeader
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000035BB
+# If DS:SI is SF_ENTRY, SF_DIR_ENT_POS_IN_SECTOR.  20H is bytes per DIRENT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000035C3
+# C3
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000035C4
+# TEMPORARY_SF_TABLE_PTR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000035EB
+# RET if BLOCK or CHAR_NOT_EOF
+R 
+L Update SF_DATE and SF_TIME
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000035EF
+# RET
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000035F1
+# RET if Unknown Dev flag (4000h)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000035F5
+# RET
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000035FC
+# SF_DATE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003600
+# SF_TIME
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003618
+# DOSERR_INVALID_HANDLE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000036EF
+# 
+R 
+L Called from 4510, in Proc 44A2
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000036F4
+# CHDIR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003702
+# Finally clear 2F8h
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000370A
+# DOSERR_DIR_NOT_FOUND
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003711
+# What's CS:[558h]?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000371F
+# RMDIR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000374B
+# 
+R 
+L JMP 3618h (Return DOSERR_ACCESS_DENIED)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000037CF
+# 
+R 
+L SWAPBACK ([0303h=CONSWAP]<=0)
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000037EB
+# ES:DI=SF_ENTRY
+R 
+L Really Fread, CX=BytesToRead, CS:02DA DMABuffer
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000037EF
+# SF_MODE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000037F5
+# 01H=WriteMode
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000037FC
+# 
+R 
+L File is Read or Read/Write mode
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000037FF
+# Zero Byte Read?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000380E
+# DI.SF_DEVFLAGS,SF_DEVFLAG_IS_CHARDEV
+R 
+L Fread from BLOCK or CHAR device.
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003825
+# 
+R 
+L Fread from CHARDEV
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000382E
+# DMA Address
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003832
+# SF_DEVFLAG_NOT_EOF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003837
+# SF_DEVFLAG_CHAR_NUL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000383E
+# 
+R 
+L EOF_ON_INPUT or NUL
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003841
+# SF_DEVFLAG_BINARY
+R 
+L Not EOF_ON_INPUT, Not NUL
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003846
+# SF_DEVFLAG_CONS_IN
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000384E
+# 
+R 
+L Binary Fread from CHAR dev
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003850
+# 
+R 
+L Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000385A
+# TEMPORARY_SF_ENTRY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000387A
+# Ctrl+C?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003881
+# 
+R 
+L Ctrl+C
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003882
+# TEMPOLARY_SF_ENTRY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003894
+# 
+R 
+L Fread from CHARDEV, Not Binary, Not Cons In
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000038AE
+# Fread CHARDEV Loop
+R 
+L Fread CHARDEV Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000038B7
+# REQ_STATUS for request header at 306h
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000038C6
+# 0318h=REQHEAD+12h=RequestedBytes
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000038DA
+# 0318h=REQHEAD+12h=ReadCount(?)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000038EB
+# 0314h=REQHEAD+0eh=BufferPointer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000038F8
+# 1A=EOF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000038FC
+# Return
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000038FE
+# Up to specified bytes
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003901
+# 
+R 
+L EOF_ON_INPUT or NULL
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003903
+# 
+R 
+L Fread from CON device, Binary, Cons In, CS:[0022]!=0
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003922
+# 
+R 
+L EOF_ON_INPUT or NUL
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000392E
+# Erase NOT_EOF bit.  Make it an EOF device?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003937
+# 
+R 
+L Fread from CHARDEV, Binary, Cons In
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003970
+# ES:DI=SF_ENTRY
+R 
+L FWRITE main
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000397A
+# If read mode, do nothing.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003981
+# If (MODE & FCB_SET), skip read-only mode check.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000398E
+# If attr&read_only, return 0 bytes, ACCESS_DENIED.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003996
+# 
+R 
+L FWRITE to REDIRECTED
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000399E
+# SF_DEVFLAGS & SF_DEVFLAG_IS_CHARDEV
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000039B5
+# 
+R 
+L Write to CHARDEV in BINARY mode
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000039EB
+# 
+R 
+L Move File Pointer by AX bytes and return no error
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000039F5
+# 
+R 
+L POP DS, Move File Pointer by CX bytes, then return no error.
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000039F7
+# 
+R 
+L POP DS, Move File Pointer by DX bytes, then return no error.
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000039FA
+# 
+R 
+L FWRITE to CHARDEV
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000039FF
+# SF_DEVFLAGS|=NOT_WRITTEN ????
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003A04
+# 
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003A0D
+# BL=SF_DEVFLAGS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003A0F
+# DS:BX=DMA Buffer Pointer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003A17
+# SF_DEVFLAG_CHAR_BINARY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003A1D
+# SF_DEVFLAG_CHAR_CONS_OUT
+R 
+L Write to CHARDEV in ASCII mode
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003A21
+# SF_DEVFLAG_CHAR_NUL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003A27
+# EOF?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003A3C
+# 
+R 
+L FWRITE CHARDEV ASCII MODE Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003A8B
+# 
+R 
+L POP DS, Move File Pointer by DX bytes, then return no error.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003AAC
+# 2<BX -> Regular File
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003AAF
+# 0303h=CONSWAP
+R 
+L Get SF_ENTRY from BX->DS:SI
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003AC9
+# 
+R 
+L CONSWAP is ON
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003ACE
+# PROB 0578H=SF_ENTRY for CONOUT Redirection
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003AD4
+# 
+R 
+L RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003AD5
+# 
+R 
+L Must be Read Directory Sector AX=nTh Sector
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003AD7
+# Prob 0 means root directory
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003ADE
+# Root DIR.  DX=nTh Sector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003AE4
+# DPB_CLUSTER_MASK
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003AE8
+# DPB_CLUSTER_SHIFT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003AEC
+# AX=nTh Cluster, DX=nTh Sector in the Cluster
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003AF2
+# Save nTh Cluster in CX
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003AF4
+# AH=nTh Sector in the Cluster
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003AF6
+# First DIR Sector (at first)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003AFF
+# Clusters into File (or maybe directory?)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003B13
+# Exhausted the cluster chain
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003B17
+# Last Cluster or Terminator
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003B1B
+# DI? One Before the last?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003B30
+# Current Buffer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003B34
+# IO_BUF_FLAGS|=IO_BUF_FLAG_IS_DIR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003B3B
+# Critical Error Handling Flags
+R 
+L FATSECRD (Read FAT Sector?)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003B43
+# DPB_NUM_FAT(Redundancy)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003B47
+# DPB_SECTORS_PER_FAT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003B50
+# 
+R 
+L Repeat DPB_NUM_FAT times
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003B54
+# DEVCALL_Read_Sector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003B62
+# 
+R 
+L DREAD
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003B7D
+# 
+R 
+L DEVCALL_Read_Sector
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003B7E
+# DPB_MEDIA_DESC_TYPE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003B82
+# DPB_UNIT_CODE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003B8E
+# 
+R 
+L Most Likely DEVCALL Write Sector
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003B94
+# 
+R 
+L Retry Write?
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003BA8
+# 
+R 
+L Prob DEVCALL Write Sector
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003BF2
+# 
+R 
+L Calculate BytesIntoSector,SectorIntoCluster,ClusterIntoFile
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C01
+# DMABufferOffset, actually between 00h and 0fh. Higher bits have been transferred to SEG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C0E
+# DX|AX is file pointer.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C16
+# BYTES INTO FILE HIGH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C1A
+# BYTES INTO FILE LOW
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C1D
+# SF_DEVFLAGS,SF_DEVFLAG_REDIRECTED,SF_DEVFLAG_CHARDEV
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C23
+# Jump if CHARDEV or REDIRECTED
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C26
+# It is not redirected, so it must be DRIVE_PARAM_BLOCK
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C2A
+# Drive
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C2E
+# Temporarily Save Drive
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C32
+# DPB_BYTES_PER_SECTOR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C38
+# Prevent INT 0 (DIV by Zero or Overflow)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C3A
+# CurrentPos to SectorsIntoFile and LocationInSector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C3C
+# Nth SECTOR IN FILE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C3F
+# BYTES INTO SECTOR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C45
+# BP.DPB_CLUSTER_MASK
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C49
+# SECTOR_INTO_CLUSTER
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C4E
+# DPB_CLUSTER_SHIFT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C54
+# CLUSTERS_INTO_FILE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C5D
+# 2DAH=DMABufferAddress
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C61
+# Jump if EndOffset+1 is before 64KB boundary
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C66
+# AX=-DMA_Offset (FFF1-0000)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C6A
+# If zero, make it FFFF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C6F
+# In the end, AX=EndOfDMABufferAfterRead
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003C76
+# BYTES_INTO_SECTOR
+R 
+L Calc BytesToRead from this sector, last sector, and num whole read, CX=bytes to read, ES:BP is DPB
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C79
+# BX=Bytes to read
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C7D
+# Jump if read from the 1st byte of the sector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C7F
+# DPB_BYTES_PER_SECTOR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C83
+# AX=BytesPerSector-BytesIntoSector=BytesRemainInSector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C85
+# BX=BytesToRead-BytesRemainInSector=BytesAfterThisSector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C87
+# Jump if whole sector is needed
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C89
+# AX=BytesToRead
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C8D
+# BytesToRead from the sector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C94
+# BytesAfterThisSector/BytesPerSector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C98
+# Sectors that needs to be read whole
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C9B
+# Bytes read from the last sector.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003C9F
+# Bytes to read from the current sector.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003CA3
+# Jump if there are hanging bytes from the first or last sector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003CA8
+# Jump if number of whole sectors is not 1
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003CAE
+# BytesToReadFromLastSector=SectorLength
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003CB1
+# DX=0. Clear Sectors needs to be read whole.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003CB6
+# 
+R 
+L Recovery from Far Proc [007C] failure?
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003CBB
+# SF_MODE_FCB_SET
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003CCB
+# Mode & 0xF0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003CCF
+# Skip next if FCB_SET==0 && (MODE & 0xF0)!=0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003CD4
+# RET
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00003CE4
+# SF_FILE_SIZE_LOW
+R 
+L Fread from BLOCK device
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003CE8
+# SF_FILE_SIZE_HIGH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003CEC
+# Subtract File Location to get Bytes Remaining
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003D00
+# CX is maximum bytes that can be read.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003D02
+# 
+R 
+L Call [007C] Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003D05
+# Jump if Far Proc CS:[007C] returned CF=0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003D0D
+# DPB or SYSDEV (in this case must be DBP since it is BLOCK)
+R 
+L CX is still number of bytes that can be read or to read
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003D14
+# CLUSTER_INTO_FILE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003D1B
+# CX==0 means successful.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003D1F
+# Must be EOF
+R 
+L EOF
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003D2B
+# 
+R 
+L Read Bytes=0, Return DOSERR_ACCESS_DENIED
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003D2D
+# 
+R 
+L Read Bytes=0, Return DOSERR_ACCESS_DENIED(5)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003D2F
+# DOSERR_ACCESS_DENIED
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003D34
+# 
+R 
+L Fread Do DEVCALLs
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003D38
+# Cluster into file
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003D3C
+# Bytes to read from the current sector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003D48
+# Num sectors whole read
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00003D59
+# Sector into cluster
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003E2B
+# 
+R 
+L Move File Pointer by CX bytes and return no error
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003E38
+# 
+R 
+L FWRITE to BLOCKDEV
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00003EC4
+# 
+R 
+L CX=0, Restore ES:DI=SF_ENTRY, CLC, RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000404A
+# 
+R 
+L Search in Directory. Called from 4358
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000404D
+# SAVED_SATTR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004054
+# If bit3, Skip initializing sectors
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004061
+# 
+R 
+L Search DIRENT Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000406C
+# File name starts with 0E5h?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000408D
+# DPB
+R 
+L Next
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000040B4
+# CH=FileAttrib
+R 
+L DIRENT Found
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000040B7
+# Matching file attribute
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000040BB
+# AH=SATTR&~(UNKNOWN40h|ARCHIVE20h|READONLY01h)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000040C1
+# Jump if file is not VOLLABEL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000040C9
+# Jump if file is VOLLABEL and SATTR is not VOLLABEL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000040CF
+# SATTR=VOLLABEL?
+R 
+L File is NOT VOLLABEL
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000040D2
+# Jump if fileAttrib=SATTR=VOLLABEL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000040D7
+# Jump if 0==(~SATTR&(DIR|SYSTEM|HIDDEN))
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000040D9
+# DS:[518h]=0 from MOV DS:[518h],0E500h
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000040DE
+# If [518]!=0, everything matches.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000040E0
+# 
+R 
+L (Prob)Attrib Matched
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000040E8
+# 
+R 
+L ES=CS,RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000040EB
+# 
+R 
+L Match File Name with wildcard '?' taken into account.  (Match->ZF=1)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000040FA
+# 
+R 
+L Increment File Number in Directory
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004117
+# Last Cluster Read
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004120
+# Not supposed to use cluster 0 and 1
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004128
+# 
+R 
+L Reached Max Files Per DIR
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000412A
+# Still within the current sector
+R 
+L Still within the Current Sector
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000412F
+# 
+R 
+L Still within the Current Cluster
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004148
+# 
+R 
+L Prob Get [02F4]th DIRENT
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000414B
+# 
+R 
+L Prob Get AXth DIRENT.  Updates [02F4]
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000414E
+# Probably multiplying by sizeof(DIRENT)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004157
+# Making it 32-bit to be divided.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000415B
+# DPB_BYTES_PER_SECTOR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000416D
+# CURBUF OFFSET
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004171
+# ADD BUF HEADER size
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004174
+# BX=Buffer+nThInSector*32
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004176
+# DX=Buffer+SectorSize=End of Buffer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000417B
+# Called from 4397, InputBX=Cluster of the DIRENT
+R 
+L Called from 4397, InputBX=Cluster of the DIRENT
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004187
+# ClusterMask+1=SectorPerCluster+1
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000041AA
+# 
+R 
+L [512h]=DPB_FIRST_DIR_SECTOR-DPB_FIRST_DATA_SECTOR,[556h]=DPB_FIRST_DIR_SECTOR, [558h]=[50Eh]=0
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000041AF
+# Sector into cluster
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000041B3
+# Cluster into file
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000041B6
+# DPB_FIRST_DATA_SECTOR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000041BA
+# DPB_FIRST_DIR_SECTOR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000041C9
+# 
+R 
+L Called from 3707 in Proc 36EF, 31DE in Proc 31A2, FOPEN, CF=1 DIR_NOT_FOUND, NE=ACCESS_DENIED
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000041D4
+# Current Sector Buffer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000041DA
+# Pointer to the directory name
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000041DE
+# ':\'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000041E3
+# Jump if backslash is used.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000041E5
+# Slash is used, must be a CHARDEV
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000041ED
+# CS:360h doesn't have '?:\' and is not a CHARDEV
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000041FF
+# Pointer to the qualified file name (Prob CS:360h)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004208
+# Transfer within CS segment (4E6h to 360h)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004214
+# Terminate C-String
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000421D
+# 
+R 
+L INFINITY
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000421F
+# Was initialized to -1 at the beginning of MakeFullPathName
+R 
+L Not a CHARDEV
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004228
+# Path after '?:\', if CS:[54Eh]=ffffh
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004230
+# Current CDS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004237
+# BX=CurrentDIR Cluster
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004241
+# If [54Eh]=0ffffh, SI=DestinationString after '?:\'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004245
+# Jump if CurrentDIR is not empty
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000424E
+# ES:BP=SYSDEV or DPB.  Prob DPB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004265
+# 
+R 
+L Make 11-byte file name from CS:[4E6h] also check against CHARDEV if 0==(CS:[0506h&08h]), CF=1 if not CHARDEV
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000426B
+# 11-byte File Name
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004280
+# '.'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000042A1
+# 
+R 
+L Jump from 4252.  Another ugly 'GOTO'
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000042A9
+# 
+R 
+L File Name is empty.
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000042B2
+# 
+R 
+L File Name is not empty
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000042CB
+# CDS STRLEN(CWD)-1
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000042D9
+# Clear Filename part of tmp dirent
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000042E4
+# 
+R 
+L FileNameLoop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000042EE
+# '.'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000042F6
+# '\'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000042FA
+# '?'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004304
+# Start of extension part
+R 
+L ExtensionLoop
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004323
+# DS:[SI] points to EndOfString or '\'
+R 
+L End of One Path
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000432B
+# <- What's DI here?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004332
+# 
+R 
+L One Segment of Path is in the temporary DIRENT
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004339
+# SATTR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000433D
+# SAVED_SATTR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004355
+# 
+R 
+L Not CHARDEV
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000043D0
+# 
+R 
+L Prob Reached the End of Full-Path Name
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000043EB
+# 
+R 
+L ERROR END
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000043F3
+# DPB
+R 
+L ES:BP=DPB, [2F4][516]=0,[56A][56C]=ffff
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004407
+# 
+R 
+L CH=fileAttr => TEST (~SATTR)&CH&(DIR|HIDDEN|SYSTEM)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004408
+# Saved SF_ATTR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004410
+# DIR|HIDDEN|SYSTEM
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004414
+# 
+R 
+L Search CHARDEV if 0==(CS:[0506h]&08h) CS:[0532H], BH=(DEVFLAG|C0h&DFh) -> STC Not Found.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004418
+# [04E6h]=11-byte File Name (without directories)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000442F
+# DEVHEAD (First SYSDEV)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004432
+# DEVFLAG_IS_CHARDEV
+R 
+L Search CHARDEV Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004437
+# Skip if not CHARDEV
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000443B
+# SI=SYSDEV_NAME
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000444A
+# Next SYSDEV
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004451
+# 
+R 
+L Return CF=1
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000445F
+# 
+R 
+L Found SYSDEV. Copy ptr to CS:[0534h], BH=(DEVFLAGS|0C0h&0DFh), CLC, RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004474
+# Make Temporary DIRENT for SYSDEV->AL=0,BX=OFFSET DIRENT,SI=DRIVER PTR
+R 
+L (Prob)Making Temporary DIRENT
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000447A
+# 3-byte spaces as extension.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000447C
+# Attrib 40H undefined.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004484
+# 10-byte zeros
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000044A2
+# 
+R 
+L ?Proc referring to [2F8h]() CS:DI=DIRECTORY (excluding last \file name)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000044AB
+# Current CDS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000044C0
+# Jump if REDIRECTED Drive
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000044C3
+# 
+R 
+L Not a REDIRECTED drive
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000044C5
+# DL=[2F8h], [2F8h]=0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000044CC
+# Copy CWD to CS:360h
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000044D9
+# Put back DL to [2F8h], but it doesn't seem to be used.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000044EC
+# CurrentDIR Cluster Unavailable
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000044F2
+# 
+R 
+L Media Changed or New
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000044FE
+# Incoming_DI
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000453E
+# 
+R 
+L Restore ES:DI, Store it to CurrentCDS Pointer, Return CF=0
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000454C
+# 
+R 
+L Restore ES:DI from [BP-06H] and RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004556
+# 
+R 
+L Find CHARDEV if 0==(CS:[0508h]&08h) CS:[0532H], BH=(DEVFLAG|C0h&DFh) -> STC If Found.()
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004563
+# Uncapitalize two letter
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004566
+# 'de'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000456E
+# 'v'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004578
+# 
+R 
+L File Name starts with 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004581
+# Jump if DS;[SI] is not terminator.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004598
+# 
+R 
+L STC and RET (not '/dev/')
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000459B
+# 
+R 
+L Prob: Translate CP/M call 02->Write(08), 03->Status(0A)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000045A0
+# DEVREQ+0EH Data Buffer?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000045A7
+# DEVREQ+12H Data Length?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000045B2
+# Check NOT REDIRECTED, NOT BLOCK
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000045B7
+# JMP if REDIRECTED or BLOCK
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000045C9
+# DX=Incoming_DS, DS=ES=CS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000045CD
+# DEVREQ+3=REQ_STATUS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000045D1
+# DEVREQ+0Dh=Media-Descriptor Byte
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000045D7
+# CS:1002 16 0E 16 0D 0F
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000045DD
+# CS:1007 86 04 86 05 87 08 87 0A 86 07
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000045E1
+# 0324H=REQHDR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000045E4
+# [DEVREQ+0]=REQ_SIZE  02->16H, 03->0DH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000045E8
+# [DEVREQ+2]=REQ_CMD_CODE  02->08H 03->0AH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004600
+# Non-Destructive Read Command
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004617
+# If non-destructive read, AL will be char.  If not AX restored.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000461C
+# 
+R 
+L REDIRECTED or BLOCK
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000461E
+# 
+R 
+L Error bit set
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004635
+# 
+R 
+L REDIRECTED or BLOCK
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000046B7
+# 
+R 
+L DEVCALL Open, ES:DI=SF_ENTRY
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000046BA
+# DEVREQ_CMD_OPEN
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000046BE
+# 
+R 
+L DEVCALL Close, ES:DI=SF_ENTRY
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000046C1
+# DEVREQ_CMD_CLOSE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000046CA
+# 080h=SF_DEVFLAG_BLOCK_NOT_BLOCK
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000046D0
+# ES:DI is now device-driver info (SF_DRIVER_POINTER) or DPB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000046D4
+# Jump if CHAR DEVICE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000046DB
+# AH=UNIT  If CS:[02B1h]==0 and ES:DI is DPB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000046DF
+# CL=DRIVE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000046E2
+# ES:DI=device-driver info (DPB_PTR_TO_DRIVER equivalent SF_DRIVER_POINTER)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000046E6
+# (DI.SYSDEV_ATTR&0800H)==0 Open/Close/Removable media calls supported
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000046EC
+# Jump if Open/Close/Removable calls supported.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000046F4
+# 306H=DEVCALL (Command Buffer for Calling Strategy and Interrupt)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000046FA
+# REQLEN=0dh
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000046FD
+# AH=Unit, AL=Command
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004731
+# 
+R 
+L Re-POP AX,BX,CX,DX,SI,DI,BP,DS,ES then RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004735
+# 
+R 
+L CALL STRATEGY & INTERRUPT FROM DS:SI+07H
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004738
+# 
+R 
+L Call Strategy and INterrupt
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000473B
+# Must be Jump Vector for STRATEGY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000474C
+# Must be Jump Vector for INTERRUPT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000475C
+# 
+R 
+L Make REQHDR CMD_READ at ES:0306H AL=Unit AH=Media DS:BX=Buffer CX=Length DX=StartSector
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000475F
+# DEVREQ_CMD_READ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004761
+# REQLEN=16H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004768
+# REQ_LEN
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000476A
+# REQ_UNIT=Incoming AL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000476E
+# REQ_COMMAND
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004771
+# REQ_STATUS=0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004778
+# Incoming_AH=Media Type?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000477E
+# Data Buffer Ptr
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004781
+# Data Buffer Seg
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004784
+# IncomingCX=Length (Popped AX and CX reverse order)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004786
+# IncomingDX=StartingSector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000478F
+# 
+R 
+L Make REQHDR WRITE at ES:0306H AL=Unit AH=Media BYTE[2ADH]=VerifyFlag CX=Length DX=StartSector DS:BX is data pointer
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004792
+# DEVREQ_CMD_WRITE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004794
+# Must be a VERIFY flag
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000049BB
+# Init SF_ENTRY AH=lowByte of SF_FLAGS, CX=Mode, BX=Offset DIRENT, SI points to First Cluster of DIRENT
+R 
+L Init
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000049BD
+# DI=SF_ENTRY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000049C1
+# Skip RefCount and Mode.  Pointing to +4 Attr
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000049C8
+# Jump if SF_FLAGS_CHARDEV
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000049CE
+# File Attrib
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000049D1
+# SF_ATTR -> DI=FLAGS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000049D6
+# SF_DEVFLAG_BLOCK_NOT_WRITTEN
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000049D8
+# SF_FLAGS->DI=DRIVER POINTER
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000049DA
+# Proc 41C9h stores SYSDEV ptr in this location of temporary DIRENT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000049DF
+# (Prob)Jump if SYSDEV
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000049E1
+# DPB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000049EA
+# DRIVER POINTER -> DI=FIRST_CLUSTER_NUM
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000049F1
+# DATE TIME -> DI=FILE SIZE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000049F9
+# (Prob)Jump if not SYSDEV
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004A02
+# FILE SIZE -> DI=SF_FILE_POINTER(or position in file)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004A75
+# 
+R 
+L SeekToCurrentCluster
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004A76
+# ES:DI=SF_TABLE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004A7A
+# Current Absolute Cluster Number
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004A7E
+# Current Relative Cluster Number
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004A84
+# Jump if AbsCluster==0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004A86
+# CX=ClusterIntoFile-RelCluster
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004A8A
+# CX=ClusterIntoFile-RelCluster+RelCluster=ClusterIntoFile
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004A8E
+# Scan from the first.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004A93
+# Ret CX=0,DX?,BX=AbsCluster or FirstCluster
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004A95
+# CX must be the loop counter then.
+R 
+L Seek To Cluster Loop (BX absolute cluster DX cluster into file CX counter
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004A9C
+# DI is returned from 1679:5225. Cluster ID?  Then FFF8 is 16-bit last cluster, FF8 is 12-bit
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004AA6
+# Increment Relative Cluster Number
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004AAB
+# CX=ClusterIntoFile+1,DX=RelCluster-1,BX=AbsCluster=0
+R 
+L Absolute Cluster Number=0
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004AAC
+# Return CX=NonZero, then EOF end.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004BFA
+# 
+R 
+L CLUSTER_TO_SECTOR (DX in, DX out)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004BFB
+# DPB_CLUSTER_ShIFT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004C05
+# DPB_FIRST_DATA_SECTOR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004CF0
+# 
+R 
+L AH=29H Parse Filename into FCB Main
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004CF8
+# Use Existing Drive number if no drive is specified
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004CFA
+# Jump if no-clear-drive flag
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004CFC
+# Reset Drive Number
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D00
+# Skip Drive Number
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D04
+# Use existing file name if no base name is specified
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D0F
+# Clear 8 bytes if (Flags&04)==0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D13
+# Don't Clear Extension Flag
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D1C
+# Clear Ext if 0==(Flags&04)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D1F
+# Write 4-byte zeros
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D21
+# Rewind back to the top of FCB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D24
+# Skip-Leading Separator Flag
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D29
+# Skip all TAB or Space
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D2F
+# Jump if not seprator
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D32
+# Skip all TAB or Space
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D3A
+# ':'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D4D
+# Store Drive Number
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004D52
+# 
+R 
+L (Prob)'xxx.yyy' to 'xxx     yyy'
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D58
+# '.'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D87
+# '*'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D8B
+# '?'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004D9F
+# '?'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004DAF
+# Equal if AL=TAB or Space
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004DB2
+# If tab or space, loop.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004DB6
+# 
+R 
+L (Prob)Make 11-byte File Name from CS:[04E6H].  If CS:[04E6H]==E5H, make it 05H.
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004DE3
+# 
+R 
+L LODSB, Capitalize,  Call (CS:[BX+12h] where BX=0356H)=CASE FUNCTION, See AH=30h(), EQUAL if AL<=' ', ==DQ, {+,./:;<=>[\]|} CF=1 if AL<' '
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004DE4
+# 'a'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004DE8
+# 'z'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004DF4
+# Prob this routine is for Far Call
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004E04
+# 
+R 
+L Equal if AL=09,20,2b,2c,3a,3b,3c,3d,3e,7C
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004E10
+# 
+R 
+L EQUAL(ZF=1) if AL=09h or 20h (Tab or Space)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004E1C
+# 
+R 
+L DOS:IF_AL=='/'_THEN_AL=BACKSLASH;ZF=(AL==BACKSLASH);
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004E29
+# 
+R 
+L DOS:(PROB)ZF=(AL_IS_NOT_THE_FIRST_BYTE_OF_KANJI)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004E44
+# 2CFH=INDOS
+R 
+L (Prob)Check Ctrl+C from BCON device.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004E56
+# RequestCode 05=Non-Destructive Read
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004E60
+# Clear Return Status
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004E69
+# [0032H]=BCON Console Device
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004E6D
+# Call Device at DS:[SI], Request Header=ES:[BX]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004E70
+# Busy-Bit Check.  Set means no key is ready.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004E81
+# Returned Character
+R 
+L Busy Bit is Zero.  Really Read.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004E85
+# 03=Ctrl+C
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004E87
+# Return
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004E89
+# RequestCode 04=Read
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004E95
+# CONSDEV_REQ_CHAR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004EC3
+# 
+R 
+L INT 28H (Spooler) and RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004EC4
+# IDLEINT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004ECC
+# ERRORMODE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004EE1
+# 
+R 
+L RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004EE2
+# 
+R 
+L (Prob)Ctrl+C Check and Return DS:SI=SF_ENTRY for File Handle 0
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004F6C
+# CNTCHAND in CTRLC.ASM
+R 
+L (Prob)Process Ctrl+C
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004F76
+# CONSWAP still meaning unknown.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004F81
+# Probably User_SS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004F85
+# Probably User_SP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004F8C
+# INDOS=0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004F92
+# 2CEH=ERRORMODE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004F9E
+# Fire INT 23H (Ctrl+C Handler)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004FA1
+# Save previous AX?  Original Command Code?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004FA6
+# AX=FLAGS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004FA7
+# What does it mean SP different from saved value?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004FAE
+# Retry is possible because SS:SP is from User_SS:SP, and restoreWorld
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00004FB2
+# 
+R 
+L Jump to INT 21H, then IRET from there.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004FB8
+# CF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00004FBD
+# AH=4C -> Exit Process
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00004FC8
+# 
+R 
+L INT 00H Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005011
+# 
+R 
+L CONSOLE Error Handling?
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000502F
+# 
+R 
+L Something to do with error hanling? (used in fread)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000507D
+# ES:BP=DPB, AL=Drive
+R 
+L Critical Error. DI=0fffH for Invalid Cluster Num
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005081
+# 
+R 
+L Save DPB in CS:[51AH], Load ES:SI=SYSDEV, Fall down to error handling
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005091
+# 
+R 
+L DDDH, DEDH, D8DH, something to do with error handling?
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005095
+# Table_end-Table_begin
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000509C
+# IF 010H<DI use AX=DI, else use AX=BYTE PTR [0DDD+DI]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000509E
+# 13h,14h,15h,16h,17h,18h,19h,1Ah,1Bh,1Ch,1Dh,1Eh,1Fh,1Fh,22h
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000050A5
+# [2D2h]=Incoming DI or mapped value
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000050BA
+# ERROR MODE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000050E3
+# ERRORMODE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000050ED
+# 
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000050F7
+# Shoot INT 24H Critical Error
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000510C
+# INDOS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005111
+# ERRORMODE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005118
+# 
+R 
+L AL=3(Error during handling Error), or AL=Return from INT 24H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005136
+# Enable BUFWRITE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005145
+# 
+R 
+L BYTE PTR *(CS:[546H])=CS:[0542H
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005157
+# 
+R 
+L INT 24H Returned AL=0
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000516D
+# 0303h=CONSWAP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005188
+# 
+R 
+L Exitting Process INT 2AH AH=82H then INT 2FH AX=1122H....
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005189
+# INT 2AH AH=82H Network End DOS Critical Section.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005193
+# INT 2Fh AX=1122h Process Termination Hook
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000519D
+# CX is DS at CS:5188
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000051A0
+# CurrentPDB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000051A7
+# PSP_CALLER_PSP_SEG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000051B2
+# This AX will become CS:[2DEh](CurrentPDB)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000051B3
+# Exit Type
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000051C1
+# Set CurrentPDB to PSP_CALLER_PSP_SEG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000051D4
+# INDOS=0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000051E3
+# From 519E,519F.  INT 22H Handler
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000051EB
+# CurrentPDB Maybe already PSP_CALLER_PSP_SEG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000051EF
+# PSP_STACK_PTR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000051F3
+# PSP_STACK_PTR+2
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000051FA
+# USER_SP Why AX?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000051FE
+# POP FLAGS,IP,CS from last INT 21H AH=4Bh
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005201
+# FLAGS on return from process
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005205
+# Return address from process
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005214
+# DPB_MAX_CLUSTER
+R 
+L If maxCluster>=0FF6H CMP BX,FFF8h, else CMP BX,0FF8h
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005225
+# DPB_MAX_CLUSTER
+R 
+L GetNextCluster ES:BP=DPB, BX=Cluster -> DI=Next Cluster
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000522E
+# Prob Jump if 16-bit cluster
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005232
+# Prob 12-bit FAT and need shift.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005251
+# Free Clusters=Unknown(0ffffh)
+R 
+L Invalid Cluster Number -> Critical Error
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000052E8
+# 
+R 
+L GetNextClusterFromFAT(Prob) BX=ClusterNumber ES:BP=DPB
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000052F6
+# Max Cluster Num
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000052FA
+# Prob Jump if 16-bit cluster (Don't jump 12-bit)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000052FE
+# AX=ClusterNum*2 (if 16bit)  ClusterNum*3/2 (if 12bit)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005300
+# Bytes Per Sector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005304
+# Faster calculation if 512 bytes/sector.  Should be a better way than GOTO.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005308
+# Hell of a GOTO....
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005315
+# DPB_FIRST_FAT_SECTOR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005319
+# CX=bytesPerSector-1
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000532C
+# CURBUF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005337
+# Jump if first byte of cluster is not last byte of the sector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000534B
+# Need to read the next sector if 12-bit FAT crosses the sector boundary
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005353
+# CURBUF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005369
+# Max Cluster Number
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005377
+# 
+R 
+L ErrorEnd
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000537C
+# 
+R 
+L DIV AX,CX  JUMP 5315
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005382
+# Pointer to Drive-Parameter Block
+R 
+L (Prob)Media Check.  Meaning of [0511H](coming from ES:[BP]) is unknown
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005394
+# 
+R 
+L Media Check. If fail make all CDS Cluster of this DPB to 0ffffh if root dir. NE:Unchanged E:Changed or New
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005396
+# CDS_DRIVE_PARAM_BLOCK
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000539A
+# DPB_DRIVE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000053AF
+# AX=0-1=0ffffh
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000053B1
+# NUM_CDS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000053B7
+# CDS_DRIVE_PARAM_BLOCK
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000053BB
+# CDS_PTR (First CDS)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000053C0
+# Redirected
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000053D5
+# CurrentDIR Cluster
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000053DF
+# 
+R 
+L Next CDS
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000053EB
+# 
+R 
+L Error in Media Check.
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000540C
+# 
+R 
+L Media Check or First Access Check, ES:BP=Drive Parameter Block.  CF=0 No Error.  NE:Unchanged  E:Changed or New
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000540E
+# Command Length=0Fh
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005410
+# Unit
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005417
+# Command=CHECK REMOVABLE MEDIA
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005422
+# Media Desc
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005439
+# Status Code
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005445
+# AH=PrevAccessFlag.  DPB.AccessFlag=0  0:Accessed 0ff:Unaccessed
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000544C
+# DEVREQ+0Eh  1:unchanged  0:unknown  0ffh:changed
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005450
+# Jump if PrevAccess!=Unaccessed && true!=Changed
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005455
+# Jump if PrevAccess==Accessed && Change/UnchangeUnknown
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005457
+# Previously Accessed && Unchanged.  Return CF=0  NE(ZF=0)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000545B
+# Device Driver Pointer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000545F
+# DEVFLAG_OPEN_CLOSE_SUPPORTED
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005494
+# IO_BUF
+R 
+L If there is one written buffer of the drive, return CF=0, otherwise, re-build BPB->DPB
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000549D
+# BUffer Written?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000054A3
+# Found one written buffer, then return CF=0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000054A5
+# Return CF=0, NE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000054B2
+# PrevAccess==Unaccessed or Media Check returned Changed=true
+R 
+L Media Check returned code with bit7=1
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000054BB
+# IO_BUF_FLAG_READ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000054BF
+# Compare Drive
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000054C4
+# IO_BUF_FLAG_WRITTEN
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000054CA
+# JMP if same drive, buffer is dirty (written)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000054CC
+# IO_BUF_DRIVE=0FFh,IO_BUF_FLAGS=020H(IO_BUF_FLAG_READ)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000054D9
+# DPB_PTR_TO_DEV_DRIVER
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000054DD
+# SYSDEV_DEVFLAG_MEDIA_DESC_IN_FAT_REQUIRED
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000054E9
+# Get First FAT Sector Buffer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000054EE
+# CURBUF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000054F2
+# So, it is one available buffer.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000054F4
+# 
+R 
+L Media Desc in FAT Required
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005502
+# So, DS:DI is one available buffer.
+R 
+L Have an available buffer DS:DI
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005510
+# REQ_LEN
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005519
+# DEVREQ_CMD_BUILD_BPB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000552D
+# Transfer Driver Ptr to DS:SI
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000554B
+# Current Media Desc Type in DPB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005553
+# DPB_LAST_CLUSTER_ALLOC
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005559
+# Media Desc Type in BPB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000555C
+# Jump if Media Dec Didn't Change
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005561
+# Recover DS:DI from REQHEAD+0Eh (Set at 5505h and 550Ch)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005566
+# NUM_FAT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000556A
+# SECTORS_PER_FAT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005579
+# 
+R 
+L Clear BufferRead flag of all buffers.  Then returns DS:DI=first buffer.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005581
+# Clear Buffer-Read flag (b5)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005584
+# Next Buffer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005592
+# 
+R 
+L FastFoward until BufferRead flag is 0.  ZF=1 if end.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000559B
+# Jump if BufferRead flag.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000055A2
+# 
+R 
+L NextBuffer
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000055A6
+# Essentially PLACEBUF
+R 
+L Pretty much PLACEBUF
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000055B2
+# 
+R 
+L PLACEBUF
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000564E
+# 
+R 
+L CMP (DS,SI),(ES,DI)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000565D
+# 
+R 
+L GETBUFFR AH=PriorityBufferToHave AL=0:Preread/NonZero:NoPreRead DX:LBA(Prob) ES:BP=DRIVE_PARAM_BLOCK(BUF.ASM) -> [CURBUF]
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000565F
+# 052CH=PREREAD
+R 
+L GETBUFFRB SI must be 1. Read FAT sector to buffer?
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005662
+# Drive
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005666
+# 001EH=LASTBUFFER
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000566F
+# SECBUF_LBA
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005674
+# SECBUF_DRIVE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000567B
+# [0038H]=IO_BUFF_PTR. (DOSINIT area reused)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005680
+# 
+R 
+L SearchBufferLoop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000568A
+# NEXTBUF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005691
+# [0038H]=IO_BUFF_PTR. (DOSINIT area reused)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000569A
+# DS:DI preserved.  Therefore, it points to a one clean buffer after the function.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000056A1
+# 
+R 
+L Read or Write error
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056A5
+# PREREAD(0->Must Preread)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056AD
+# DI=buffer header  BX=buffer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056BD
+# FAT SECTOR FLAG (IO_BUF_FLAG_IS_FAT)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056BF
+# Buffer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000056C1
+# READ SECTOR
+R 
+L NORMSEC: (Not a FAT sector, prob)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056C4
+# INITIAL FLAGS=0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056CB
+# DI.BUFSECNO
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056CE
+# DI.BUFDRVDP(OFFSET)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056D4
+# Drive
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056D8
+# DI.BUFDRV,FLAGS (AH=FLAGS)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000056DB
+# 
+R 
+L FoundAvailableBuffer
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056DE
+# SI!=0 means FAT sector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056E2
+# DPB_NUM_FATS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056E6
+# DPB_SECTORS_PER_FAT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056EA
+# Number of FATs if FAT, or 1 if not FAT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000056F0
+# CURBUF(seg)
+R 
+L DS:DI is sector buffer for Drive and LBA
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056F5
+# LASTBUFFER(seg)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056FA
+# CURBUF(OFFSET)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000056FF
+# LASTBUF(SEG)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005705
+# 
+R 
+L Must be Read Error
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005708
+# Unused Drive
+R 
+L Write All Dirty Buffer of the Specific Drive ES:DI=DIRENT,DS:SI=SF_ENTRY, AL=DRIVE
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000570A
+# 0038H=BUFFHEAD (Sector Buffer Pointer)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000570E
+# 
+R 
+L Buffer Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005712
+# IO_BUF_DRIVE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005737
+# 
+R 
+L DS:DI=Sector Buffer (IO_BUF) Header
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005746
+# Buffer Dirty (or Written?)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000575E
+# 
+R 
+L BUFWRITE Flush Buffer at DS:DI and Mark Unused
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005761
+# Mark it Unused, Clear Flags
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005768
+# AH is from [DI+05H], flags IO_BUF_FLAG_WRITTEN.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005774
+# ES:BP=DRIVE_PARAM_BLOCK
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005777
+# BX=Data Pointer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000577A
+# DX=LBA
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000577D
+# CX=Number of FATs (Prob Redundancy)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005786
+# Fatal Error Handling Flags for Buffer Write
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000578C
+# Data Sector?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005792
+# Fatal Error Handling Flags for Data Sector.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000579B
+# 
+R 
+L Write Sector Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000057BB
+# 
+R 
+L INT 21H AH=4Dh Get Return Code or ERRORLEVEL (Out> AH=Termination Type AL=return Code CF=0)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000057C5
+# 
+R 
+L INT 21H AH=4BH Exec or Load (In>AL=0->Exec 1->Load Only 3->Load Overlay DS:DX=FName ES:BX=ParamBlock) 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000057CF
+# 
+R 
+L Load or Exec Error End with CS:[2D1h]=1
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000057D5
+# DOSERR_INVALID_FUNC
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000057D7
+# 
+R 
+L Load or Exec Error End
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000057DD
+# AL must be 0,1, or 3.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000057E1
+# INT 21H AH=4BH Exec or Load [BP-04H]=Incoming BX (Param Block)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000057E4
+# INT 21H AH=4BH Exec or Load [BP-02H]=Incoming ES (Param Block)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000057E7
+# INT 21H AH=4BH Exec or Load [BP-05H]=Incoming AL (0:Exec 1:Load 3:Load)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000057EE
+# INT 21H AH=4BH Exec or Load [BP-1AH]=Incoming DX (Filename)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000057F1
+# INT 21H AH=4BH Exec or Load [BP-18H]=Incoming DX (Filename)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000057F6
+# 
+R 
+L DOS:
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005805
+# INT 21H AH=4BH Exec or Load [BP-08H]=File Handle
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005816
+# DOSERR_FILE_NOT_FOUND
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000581B
+# DOSERR_BAD_ENV
+R 
+L DOSERR_BAD_ENV
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005820
+# [BP-12H] Prob is a Segment for loading binary
+R 
+L NOT CHARDEV
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005825
+# [BP-0EH] ENVSEG of the new process
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000582A
+# Exec Mode
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000582E
+# Jump if Mode=2 or 3 (Load Overlay)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005830
+# DS:SI=Incoming Parameter Block
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005833
+# [ParamBlock+00h]=ENVSEG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005837
+# ENVSEG(0->Use Current)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005839
+# CurrentPDB
+R 
+L [ParamBlock+00h]=0, Use Current ENVSEG
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000583E
+# PSP:002Ch=PSP_ENV_SEG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005841
+# ENVSEG=CurrentPSP's ENVSEG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005846
+# Jump if current ENVSEG=NULL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005851
+# 
+R 
+L FirstForward DI until double 0s
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005859
+# (Prob)10h bytes extra plus 1 byte for terminating command file name
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000585C
+# STRLEN of Command File Name
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005868
+# This is former DI. (ENVSEG starts from offset zero)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005870
+# [BP-0Eh]=new ENVSEG
+R 
+L If First 2 bytes of Param Block is non-zero, Make a copy of Current ENVSEG
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000587D
+# EXE File Name
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005885
+# 
+R 
+L ENVSEG is ready one way or the other
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005887
+# 1A bytes
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000588A
+# This must be a pointer to read EXE header
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000589F
+# exeHeader.MaxAllocParagraphs
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000058AB
+# exeHeader
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000058AE
+# MZ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000058B3
+# MZ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000058BB
+# exeHeader.((FileSize+511)/512)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000058C2
+# exeHeader.HeaderSize in Paragraphs
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000058D2
+# SrcENVSEG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000058D8
+# Relocation factor to apply to overlay if .EXE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000058E1
+# 
+R 
+L DOSERR_OUT_OF_MEMORY
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000058E5
+# 
+R 
+L DOSERR_BAD_FORMAT
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000058E7
+# File Handle
+R 
+L (Prob)FCLOSE and Return
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005914
+# Take max-available if MaxAllocPara==0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005916
+# exeHeader+0Ah:Minimum Paragraphs
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000591A
+# JMP if BinarySize+MinAllocParag<AvailableParag
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005920
+# exeHeader+0Ah:Minimum Paragraphs
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005924
+# exeHeader+0Ah:Maximum Paragraphs
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000592E
+# AX=min(AX,BX) or maxAvailable if MaxAllocPara==0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005957
+# exeHeader+08h=Header Size in Paragraphs
+R 
+L Loading Point and Relocation Factor is ready
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000595B
+# Making CX:DX to be header size, but it is unimaginable that header size exceeds 16-bit.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005976
+# Read Binary Loop
+R 
+L Read Binary Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005979
+# Up to 0FE00h bytes at a time.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000059AF
+# Loop until [BP-0Ch] is zero
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000059B1
+# Relocation Factor
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000059B9
+# Save Initial SS and SP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000059D2
+# Relocation Table Offset
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000059E2
+# 
+R 
+L Must be a read error
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000059E5
+# exeHeader.Relocation Table Count
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000059E9
+# 
+R 
+L Relocation Outer Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000059EA
+# File Name Buffer (Reusing)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000059ED
+# 184 bytes at a time.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000059FE
+# Relocation Factor
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005A01
+# Relocation Loop
+R 
+L Relocation Inner Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005A1A
+# 
+R 
+L Relocation Done
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005A1D
+# 
+R 
+L DOSERR_OUT_OF_MEMORY
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005A24
+# JMP if not Load Overlay Mode
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005A26
+# Incoming Parameter Block
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005A32
+# This will fail.  Therefore BX will be number of available paragraphs.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005A3F
+# Allocate Maximum Available Memory
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005A47
+# 10H paragraphs is 100H bytes.  Must be for PSP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005A4A
+# [BP-14H] must be where the program is loaded
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005A4F
+# If greater, read 0FF00h (AX=0-100h)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005A55
+# If MaxAvail<64K
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005A59
+# AX=MaxAvailPages*16
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005A5B
+# AX=MaxAvailPages*16-100h=Max Bytes Available for .COM or .SYS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005A8B
+# Initial CS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005A8F
+# Initial IP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005AA9
+# 
+R 
+L Binary is in the memory.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005ABD
+# If it is just Load Overlay, it is loaded.  Done.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005AC3
+# Malloced Segment=CHild PSP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005AC6
+# MCB_PID
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005AC9
+# New ENVSEG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005ACE
+# If NewENVSEG is NULL, don't write anything to the MCB of NewENVSEG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005AD5
+# Malloced Segment=Child PSP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005AEA
+# PSP_ENVSEG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005AEF
+# Exec Param Block
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005AF4
+# First FCB to copy
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005B20
+# CL=0-1=0FFh
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005B3B
+# PUSH Return Address
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005B41
+# Copy Return Address to PSP:INT22h
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005B55
+# Copy Return Address to INT 22h Handler
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005B5D
+# DTA Address OFFSET
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005B64
+# CurrentPDB is it already updated?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005B69
+# DTA Address SEG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005B74
+# Initial SSSP
+R 
+L Finish Loading. Mode=1
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005B79
+# Exec Param Block
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005B7C
+# Initial SS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005B88
+# Initial CSIP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005B9B
+# 
+R 
+L Jump to Process. Mode=0
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005BA8
+# INDOS=0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005BBB
+# 
+R 
+L DOS EXEC JUMP BY RETF TO PROCESS
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005BBC
+# 
+R 
+L Call FREAD
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005BCB
+# 
+R 
+L Prob Clear PSP Owner of MCBs [BP-0EH] and [BP-12H]
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005BD7
+# 
+R 
+L Set CurrentPDB to MCBs for segments [BP-12H] and [BP-0Eh]
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005BD8
+# CurrentPDB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005BE5
+# 
+R 
+L Prob Set PSP Owner to MCBs [BP-0EH] and [BP-12H]
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005BF6
+# 
+R 
+L (Prob)Set BX=PSP in MCB for Segment AX
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005BFA
+# Prob AX is a memory block. AX-1 is MCB for the memory block.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005C04
+# 
+R 
+L INT 21H AH=31h Terminate and Stay Resident(In>AL=Return Code DX=#paragraphs to keep)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C15
+# Minimum 6 Paragraphs
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C21
+# Jump if MRESIZE failed.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C23
+# AX=PSP Segment
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C27
+# PSP_ENDMEM
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C2A
+# Pop Return Code
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005C2D
+# 
+R 
+L INT 27H Handler
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005C3C
+# 
+R 
+L INT 21H AH=4Ch Exit(In>AL=Return Code)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C56
+# CurrentPDB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C5B
+# CurrentPDB if AH=4C, Caller CS if AH=00
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005C60
+# 
+R 
+L INT 21H AH=00h Terminate Process CS=PSP segment
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C6D
+# Must be return code
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C74
+# CurrentPDB if AH=4C, Caller CS if AH=00
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C79
+# ES=0000h RIDT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C7B
+# PSP_INT22H, PSP_INT23H, PSP_INT24H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C7E
+# Int 22H Handler
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C81
+# Update Int 22h
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C83
+# Update Int 23h
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005C85
+# Update Int 24h
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005C8A
+# 
+R 
+L Free MCBs of PSP=BX
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005CAD
+# 
+R 
+L Arena_Next: Move to the next and Check_Signature
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005CAF
+# MCB_NEXT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005CB4
+# 
+R 
+L Check_Signature:ES=AX and STC if First-Byte of MCB is not 4Dh not 5Ah
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005CC4
+# 
+R 
+L COALESCE: Combine subsequent SYSTEM arenas
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005CE6
+# 
+R 
+L INT 21H AH=48h MALLOC(In>BX=#Paragraphs Out>CF=0 AX=Segment CF=1 AX=ErrCode BX=Max available block)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005CED
+# First Arena
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005CF1
+# Best Arena
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005CF5
+# Last Arena
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005D03
+# 
+R 
+L ALLOC_SCAN
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D05
+# Is the MCB owned by DOS (PID=0000h)?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005D0B
+# Is this the last MCB?
+R 
+L ALLOC_NEXT
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005D15
+# 
+R 
+L ALLOC_ERR
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D30
+# NOT ENOUGH MEMORY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005D34
+# add following free block to current
+R 
+L ALLOC_FOUND_FREE
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005D44
+# 
+R 
+L ALLOC_TEST
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D49
+# FirstArena
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D51
+# FirstArena
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005D56
+# BestArena
+R 
+L ALLOC_BEST
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D5F
+# BestArena
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D64
+# Arena Size
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D6C
+# BestArena
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D71
+# LastArena
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005D78
+# LastArena
+R 
+L ALLOC_DO_SPLIT_HIGH
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D7D
+# Arena_Size
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D85
+# sizes are equal. no split
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D87
+# point to next block
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D89
+# no decrement!
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D8C
+# bx has size of lower block
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D8E
+# cx has upper (requested) size
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005D91
+# 
+R 
+L ALLOC_DO_SPLIT
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005D99
+# FirstArena
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005DA0
+# BestArena
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005DA5
+# ArenaSize
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005DB7
+# arena_size
+R 
+L ALLOC_SET_SIZES
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005DBB
+# arena_size
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005DC7
+# arena_owner
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005DCC
+# 
+R 
+L ALLOC_SET_OWNER
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005DCE
+# CurrentPDB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005DD2
+# arena_owner
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005DDF
+# 
+R 
+L INT 21H AH=4Ah MRESIZE(In>BX=New size ES=Seg to Resize Out>CF=0 AX=Segment CF=1 AX=ErrCode BX=Max available block)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005E03
+# 
+R 
+L INT 21H AH=49h FREE(In>ES=Segment to free Out>CF=0 NoErr CF=1 AX=ErrCode)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005E23
+# 
+R 
+L INT 21H AH=58h Get/Set MALLOC Strategy(In>AL=0 Get AL=1 Set AX=Current Strategy BX=new Strategy)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005E42
+# 
+R 
+L INT 21H AH=5Dh 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005E48
+# JMP if AL=7,8, or 9
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005E4A
+# Reaches here if AL<7 or 9<A
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005F75
+# CurrentPDB
+R 
+L get_jfn_pointer (prob)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005F7A
+# PSP_FILE_TABLE_SIZE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005F81
+# <- Error Code 06 is what?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005F83
+# 
+R 
+L STC and RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005F85
+# PSP_FILE_TABLE_POINTER
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005F8D
+# 
+R 
+L RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005F8E
+# 
+R 
+L get_sf_from_jfn DS=CS,BX=JFN -> ES:DI=SF_ENTRY()
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005FA8
+# 002A=FIRST FCB PTR (sftable)
+R 
+L get_sf_from_sfn BX=SFN -> ES:DI=SF_ENTRY
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005FAD
+# DI.SFT_COUNT
+R 
+L Traverse SFT Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005FB7
+# Next SFT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00005FC2
+# 
+R 
+L Found SFT
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005FC6
+# AX=(SIZE sf_entry)*Index_In_This_SFT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005FCB
+# Bytes for SFT_LINK(DD),SFT_COUNT(DW),SFT_TABLE(DW)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005FD0
+# 
+R 
+L Find Available JFN -> BX=JFN,ES:[DI]=JFN Pointer or DOSERR_TOO_MANY_OPEN_FILES
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00005FE3
+# 
+R 
+L Find Available SF_ENTRY -> ES:DI=SF_ENTRY, BX=SFN
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005FEC
+# DOSERR_TOO_MANY_OPEN_FILES
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005FF1
+# REFCOUNT=0?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00005FF7
+# REFCOUNT=0ffffh?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006003
+# SF_MACHINE_NUMBER
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000600E
+# SF_PSP_OWNER
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006014
+# 
+R 
+L Try Next SF_ENTRY (POP BX)
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006015
+# 
+R 
+L Try Next SF_ENTRY
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006018
+# 
+R 
+L Found a SF_ENTRY
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006028
+# Not CurrentPDB.  What is it?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006033
+# 
+R 
+L INT 21H AH=5Fh 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006042
+# First DPB
+R 
+L Find DPB in DS:SI for Drive AL. (ADrive is 0)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006058
+# ':'
+R 
+L Initialize Current CDS. Input AL=Drive Letter(char)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000605B
+# @
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000605D
+# NUM DPB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006063
+# Current CDS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006068
+# CDS_DRIVE_TYPE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006074
+# '\ '
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006082
+# Root Directory Name Length
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006088
+# CurrentDir=Root
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000608E
+# Unused?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006097
+# Subtract 'A' to make it 0-based Drive Number
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000609E
+# DPB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000060A9
+# 
+R 
+L RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000060AA
+# 
+R 
+L INT 21H AH=5Eh 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006100
+# 
+R 
+L Set Up CurrentCDS, and STC if JOINed drive.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000610C
+# JOINED Drive?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006117
+# 
+R 
+L Set Up Current CDS  AL 1=ADrv, 0=CurDrv  CurrentCDSPtr->CS:[053AH], Use Temporary CDS CS:[0495h] if not set.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000611B
+# Current Drive
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000613C
+# 'A'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000614E
+# 
+R 
+L SetDir (NoSetDir=0)
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000615A
+# 
+R 
+L Error End
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000615B
+# 
+R 
+L ret
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000615E
+# NUM_CDS
+R 
+L Set CurrentCDS to ALth
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006163
+# Jump if AL is below NUM_CDS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006167
+# 
+R 
+L Set Current CDS to ALth
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006169
+# CDS_PTR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000616E
+# CDS sizs=51h bytes
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006207
+# 
+R 
+L ret
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006208
+# 
+R 
+L MakeFullPathName with CS:[2F8h]=0
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000620C
+# 
+R 
+L MakeFullPathName with CS:[2F8h]=0FFh
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000620E
+# What's this CS:[02F8h] flag?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000622C
+# BP=134 bytes into file-name buffer.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006230
+# CDS structure not-ready flag.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006238
+# 
+R 
+L Probably never comes in to this path.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000625D
+# CurrentCDS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000626A
+# DOSERR_DIR_NOT_FOUND
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000626D
+# Temporarily nullify the current CDS
+R 
+L CDS Structure is Ready to Go.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006274
+# Qualify Remote File Name DS:SI C-Str File Name  ES:DI 128-buf for qualified name
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000628F
+# 
+R 
+L File name starts with \\ or // or \/ or /\
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006291
+# 
+R 
+L Loop for after \\
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000062B2
+# 
+R 
+L DS=SS and return
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000062B5
+# 
+R 
+L STOSB, DS=SS, and return
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000062B8
+# 
+R 
+L Not starting with \\ or //
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000062BE
+# DOSERR_FILE_NOT_FOUND
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000062C2
+# 
+R 
+L File Name is NOT empty.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000062C9
+# Jump if not SYSDEV
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000062CB
+# Force Use Temporary CDS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000062DD
+# '/'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000062E7
+# 
+R 
+L NOT SYSDEV
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000062EA
+# DOSERR_DIR_NOT_FOUND
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000062F8
+# DOSERR_DIR_NOT_FOUND
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000062FF
+# DS:SI=Current CDS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006306
+# BX=strlen(CurrentDir)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006309
+# If DI=360h (File Name Buffer), BP=3E6h
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000630D
+# 
+R 
+L LocalKanjiAwareStrcpyLoop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000631A
+# '\'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006325
+# '\'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000632E
+# Store '\', but DI points to the same location, not the next location.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006347
+# '\'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000634A
+# 
+R 
+L Called from 634A in Proc 6208
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006351
+# Qualified File Name
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006355
+# CurrentCDS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000635F
+# BX is end of CurrentDir
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000637C
+# Last CHAR of CurrentDir
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000638B
+# Prob End of Fully Qualified File Name
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000063A8
+# CDS_DRIVE_TYPE,CDS_TYPE_REDIRECTED
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000063AE
+# Jump if NOT REDIRECTED
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000063B1
+# 
+R 
+L NOT REDIRECTED
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000063BC
+# DOSERR_DIR_NOT_FOUND
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000063BF
+# 
+R 
+L Unknown Proc. Probably Crunching .\ and ..\
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000063C3
+# JMP if not / or \
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000063C5
+# BP is the stopper for temporary path name
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000063D3
+# 
+R 
+L If lastChar==':' Append '\' and RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000063DA
+# '\'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000063E2
+# 
+R 
+L Return DOSERR_FILE_NOT_FOUND or DOSERR_DIR_NOT_FOUND
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000063E5
+# DOSERR_DIR_NOT_FOUND if the last char is / or \'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000063E9
+# DOSERR_FILE_NOT_FOUND if the last char is not \ and /'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000063EC
+# 
+R 
+L RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000063F2
+# '.'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000063F8
+# '..'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006425
+# 
+R 
+L AL=='/'->'\', Return AL==0 or AL=='\'
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006427
+# 
+R 
+L CMP AL,'/' '\' or 0 ('/'->'\')
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000642F
+# 
+R 
+L Called from 6400
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000064F9
+# NUM JOINED DRV
+R 
+L If first part of the path matches JOINED drive, replace with real path
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006518
+# JOINED?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006553
+# '\'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000656B
+# 
+R 
+L DS:SI=CurrentCDS, ES:DI=DPB, CS:[524h]=DPB, RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000657F
+# 
+R 
+L RET
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006580
+# 
+R 
+L INT 21H AH=60h TRUENAME(In>DS:DI=CStr Filename or Path  ES:DI=128-byte buffer for output)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000659E
+# 
+R 
+L GetDriveNumberFromFileName AL=0 if not specified. AL=1 is A drive. 0FFh if @ drive or ' drive.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000065A5
+# ':'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000065AB
+# Get drive letter in AL, ':' in AH.  Skipping two bytes.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000065B5
+# 
+R 
+L Store '(DriveLetter):'  AL=Drive (0=A)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000065B7
+# 
+R 
+L Store 'DRV:' to ES:DI++.  AL=1->ADrive
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000065BD
+# 
+R 
+L STRNCMP(DS:SI,ES:DI,STRLEN(DS:SI))
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000065E6
+# 
+R 
+L (Prob)Move to the end of C-String KanjiAware, CMP lastChar with '/' and '\'
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000065FD
+# 
+R 
+L INT 21H AH=3EH FCLOSE(In>BX=File Handle Out>CF=0 Success CF=1 AX=ErrCode)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006604
+# 536H,538h=TEMPORARY_SF_TABLE_PTR
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000660C
+# ES:[DI]=Reference Count
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006612
+# MODE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006618
+# I think I saw (AL&F0h)==7 somewhere
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000661F
+# Write unused to SFN at JFN in PDB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006628
+# 
+R 
+L I think it's just recovring incoming AH
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000662A
+# 
+R 
+L SYS_RET_OK
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000662D
+# 
+R 
+L Error End
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006630
+# 37EBH is Really Fread
+R 
+L INT 21H AH=3FH FREAD(In>BX=File Handle CX=Bytes DS:DX=ReadBuffer Out>CF=0 AX=BytesRead CF=1 AX=ErrCode)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006638
+# AL=*jfn=sfn
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006640
+# 
+R 
+L Error End
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006642
+# TEMPORARY_SF_ENTRY
+R 
+L Set DMA Ptr and Call SI
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000664C
+# Save DMA Buffer Pointer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006656
+# BX=ReadBufferOffset
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000665B
+# BX=ReadBufferOffset>>4
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006662
+# Transffered Upper 12bits of Offset to SEG
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006668
+# DMA Buffer Ptr
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006676
+# Restore DMA Buffer Pointer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006680
+# AX=NumberOfBytesRead
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006682
+# 
+R 
+L SYS_RET_OK
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006684
+# 
+R 
+L INT 21H AH=40H FWRITE(In>BX=File Handle CX=Bytes DS:DX=ReadBuffer Out>CF=0 AX=BytesWritten CF=1 AX=ErrCode)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006689
+# 
+R 
+L INT 21H AH=42h LSEEK(In>AL=0 Begin 1 Curr 2 End BX=Handle CX:DX=Signed offset)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000668E
+# DOSERR_FILE_NOT_FOUND
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006698
+# DOSERR_INVALID_FUNC
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000066A2
+# 
+R 
+L LSeek from current position
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000066AA
+# 
+R 
+L LSeek from SEEK_SET
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000066BD
+# SF_DEVFLAGS&SF_DEVFLAG_REDIRECTED'
+R 
+L LSeek from SEEK_END
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000066D7
+# SF_MODE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000066DE
+# Something to do with sharing SHARE_ALLOW?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000066E3
+# SHARE_DENY_R?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000066E8
+# INT2FH_SEEK_FROM_END
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000066F1
+# 
+R 
+L INT 21H AH=57h Get/Set Time Stamp(In>BX=file Handle CX=Time DX=Date AL=0 Get AL=1 Set)
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:000066FF
+# 
+R 
+L Get/Set Time Stamp
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006740
+# 
+R 
+L INT 21H AH=45h DUPLICATE FILE HANDLE (In>BX=Handle Out>CF=0 AX=New Handle CF=1 AX=ErrCode)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006760
+# 
+R 
+L INT 21H AH=46h FORCE DUPLICATE FILE HANDLE (In>BX=Handle CX=DuplicatedFileHandle Out>CF=0 NoErr CF=1 AX=ErrCode)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000676E
+# 
+R 
+L SF_ENTRY from SFN, verify MACHINE_NUMBER, or DOSERR_INVALID_HANDLE
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006779
+# DS:[DI+2F]? SF_MACHINE_NUMBER?
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006780
+# Error 06H=DOSERR_INVALID_HANDLE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006784
+# 
+R 
+L INT 21H AH=3DH FOPEN(In>DS:DX=CStr Filename AL=Mode Out>CF=0 AX=file handle CF=1 AX=ErrCode)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006789
+# Will become jump destination
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000679A
+# SFN
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000679F
+# SF_ENTRY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000067C5
+# Write SFN to PSP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000067D2
+# SF_ENTRY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000067E1
+# DOSERR_FILE_NOT_FOUND
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000067E6
+# DS:SI=SF_ENTRY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000067ED
+# Jump if not FOPEN
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000067F8
+# SF_MODE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000067FD
+# SF_SHARE_FT_OFFSET
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006805
+# 31A2H for FOPEN
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006808
+# SF_ENTRY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000680E
+# RefCount 1 Opened
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006812
+# SF_FLAGS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000681E
+# Error Code in Case of Critical Error
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006829
+# RefCount 0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:0000682D
+# Location to store critical error code
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006837
+# 
+R 
+L Error End (CS:[542h]=0ffffh)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006843
+# 
+R 
+L INT 21H AH=3Ch FCREATE(In>DS:DX=CStr Filename CX=File Attrib Out>CF=0 AX=file handle CF=1 AX=ErrCode)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006850
+# 
+R 
+L INT 21H AH=43h In>DS:DX=CStr Filename AL=0 Get File Attrib AL=1 Set File Attrib
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006867
+# CS:[SATTR]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:0000687B
+# 
+R 
+L AH=43h AL=00h Get File Attrib
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006888
+# 
+R 
+L AH=43h AL=01h Set File Attrib
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006895
+# 
+R 
+L INT 21H AH=41h DELETE(In>DS:DX=CStr Filename)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000068BB
+# 
+R 
+L INT 21H AH=56h Rename Move File or Dir(In>DS:DX=Source File ES:DI=New File)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000068FE
+# 
+R 
+L INT 21H AH=5Bh Create New File No Truncation(In>CX=Attr DS:DX=CStr File Name Out>CF=0 AX=Handle CF=1 AX=ErrCode)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:0000691E
+# 
+R 
+L INT 21H AH=5Ah Create Temp File(In>DS:DX CStr Path ending with backslash and 13 zeros to recv buf CX=attr Out>AX FHandle RW mode)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:000069A5
+# 
+R 
+L IF(DOS:SS:[050DH]=FFH){CL=CH;SS[0508H]=CL;}
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:000069B5
+# 
+R 
+L INT 21H AH=5Ch Lock/Unlock File(In>AL=0 Lock AL=1 Unlock BX=FHandle CX:DX=StartPos SI:DI=Length Out>CF=1 Unless network installed.)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006A09
+# 
+R 
+L Callf [007Ch] up to [001Ah] times.  By default, it succeeds (CF=0)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006A1E
+# (Prob)Error Recovery
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006A44
+# 
+R 
+L CMP BYTE PTR CS:[02B1H],0
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006A4B
+# 
+R 
+L Called from 3249 in Proc 31A2
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006A50
+# 
+R 
+L Called from 329A in Proc 31A2
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006A76
+# 
+R 
+L CALLF WORD PTR [0064]
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006AA0
+# 
+R 
+L INT 2AH Handler (Probably Tentative)
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006AA1
+# 
+R 
+L DOSINIT
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006AA3
+# CS:[02F2H]=[ENDMEM] (MSINIT.ASM)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006AA8
+# CS:[0468H]=[INITSP] (MSINIT.ASM)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006AAD
+# CS:[046AH]=[INITSS] (MSINIT.ASM)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006AB6
+# 6E16H=INITSTACK
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006AB9
+# SS=CS:[004AH]=[DEVHEAD+2] (MSINIT.ASM)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006ABE
+# SS=CS:[0048H]=[DEVHEAD] (MSINIT.ASM) DS:SI Points to CONSOLE Device
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006AC3
+# Setting INT 2AH is not in MSDOS 2.0 source
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006AC6
+# DS=0 INT VECTORS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006ACB
+# VECTOR (OFFSET) for INT 2AH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006AD0
+# VECTOR (SEGMENT) for INT 2AH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006ADA
+# DI=OFFSET SFTAB1+SFT_TABLE (MSINIT.ASM) Points to sft 0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006AE0
+# Refcount (STOSB in MSDOS 2.0)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006AE3
+# Access rd/wr
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006AE6
+# Attribute Byte
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006AE9
+# 0C0H|ISCIN(01)|ISCOUT(02)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B0D
+# 04H=SDEVATT,03H=ISCIN OR ISCOUT (MSINIT.ASM)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B11
+# SS=CS:[0032H]=[BCON] (MSINIT.ASM
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B16
+# SS=CS:[0034H]=[BCON+2] (MSINIT.ASM
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006B1B
+# AUX devices
+R 
+L CHAR_INIT_LOOP
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B20
+# [SI+SDEVATT],ISCLOCK (MSINIT.ASM)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B26
+# [BCLOCK] (MSINIT.ASM)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B2B
+# [BCLOCK+2] (MSINIT.ASM)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B30
+# 6E18H=MEMSTRT (MSINIT.ASM) ES:BP points to DPB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006B33
+# Next Device
+R 
+L PERDRV
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B3D
+# [SI+SDEVATT],DEVTYP
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B44
+# [CALLUNIT] (DEVCALL+0DH ?)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B4B
+# [SI+SDEVNAME],CL Number of units in name field
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B4E
+# [NUMIO]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B55
+# [NUMIO]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B5C
+# [CALLBPB] In:Pointer to string after DEVICE=  Out:BPB array pointer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006B61
+# 
+R 
+L PERUNIT
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B73
+# [BP+DPB_SECTOR_SIZE]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B77
+# AX,[MAXSEC]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B7E
+# [MAXSEC],AX
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B82
+# NOTMAX
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B89
+# [BP+DPB_DRIVE]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006B8D
+# [BP+DPB_UNIT]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006BA2
+# 
+R 
+L CONTINIT
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BA4
+# First byte after current DPBs
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BA6
+# [0036H]=[MAXSEC]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BAA
+# 6AA0H=OFFSET SYSBUF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BAF
+# (Prob)0010H=BUFINSIZ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BB2
+# (Prob)[DPBHEAD] True start of DPBs
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BB7
+# 6AA0H=OFFSET SYSBUF   DX=[DBPHEAD]-SYSBUF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BBB
+# BP=[DPBHEAD]-SYSBUF
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BBD
+# DI=MEMSTART+TotalDPBLen  BP=[DPBHEAD]-SYSBUF+(MEMSTART+TotalDPBLen)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BBF
+# True address of free memory  378H=MEMSTRT-SYSBUF  BP=[DPBHEAD]+TotalDPBLen
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BC4
+# OFFSET MEMSTRT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BC7
+# 0018H=DPB_NEXT_DPB
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BCA
+# [NUMIO]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 00001679:00006BD0
+# 0020H=DPBSIZ
+R 
+L TRUEDPBAD
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BD4
+# DPBSIZ-2
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BD9
+# DPBSIZ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BDF
+# End of list
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BE0
+# True start of free space (round up to segment)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BE7
+# Number of segments for DOS resources
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BEB
+# First free segment
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BED
+# BX=000FH, but the value is not used anywhere. BX will be overwritten in SETMEM
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BF0
+# [ENDMEM]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BF6
+# [ENDMEM] Not doing anything
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BFA
+# ES=CS, but already ES=CS.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006BFC
+# ES:[DSKCHRET+3]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C03
+# DS=0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C05
+# ES=0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C07
+# INITBASE+2
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C0A
+# AX=BP=CS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C0C
+# (Prob)4FC8=OFFSET DIVOV Set default divide trap address (INT 0?)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C12
+# (Prob)CS for INT 0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C18
+# Set 9 segments (skip 2 between each)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C22
+# INITBASE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C25
+# 1679:1187 IRET
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C2B
+# Set IP 9 times
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C45
+# (Prob)Long Jump to Entry Point
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C53
+# (Prob)ADDR_INT_ABORT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C59
+# (Prob)ADDR_INT_COMMAND
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C5F
+# (Prob)[ADDR_INT_TERMINATE]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C65
+# (Prob)[ADDR_INT_TERMINATE+2]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C69
+# (Prob)BIOS DISK READ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C6F
+# (Prob)BIOS DISK WRITE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C75
+# (Prob)End But Stay Resident
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C7F
+# 2AH*4
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C8A
+# Zero interrupt locs for ints 2AH-2FH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C8D
+# 0358H=INITBLOCK
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006C9C
+# [CurrentPDB]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CA1
+# Save COMMAND address
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CA2
+# [ENDMEM]
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CA7
+# Basic Header
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CAC
+# 0018H=PDB_JFN_Table
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CB1
+# 0,1, and 2 are CON devices
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CB5
+# 11H=FilePerProc-3
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CB8
+# Rest are unused
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CBC
+# 002CH=SFT_ADDR+2
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CC0
+# OFFSET HEADER
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CD5
+# 6E18H=MEMSTRT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CD8
+# [DPBHEAD] Place to move DPBs to
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CEB
+# DX first free segment, BP=CS, BX=000Fh?, DF=1
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 00001679:00006CEE
+# [DEVCALL.REQLEN],DINITHL
+R 
+L CHARINIT (MSINIT.ASM)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CF4
+# [DEVCALL.REQUNIT],0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006CFA
+# [DEVCALL.REQFUNC],DEVINIT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006D00
+# [DEVCALL.REQSTAT],0
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001679:00006D0A
+# OFFSET DEVCALL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00001E54:00003AB2
+# DOS:Jump to AH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005844:000007DE
+# 
+R 
+L CONTROL.EXE:LOAD_DRIVE_R.IMG_TO_PHYS:81000000
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005844:000008B1
+# 
+R 
+L CONTROL.EXE:(PROB)MAIN_FUNCTION
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005844:00000C81
+# 
+R 
+L CONTROL.EXE:SET_INT_E4H_HANDLER_IF_NOT_SET
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005844:00000CEA
+# 
+R 
+L CONTROL.EXE:INT_93H_AH=56H(RESUME)_THEN_INT_93H_AH_55H(PAUSE)_IF_PLAYING
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 00005844:000017A2
+# 
+R 
+L CONTROL.EXE:(PROB)LOAD_AND_INIT_OAK40ROM
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 000059C4:00000010
+# 
+R 
+L ????:INT_91H_AH=02H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 000059C4:00000015
+# 
+R 
+L ????:INT_AFH_AH=05H_READ_SYSTEM_INFO_TO_DS:[0FF1H]_FD:[0FEFH]=3130H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 000059C4:000000F4
+# 
+R 
+L ????:INT_93H_AX=52C0H_CH=FFH_SET_CDROM_AUTO_STOP_TIME
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 000059C4:0000012B
+# 
+R 
+L ????:ANALYZE_COMMAND_ARGS
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000AF37:00000000
+# 
+R 
+L IO.SYS Fragment. Copied from 1674:0000.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000AF37:0000016C
+# Calling DOSINIT
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000AF37:000003B3
+# 
+R 
+L Open CONFIG.SYS
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000AF37:00000557
+# FREAD CONFIG.SYS
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 0000AF37:00000596
+# 
+R 
+L (Prob)IO.SYS DEVICE= LOOP
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 0000AF37:000005A2
+# 
+R 
+L (Prob)IO.SYS DEVICE= LOOP
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000B000:00000004
+# 
+R 
+L Boot Sector Entry
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 0000B000:00000053
+# 
+R 
+L FDBOOT:MAIN
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:00000062
+# [0020H]=Sector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:00000067
+# [0021H]=Side
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:00000085
+# No Error -> Jump to B000:0085 (Next line)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:00000099
+# Compare 'FBIOS'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:000000B3
+# DX=[0050:0000]=1048H
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:000000BA
+# Jump by RETF to 1048:0000
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 0000B000:000000C7
+# 
+R 
+L (Prob)Read IO.SYS
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:000000D6
+# [0031]=Number of sectors to read
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:000000DC
+# 78H=120 sectors
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 0000B000:000000DF
+# 
+R 
+L Read Disk Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:000000E7
+# Next Sector
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:000000F7
+# Next Side
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:000000FE
+# Next Cylinder
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:00000102
+# Move pointer forward by 400H bytes
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000B000:000001B1
+# 
+R 
+L FDBOOT:(Prob)Read Sector
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:000001B9
+# DS:[0030]=Device ID
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:000001BC
+# DS:[0022]=Cylinder
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:000001C0
+# DS:[0020]=Sector DS:[0021]=Side
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:000001C4
+# DS:[0021]=Number of sectors
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:000001C8
+# DS:[0033]=Address DS:[0035]=Segment
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000B000:000001E1
+# (Prob)Retry Count
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 0000B000:000001E9
+# 
+R 
+L Return
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000B000:000001EC
+# 
+R 
+L FDBOOT:(Prob)Restore DS:[0030] is device ID
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00000365
+# Calling Get Keyboard State
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:0000036A
+# Check Boot Key Combination 'DEBUG'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:000005CA
+# 5D00H='->' Icon. I've never seen it.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 0000FC00:0000060D
+# 
+R 
+L SYSROM:Boot Device Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:000006B6
+# 4200H=CD-ROM Icon
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:000006EC
+# 4700H=Hard Disk Icon
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:0000070E
+# 4000H=Floppy Disk Icon
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00000718
+# 4600H=External Floppy Disk Icon
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:0000071E
+# (Prob)EDI=VRAM Pointer
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:0000072A
+# 13900H='0',13A00H='1'
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:0000077A
+# 
+R 
+L SYSROM:(Prob)Try One Boot Device
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00000786
+# 
+R 
+L SYSROM:Wait by Freerun Timer times C350H times.
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00000C3F
+# Jump if 386SX
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00000C53
+# 5100H=Clock Icon
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00000C99
+# Jump if 386SX
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00000CC8
+# Jump to IPL
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00000F07
+# 
+R 
+L SYSROM:(Prob)Draw Icon
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00000F7A
+# 
+R 
+L SYSROM:(Prob)Call Native Mode Service Routine 0010:000000B7
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00000FB6
+# 
+R 
+L SYSROM:(Prob)Call Native Mode Service Routine 0010:000000CB
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00000FCA
+# 
+R 
+L SYSROM:(Prob)Memory Test
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001773
+# 
+R 
+L Calculate_Checksum_52HBytes_From_DX
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:000017DB
+# 
+R 
+L IN_AL,3000H+(DX-7C1H>=0?(DX-7C1H)/0400H:(DX<<1))
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:000017E7
+# 
+R 
+L Read_TwoBytes_from_3000H+AL*2
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001A49
+# 
+R 
+L SYSROM:HSG_TO_MSF
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001A60
+# 
+R 
+L SYSROM:BIN_TO_BCD
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001AA2
+# 
+R 
+L SYSROM:CDROM_READ_SECTOR_PARAM_IN_IO_3B60
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001AD6
+# 
+R 
+L SYSROM:
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001B34
+# 
+R 
+L SYSROM:CDROM_CMD_A0H_THEN_RECEIVE_STATUS_BYTES
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001B60
+# 
+R 
+L SYSROM:STORE_00_TO_8BYTES_FROM_IO_3B60H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001B75
+# 
+R 
+L SYSROM:CDROM_WAIT_DRY_THEN_BIN_TO_BCD_THEN_ISSUE_CMD_IN_IO_3B50H
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001BF5
+# 
+R 
+L SYSROM:CDROM_TRY_READ_STATUS_OR_RETURN{21,0D,00,00}_IF_NO_STATUS
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001C79
+# 
+R 
+L SYSROM:UPDATE_DMA_COUNT_IF_NO_ERROR
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001C86
+# 
+R 
+L SYSROM:SET_DMA_COUNT
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001C9D
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:00001CA8
+# 
+R 
+L SYSROM:READ_DMA_ADDRESS_IN_BX_AX
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001CBF
+# 
+R 
+L SYSROM:SETUP_DMA
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001CF7
+# 
+R 
+L SYSROM:CDROM_TURN_ON_DMA_WAIT_FOR_DTSF_CLEAR
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001D5B
+# 
+R 
+L SYSROM:CDROM_STATUS_IN_IO_3B70H_TO_BIOS_ERROR_CODE
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001E1F
+# 
+R 
+L SYSROM:WAIT_30US_THEN_READ_ADDITIONA_STATUS_BYTES?
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001E54
+# 
+R 
+L SYSROM:CDROM_CMD_A0H_THEN_INTERPRET_STATUS
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00001EB8
+# 
+R 
+L SYSROM:JMP FC00:1EDA
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00001EDA
+# 
+R 
+L SYSROM:(Prob)Disk BIOS Equivalent
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00001FB7
+# Branch to Disk-BIOS equivalent based on AH
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00001FE3
+# 
+R 
+L Disk-BIOS Equivalent AH=03h (RESTORE)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:0000201E
+# 
+R 
+L Disk-BIOS Equivalent AH=03h (RESTORE), AL=02?h (FD)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:0000205E
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:00002064
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 1
+* 0000FC00:00002111
+# 
+R 
+L FD Seek
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002138
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:00002144
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:0000214B
+# FDC Command SEEK
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:0000217B
+# 
+R 
+L Disk-BIOS Equivalent AH=05h (READ)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:000021B6
+# 
+R 
+L Disk-BIOS Equivalent AH=05h (READ), AL=02?h (FD)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00002245
+# 
+R 
+L [SI+2]->CMOS 319Ch, [DI+2]->CMOS 31A0h, then Set up DMA
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:0000225A
+# 
+R 
+L Set up DMA
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00002261
+# 
+R 
+L  Set up DMA, Unmask bit 0
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:0000226A
+# 
+R 
+L Set up DMA
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00002277
+# 
+R 
+L DMAC Mask|=01h (Redirect)
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:0000227B
+# 
+R 
+L DMA Init
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00002280
+# 
+R 
+L DMA Channel Select
+P 
+% 0
+M 1
+/end
+/begin0
+T 1
+* 0000FC00:00002287
+# 
+R 
+L DMA Count to FFFFh
+P 
+% 0
+M 1
+/end
+/begin0
+T 1
+* 0000FC00:00002293
+# 
+R 
+L SYSROM:Set up DMA Address
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:000022B0
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:000022BC
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 1
+* 0000FC00:000022C5
+# DMA Mode=044h
+R 
+L DMA Mode=044h
+P 
+% 0
+M 1
+/end
+/begin0
+T 1
+* 0000FC00:000022CC
+# 
+R 
+L DMAC Mask|=01h
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:000022D5
+# 
+R 
+L DMAC Mask&=FEh
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:000022DC
+# 
+R 
+L DMA Device Control
+P 
+% 0
+M 1
+/end
+/begin0
+T 1
+* 0000FC00:0000230C
+# 
+R 
+L Wait BUSY flag to clear then write FDC READ Command
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:0000230F
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:00002318
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:0000231B
+# FDC Command READ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002368
+# 7D0h=2000
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002371
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:0000237C
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 1
+* 0000FC00:00002399
+# Check FDC Error State
+R 
+L Check FDC Error State
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:000023D2
+# Rewrite IO 208H Drive Control from CMOS 3198H
+R 
+L Rewrite IO 208H Drive Control from CMOS 3198H
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:000023EC
+# 
+R 
+L Disk-BIOS Equivalent (Prob) Check IO 20DH then Drive Select/Control and FDC Reset
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002405
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 1
+* 0000FC00:00002420
+# 
+R 
+L Disk-BIOS Equivalent (Prob) Set Drive Select and Drive Control from CMOS and Reset FDC
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002451
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:0000246F
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:00002482
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:000024A1
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:000024A7
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 1
+* 0000FC00:0000250F
+# 
+R 
+L Wait FREADY (Bit1 of IO 0208H)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002512
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 2
+* 0000FC00:00002517
+# 
+R 
+L Wait Ready Loop
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:0000253E
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 1
+* 0000FC00:0000254E
+# 
+R 
+L Drive Select, Latch MODE and INUSE (IO 20CH)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002558
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 1
+* 0000FC00:00002568
+# Wait BUSY flag to clear
+R 
+L Wait BUSY flag to clear (IO 200h)
+P 
+% 0
+M 0
+/end
+/begin0
+T 2
+* 0000FC00:0000298D
+# 
+R 
+L SCSI:WAIT_READY_LOOP
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002995
+# Check REQ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002997
+# Jump if no REQ
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:000029CC
+# Check BUSY flag (1==BUSY)
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00002A92
+# 
+R 
+L SYSROM:Write AH to DMA mode-control register.
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:00002AA9
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:00002AAF
+# Jump if DMA count is up.
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002AB1
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:00002AB7
+# Jump if not DATA PHASE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002ABB
+# Jump if BUSY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002AC5
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end
+/begin0
+T 0
+* 0000FC00:00002AC9
+# Jump if not BUSY
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002ACF
+# Jump if DATA PHASE
+R 
+L 
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00002AD2
+# 
+R 
+L SYSROM:DX|BX to Physical Address
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00002AE4
+# 
+R 
+L SYSROM:Set DMA Address and Count
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00002B00
+# 
+R 
+L SYSROM:Enable (Unmask) DMA Channel 1
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FC00:00002B3C
+# 
+R 
+L Disk-BIOS Equivalent AH=08h (RESET)
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* 0000FC00:00002ED2
+# 
+R 
+L SYSROM:WAIT_BY_FREERUN_TIMER
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FFFB:00000000
+# 
+R 
+L SYSROM:RESET_VECTOR_REIPL
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FFFB:00000005
+# 
+R 
+L SYSROM:RESET_VECTOR_TOSV11
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FFFB:00000014
+# 
+R 
+L SYSROM:Disk BIOS Equivalent
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* 0000FFFB:00000019
+# 
+R 
+L SYSROM:(PROB)Service_Routine
+P 
+% 0
+M 0
+/end
+/begin0
+T 1
+* FFFF0000:00000000
+# 
+R 
+L NULL
+P 
+% 0
+M 0
+/end
+/begin0
+T 0
+* FFFF0000:00BAA600
+# 
+R 
+L 
+P 
+% 0
+M 1
+/end

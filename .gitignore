@@ -1,0 +1,27 @@
+# 构建产物
+build*
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.exe
+*.so
+*.dylib
+
+# libretro 构建
+src/build_libretro/
+
+# 备份/临时文件
+*.bak
+*.log
+nobackup/
+*towns_trace*
+*towns_dbg*
+*towns_static_load*
+
+# 编辑器/系统文件
+.vscode/
+.idea/
+*.swp
+Thumbs.db

@@ -1,0 +1,5012 @@
+/begin0
+T 0
+* 00000008:000020B8
+# 22H=CDC Command Mode 1 Read
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000008:000020D9
+# Status Byte[0]==22H means Data Ready
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00000008:0000211D
+# 
+R 
+L CD-ROM Error
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00000008:00002124
+# 
+R 
+L CD-ROM No Error
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000008:0000212A
+# 
+R 
+L RUN386(?):Issue CD-ROM Command
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000008:0000218F
+# 
+R 
+L RUN386(?):Get CD-ROM Status Bytes from [1797H]
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000000C:000197FC
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:0000012B
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:0000031A
+# 
+R 
+L Memory Test
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000323
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000336
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:0000038F
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:000003BF
+# Diagnostic Mode 2
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:000004F9
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000503
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:000005B8
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:000005C1
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:00000607
+# 
+R 
+L Print Message (SI=Message ID)
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000A34
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000A6C
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000AF2
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000B5E
+# 
+R 
+L 
+P 
+% 0
+M 0
+B 1
+A 0
+O 1
+X 
+/end
+/begin0
+T 2
+* 00000010:00000B63
+# 
+R 
+L Check Boot Key Combination Loop
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000B79
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000B80
+# Icon offset from Icon data in the ROM
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000BAC
+# Check FASTMODE I/O is valid.
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000BC5
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000BE5
+# A button is pressed.
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000BE9
+# Same as first key-combination
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000BEE
+# EAX=80H
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000C09
+# B button is pressed
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000C12
+# EAX=20H
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00000010:00000C2B
+# 
+R 
+L No Pad button, or Both buttons held down
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000C7F
+# Draw FM TOWNS Logo.  It may draw a blue frame if serial ROM bit 252-255 is non zero.  May be prepared for OEM TOWNS?
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000CC5
+# Is it a crap CPU?  I mean, 386SX?
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:00000D03
+# 
+R 
+L Pad A+B
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00000D56
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:000010B3
+# 
+R 
+L If N key, set up SLOW mode.
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:000010FF
+# 
+R 
+L IF F key, set up FAST mode.
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:00001299
+# 
+R 
+L Set up main RAM wait and clock (AH=1 FAST mode  AH=0 SLOW mode).
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:000012AE
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:000012B5
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:000012BE
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:000012C5
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:000012D0
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:000012E4
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00001309
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:0000130E
+# Is FASTMODE I/O valid?
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:0000136C
+# 
+R 
+L Read PAD0 to AL, and mask direction-key bits, leaving button bits
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:00001415
+# 
+R 
+L Draw Icon from ESI at FMR VRAM address EDI()
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:0000142D
+# Is it a crap CPU?  I mean, 386SX?
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:0000145F
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:0000148D
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:000015C0
+# 
+R 
+L Draw FM TOWNS logo.
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:00001650
+# 
+R 
+L Read Serial ROM
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:00001740
+# 
+R 
+L Boot Key Combination Table
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:00001D41
+# 
+R 
+L Read Key Combination to EBX
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:00001DB1
+# 
+R 
+L Disable Keyboard IRQ
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000010:00001DB5
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:00001DC1
+# 
+R 
+L Write A0,A1 to Keyboard CMD, Read 2-byte key data to AX
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:00001E26
+# 
+R 
+L Write AL to Keyboard Command I/O 602H
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:00001E41
+# 
+R 
+L Read Key Data
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:00001E81
+# 
+R 
+L Convert Key Code to boot-key bits
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:00001EFF
+# 
+R 
+L Wait by FREERUN TIMER for ECX times.
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000010:00001F32
+# 
+R 
+L Draw font.  Text info in ESI()
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000005D:00000268
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000110:00001847
+# 
+R 
+L (Prob)Set High-Res Mode on Initial TMENU Start
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000110:00001874
+# 
+R 
+L (Prob)Set Normal Resolution Mode
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000110:00001899
+# 
+R 
+L (Prob)Set High-Res Mode
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000110:000026B0
+# 
+R 
+L (Prob)High-Res CRTC Wait VSYNC flip
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 000007C3:0000002A
+# 
+R 
+L RS232C BIOS
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 000007C3:00000697
+# 
+R 
+L Handle COM1-COM4 INT (SI=port info)
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 000007C3:00000951
+# 
+R 
+L Reset i8251
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 000007C3:000009E0
+# 
+R 
+L (Prob)RS232C BIOS Initialization
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 000007C3:000009E5
+# 
+R 
+L RS232C Detection Loop
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:000009ED
+# 
+R 
+L 
+P 
+% 0
+M 0
+B 1
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 000007C3:00000A1A
+# 
+R 
+L Reset and Detect i8251
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000A26
+# TxE|TxRDY
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000A38
+# TxE=1, TxRDY=0
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 000007C3:00000A5A
+# 
+R 
+L Write Data to i8251, wait 10us, and read i8251 Status to AL and AH
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 000007C3:00000A65
+# 
+R 
+L Read from i8251 Status Register (0??2H) -> AL and AH
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 000007C3:00000A6C
+# 
+R 
+L Write AL to i8251 Command Register
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000AE0
+# AL=COM INT Reason (I/O 0??6H)
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000AE5
+# Jump if CI,CS,RSINT are all zero.
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000AEC
+# Jump if not RSINT
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000AF1
+# AL=RS232C Status (0??2H)
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000AF2
+# SYNDET?
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000AFE
+# RxRDY?
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 000007C3:00000BAB
+# 
+R 
+L Handle COM1-4 Interrupt
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000BB0
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000BB6
+# Bit Shift because b0 is for COM0
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000BBC
+# 
+R 
+L 
+P 
+% 0
+M 0
+B 1
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000BC3
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 1
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000BCA
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 1
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000BD5
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 1
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000BDC
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 1
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000BE1
+# 
+R 
+L 
+P 
+% 0
+M 0
+B 1
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000BE6
+# 
+R 
+L 
+P 
+% 0
+M 0
+B 1
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000BEB
+# 
+R 
+L 
+P 
+% 0
+M 0
+B 1
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000007C3:00000BF0
+# 
+R 
+L 
+P 
+% 0
+M 0
+B 1
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000DAE:00000022
+# 
+R 
+L RS232C BIOS Port Table
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000DAE:0000002D
+# 
+R 
+L COM0 Info
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000DAE:00000072
+# 
+R 
+L COM1 Info
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000DAE:000000B7
+# 
+R 
+L COM2 Info
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000DAE:000000FC
+# 
+R 
+L COM3 Info
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000DAE:00000141
+# 
+R 
+L COM4 Info
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:0000005A
+# IO.SYS:Initialize Real-Mode INT Vector
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:0000005D
+# 0000:0240H is for INT 90H
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:00000066
+# 20H Vectors in total.  Up to INT AFH
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:00000073
+# 0000:0100H is for INT 40H (Hardware INT Vectors)
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:000000FB
+# IO.SYS:Check FMR_RESOLUTION.
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:0000011B
+# IO.SYS:Not for this machine. Stop.
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:00000143
+# IO.SYS:Writing 80H to 0400H, then read and TEST AL,08H.  Meaning unpublished.
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00000F45:00000185
+# 
+R 
+L IO.SYS:(Prob)Bunch of BIOS initializations.
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:000001B5
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:00000240
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:000002CD
+# IO.SYS : Checking FPU
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:000002F7
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:00000341
+# I/O C34H Something to do with SCSI?
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:000008C1
+# IO.SYS:Calling SYSROM Service FFFB:0019
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:000008DD
+# IO.SYS:Calling SYSROM Service FFFB:0019
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000F45:000008F9
+# IO.SYS:Calling SYSROM Service FFFB:0019
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00000FF6:00000792
+# ES:DI=1679:0026 SYSVARS or List of Lists
+R 
+L IO.SYS ? Routine Making CDS
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000FF6:00000797
+# Number of CDS (from LASTDRIVE=)
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000FF6:000007AC
+# IO.SYS Limiting Max Number of Drives to 12H (Drive R maximum)
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000FF6:000007BC
+# IO.SYS Overriding CDS Location?
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00000FF6:000007DE
+# 
+R 
+L IO.SYS Drive Update Outer Loop?
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000FF6:000007EF
+# 51H=Size of a CDS structure.
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000FF6:000007F4
+# 'A'
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00000FF6:000007FB
+# 
+R 
+L Refreshing Drive CDS?
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000FF6:00000802
+# ?:\
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000FF6:00000832
+# Prob Next DPB
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00000FF6:00000841
+# 'A'
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00001048:00000271
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00003368:00000314
+# 
+R 
+L TICM.SYS Strategy
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00003368:0000031F
+# 
+R 
+L TICM.SYS Interrupt
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:0000033B
+# TICM.SYS 02F2H is jump table for commands.
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:0000033E
+# DS:BX is Request Header  AF37:005C.
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:00000343
+# Unit Number
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:00000350
+# TICM.SYS Request Command Code
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:00000365
+# 
+R 
+L TICM.SYS Req 05h Peek
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:00000369
+# 
+R 
+L TICM.SYS Req 03h IOCTL Read
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:0000036F
+# 
+R 
+L TICM.SYS Req 10h Output Until Busy?
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:00000371
+# 
+R 
+L TICM.SYS Return
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:00000392
+# 
+R 
+L TICM.SYS Req 00h Init
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:0000039C
+# Command Parameter Block
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000003D4
+# 
+R 
+L TICM.SYS Req 01h Media Check
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:0000041A
+# 
+R 
+L TICM.SYS Req 02h Build BPB
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:00000454
+# 
+R 
+L TICM.SYS Req 04h Read
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:00000465
+# 
+R 
+L TICM.SYS Req 09h Write Verify
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:0000047B
+# 
+R 
+L TICM.SYS Req 0Fh Removable Media Check
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000011EA
+# FFH means termination?
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000011F1
+# Tuple 13H?
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000011F8
+# 
+R 
+L Tuple type below 0FH, FFH or 13H
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:0000120F
+# 
+R 
+L Tuple type 88H, 98H, A8H, or B8H
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:00001216
+# Jump if tuple type is 0FFH
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:00001225
+# Will make error code 01H
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000012C6
+# 
+R 
+L IF (AH&1)==0 THEN No Error ELSE Error Code 01H
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000012CD
+# 
+R 
+L Error code 01H
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000012D1
+# 80H is hard error
+R 
+L Error Return
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000012D3
+# 
+R 
+L Return error code = BH
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000012E2
+# 
+R 
+L Tuple Loop
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000012E3
+# Almost certain: AH&8 is a 16-bit flag (8-bit otherwise)
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000012E8
+# Skip high-byte
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000012F0
+# 
+R 
+L Not 0FFH
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000012F4
+# 
+R 
+L Tuple type 10H (Check sum?)
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000012FC
+# 2nd byte of the tuple
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000012FF
+# 3rd byte of the tuple
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:0000130D
+# 4th byte of the tuple (Type,Size,?,Sum), 16bit
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000013C5
+# 
+R 
+L Return CF=0
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000013C7
+# 
+R 
+L POP DX, Return CF=1
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000013C8
+# 
+R 
+L Return CF=1
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00003368:000013CA
+# 
+R 
+L MEMCARD:(Prob)Copy one CIS Tuple to 3368:0EAB
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000013D2
+# DS:0AAB is data buffer 400H bytes from PHYS:C0000000H
+R 
+L Loop until non-zero CIS tuple type
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000013D5
+# DS:[0AA6H] is the current offset to the buffer
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000013E2
+# (AH&8)=Flag Non-Zero means 16-bit integers.  Zero means 8-bit integers
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000013EB
+# DS:0EABH
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000013FF
+# (Prob)Tuple size
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:00001406
+# 2 for CIS code and Size
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:0000141B
+# SI points to CIS Tuple top again
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00003368:00001636
+# 
+R 
+L (Prob)TICM.SYS driver installation
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:00001644
+# Message: Cannot ADDRV IC Memory Card Driver.
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:00001651
+# Message: FM-TOWNS IC MEMORY CARD DEVICE DRIVER V1.1 L12
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:00001661
+# Message: TICM.SYS works only on TownsOS
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:00001666
+# Message: TICM.SYS does not work on this computer
+R 
+L Print Error: TICM.SYS does not work on this computer
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:0000166B
+# 
+R 
+L TICM.SYS Hardware/OS check passed
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:00001678
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000016B8
+# 
+R 
+L TICM.SYS Exit
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00003368:000016BB
+# 
+R 
+L (Prob)TICM.SYS Analyze Command Parameter:
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000016C5
+# Structure for IC mem card?
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000016CA
+# 
+R 
+L Parse Command Line Loop
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000016CF
+# '/'
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000016D6
+# 'U'
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000016DA
+# 't'
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:000016E1
+# '0'
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:00001710
+# Most likely AL=Drive Letter
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 00003368:00001714
+# Message: Registered IC Memory Card to ? Drive
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:0000171B
+# Message: Unit number required.
+R 
+L Unit Number Required.
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:00001720
+# Message: Wrong Unit Number
+R 
+L Wrong Unit Number
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:00001725
+# Message: No available drive letter
+R 
+L No Available Drive Letter
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:0000172A
+# TICM.SYS is already installed.
+R 
+L TICM.SYS Already Installed
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00003368:0000173A
+# 
+R 
+L Print Message
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00003368:00001741
+# 
+R 
+L Return Available Drive Letter in AL
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00003368:0000174F
+# 
+R 
+L TICM.SYS (Prob)Register Drive
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00003368:00001759
+# 
+R 
+L DS:DI=0CFD:0000
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 00003368:000017A3
+# 
+R 
+L TICM.SYS Register Drive Return Error
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00003368:000017A7
+# 
+R 
+L TICM.SYS Checking ?
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 00003368:000017C0
+# 
+R 
+L Getting info from SysService INT AFH AH=FCH
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 000040CA:00000DFE
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000AF37:00000512
+# 
+R 
+L IO.SYS: (Prob)Load Device Driver Loop.
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000AF37:000005A2
+# 
+R 
+L IO.SYS:(?)Load .SYS inner loop
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:0000066A
+# IO.SYS: Read .SYS
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000AF37:00000672
+# 
+R 
+L Print 'File Not Found' and continue'
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000AF37:0000067A
+# 
+R 
+L Skip driver file name
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:0000069F
+# [PACKET+10H] Must be the segment
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000006A2
+# CS:[000FH]=0C000H
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000006A6
+# Jump if DEVICE_END is before ENDMEM
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000AF37:000006AC
+# Pointer to the driver.
+R 
+L DEVICE_END is before the end of the world.
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000006B5
+# ES:DI=SYSVARS
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000006BA
+# DEVFLAGS
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000006BC
+# IS_CHARDEV
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000006C9
+# SYSVARS+0CH=BCON
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000006D6
+# SYSVARS+08H=BCLOCK
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000AF37:000006E1
+# [PACKET+0DH] Must be the number of units.
+R 
+L IS_NOT_CHARDEV
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000006F4
+# SYSVARS+20H=NUM_DPB
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000006FC
+# 1AH=Drive Z
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:00000703
+# 'Too many disk devices.'
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:0000071C
+# SYSVARS
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:00000721
+# First DPB Pointer
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000AF37:00000725
+# 
+R 
+L IO.SYS: (Prob)FindNext to the last DPB
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:00000763
+# Build DPB
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:0000077A
+# '$\r\n'
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:0000077D
+# '\r\n'
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000AF37:000007A1
+# SYSVARS
+R 
+L Link Driver to Driver Chain
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000007A6
+# DEVHEAD Offset
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000007AA
+# DEVHEAD Segment
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000007AE
+# Pointer to the loaded driver
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000007C1
+# Link Driver to Driver Chain
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000007C3
+# Link Driver to Driver Chain
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000007E7
+# 
+R 
+L 
+P 
+% 0
+M 0
+B 1
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000AF37:000008D2
+# 
+R 
+L #Bytes to #Pages
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000009C5
+# PACKET+10H=Driver_End_Segment
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000009D1
+# PACKET+0EH=Driver_End_Pointer
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:000009F7
+# 
+R 
+L 
+P 
+% 0
+M 0
+B 1
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000AF37:00000A02
+# 
+R 
+L Call Strategy or Interrupt, CS:[0007H] is FAR PTR to driver
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000AF37:00000A75
+# 
+R 
+L Print File Not Found Message
+P 
+% 0
+M 0
+B 1
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000AF37:00000A78
+# 
+R 
+L 
+P 
+% 0
+M 0
+B 1
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000AF37:00000A7B
+# 
+R 
+L Print Two Messages
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000AF37:00000A7D
+# 
+R 
+L PUTS
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000AF37:00000A88
+# 
+R 
+L PUTC
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000AF37:00000A91
+# 
+R 
+L Print Message
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000AF37:00000B6B
+# 
+R 
+L '\r\n'
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000AF37:00000BAC
+# 
+R 
+L 'The following file is not found.'
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000AF37:00000BF3
+# 
+R 
+L Invalid Country Code
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000AF37:00000C13
+# 
+R 
+L CONFIG.SYS Too Large
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:000001E8
+# 
+R 
+L SYSROM START POWER-ON
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000001EC
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000001F7
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00000230
+# POFF bit.  (1:Power Off Reset)
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:0000026E
+# SHUTDOWN bit. (1:Shut down by CPU exception)
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000002BA
+# SOFT bit (1:Reset by Software)
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000002BE
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000002C6
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000002CC
+# Disable CPU Cache if CMOS 31B0H is non-zero.
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000002E1
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000002EA
+# Unpublished I/O 610H
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000002F0
+# Unpublished I/O 479H (Something to do with CRTC2?)
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000002F8
+# Unpublished I/O 47AH (Something to do with CRTC2?)
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000002FF
+# Unpublished I/O 47CH (Something to do with CRTC2?)
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:0000030A
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00000310
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00000316
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00000328
+# Clear CVRAM
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:0000032E
+# Jump if FM-R50/60/70 (Inifinite Loop)
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:0000033E
+# 
+R 
+L AH=20H:Test Check Sum
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00000340
+# First CMOS Check-Sum Test.
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:0000042A
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000FC00:00000473
+# 
+R 
+L Skip ROM,DMAC,PIT tests
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00000489
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00000786
+# 
+R 
+L Wait
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00000796
+# 
+R 
+L Initialize PIC
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:000007DD
+# 
+R 
+L Wait 3us
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:000007E4
+# 
+R 
+L Write 0FEH to CMOS 31A8H and 05H to 31AAH
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00000D4F
+# 
+R 
+L Prepare to Switch to Protected Mode.
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000FC00:00000DBD
+# 
+R 
+L Return from the Protected Mode
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00000F7A
+# 
+R 
+L (Prob)Print message
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:0000117E
+# 
+R 
+L CMOS RAM BIOS
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000016A9
+# Signature 4179H.  Why 4179H?
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:000016CE
+# 
+R 
+L CMOS Check
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000016D0
+# Tentative CMOS Check Error=0
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000FC00:000016D3
+# 
+R 
+L CMOS Check Loop for(AX=0; AX<0x10; ++AX)
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:0000172E
+# 
+R 
+L DX=AX=inAL*10, BL=10
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00001735
+# 
+R 
+L Read CMOS Pos=AL*10+8 (3000H+2*AL*10+8) 16bit->CX, CMOS Pos=AL*10+6 (3000H+2*AL+10+6) 16bit->AX
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00001773
+# 
+R 
+L Read CMOS from addr 0 16bit at a time and sum up 52H times (00H to 147H/3000H to 3146H)-> AX
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:0000178C
+# 
+R 
+L Twisted CMOS checksum calculation.
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:000017DB
+# 
+R 
+L Read I/O if(DX>=1985){3000H+((inDX-1985)%2048)*2;}else{3000H+inDX*2;}
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:000017E7
+# 
+R 
+L Read 2 bytes from CMOS -> AX (DX is position in CMOS, not 3xxxH I/O address)
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00001807
+# 
+R 
+L if(DX>=1985){AX=1+(inDX-1985)/2048;DX=3000H+((inDX-1985)%2048)*2;}else{AX=0;DX=3000H+inDX*2;}
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:0000180C
+# 7C1H=1985
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00001885
+# 
+R 
+L Return CL=Ioread(3F82H+AX*2)
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00001EB8
+# 
+R 
+L Disk BIOS Equivalent
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002898
+# 
+R 
+L SYSROM:Set Up Timer
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000028BB
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000028C1
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000028CB
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000028DD
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002945
+# 
+R 
+L SYSROM:Something to do with Timer
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002946
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:0000295E
+# 
+R 
+L SYSROM:(Prob)Read SCSI Sector?
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000FC00:0000298D
+# 
+R 
+L SYSROM:SCSI_PHASE_LOOP
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002991
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000029AA
+# SCSI MSG|C/D bits
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000029AC
+# Jump if not data
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000029B0
+# Jump if no req (Redundant. Already checked.)
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000029B2
+# 48H for Mem to I/O
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000029B8
+# 44H for I/O to Mem
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000029D2
+# AH=SCSI Status
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000029D5
+# AL=SCSI Message
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000FC00:000029DC
+# 
+R 
+L Return
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:000029DF
+# 
+R 
+L Wait SCSI ready for 3000us
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000029E1
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000029E9
+# BB8H=3000
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:000029EF
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002A0C
+# 
+R 
+L SYSROM:Initialize DMA, Set DMA Channel, Write Dev Ctrl(Low)
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002A12
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002A18
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002A1F
+# 
+R 
+L SYSROM:Initiate SCSI command sequence
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002A23
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002A26
+# Write SCSI ID bits in the SCSI Data Register
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002A29
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002A2F
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000FC00:00002A3E
+# 
+R 
+L Turn off SEL bit and return
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002A40
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002A44
+# CH=0 if no error.  CH=2 if SCSI controller did not respond.
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002A45
+# SYSROM:(Prob)Wait by Timer
+R 
+L SYSROM:Called if SCSI doesn't immediately BUSY after SEL
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002A65
+# 
+R 
+L SYSROM:NOP
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002A66
+# 
+R 
+L SYSROM:Handle SCSI Command Phase
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002A74
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002A82
+# 
+R 
+L SYSROM:Handle SCSI Status Phase
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002A8A
+# 
+R 
+L SYSROM:Handle SCSI Message In Phase
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002A92
+# 
+R 
+L SYSROM:Write AH to I/O 0AAH (DMAC_MODE_CONTROL)
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002A99
+# 
+R 
+L SYSROM:Set DMA Address, Select SCSI channel, Wait for DMA End
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000FC00:00002AA2
+# 
+R 
+L DMA Transfer Loop
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 2
+* 0000FC00:00002AA9
+# 
+R 
+L Wait DMA End
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002AAD
+# Non-Zero means Terminal Count or DMA End
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002AB1
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002AB5
+# Phase changed to non-data
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002AB9
+# Zero means SCSI no longer busy.  Command abruptly terminated
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002AC1
+# Increment high-word of the physical addres
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002AC3
+# Clear low-word of the physical address. (Can't DMA cross 64KB border?)
+R 
+L 
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002AD2
+# 
+R 
+L SYSROM:SEG+OFFSET to Physical Address
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002AE4
+# 
+R 
+L SYSROM:Set DMA Address and Count.  Count=FFFF
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002AEA
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002AF0
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 0
+* 0000FC00:00002AFB
+# 
+R 
+L 
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002B00
+# 
+R 
+L SYSROM:Enable (Unmask) SCSI DMA Channel
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002B08
+# 
+R 
+L SYSROM:Disable (mask) SCSI DMA Channel
+P 
+% 0
+M 1
+B 0
+A 0
+O 0
+X 
+/end
+/begin0
+T 1
+* 0000FC00:00002ED2
+# 
+R 
+L Wait by Free-run timer.
+P 
+% 0
+M 0
+B 0
+A 0
+O 0
+X 
+/end
