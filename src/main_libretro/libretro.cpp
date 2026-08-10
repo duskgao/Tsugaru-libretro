@@ -22,6 +22,7 @@
 #include "render/render.h"
 #include "outside_world/outside_world.h"
 #include "discimg/discimg.h"
+#include "cpputil/cpputil.h"
 #include "keymap.h"
 
 #include <vector>
@@ -149,6 +150,15 @@ static bool     g_towns_boot_fast      = true;
    注意：加速时音频也按比例多生成，前端以 60fps 消费固定样本时会收到过量音频，
    可能造成音画不同步或变速 —— 这是 libretro 前端 60fps 同步下的固有折衷。 */
 static double g_towns_speed = 1.0;
+
+/* 额外挂载的 SCSI 硬盘镜像路径（core option towns_hdd_path）。用于需要一块可写
+   虚拟硬盘来存放系统/存档的 CD 游戏（如 3x3 Eyes）：CD 走内部 CDROM（cdImgFName），
+   这块硬盘走 SCSI 设备，二者并存。留空表示不额外挂载硬盘。 */
+static std::string g_towns_hdd_path;
+
+/* 即时存档大小缓存（见 retro_serialize_size / retro_serialize） */
+static size_t g_cachedSaveStateSize = 0;
+static bool  g_hasCachedSaveStateSize = false;
 
 /* 时间常量（与 TOWNSEMU 内部一致）
  * TOWNS_RENDERING_FREQUENCY 直接取自 townsdef.h（const uint64_t），不在此重复定义。 */
@@ -312,6 +322,10 @@ static struct retro_variable g_variables[] =
 	   注意：加速时音频按比例变快，音画可能轻微不同步。 */
 	{ "towns_speed",
 	  "Speed Multiplier; 1.0|1.5|2.0|3.0|4.0" },
+	/* 额外挂载的 SCSI 硬盘镜像。用于需要虚拟硬盘存系统/存档的 CD 游戏。
+	   留空则不挂载。CD 镜像通过 Load Content 加载，此硬盘与 CD 并存。 */
+	{ "towns_hdd_path",
+	  "Extra SCSI Hard Disk Image (full path)" },
 	{ nullptr, nullptr }
 };
 
@@ -593,11 +607,56 @@ static void RenderAndPresent(void)
 }
 
 /* ============================================================
+ *  持久化状态保存（CMOS / 软盘 / 内存卡）
+ * ============================================================ */
+
+/* 把模拟器的"电池备份"类状态写回宿主机文件。对应官方 CUI 在
+   TownsThread::VMEnd 里做的收尾（townsthread.cpp:335）：
+     1. 软盘镜像改动写回（fdc.SaveModifiedDiskImages）
+     2. 内存卡改动写回（physMem.state.memCard.SaveRawImageIfModified）
+     3. CMOS 写回（WriteBinaryFile(CMOSFName, TOWNS_CMOS_SIZE, CMOSRAM)）
+   官方 CUI 只在 VM 结束(VMEnd)时写回 CMOS；libretro 的 retro_run 每帧还会定时
+   写回软盘/内存卡（见 retro_run），这里在卸载时兜底做最终保存。
+   注意：SCSI 硬盘是直接文件 I/O（写扇区即落盘），无需在此保存。 */
+static void SavePersistentState(void)
+{
+	if (true != g_loaded)
+	{
+		return;
+	}
+
+	/* 软盘改动写回 */
+	towns.fdc.SaveModifiedDiskImages();
+
+	/* 内存卡改动写回 */
+	towns.physMem.state.memCard.SaveRawImageIfModified();
+
+	/* CMOS 写回（只在配置了 CMOSFName 时） */
+	if (!towns.var.CMOSFName.empty())
+	{
+		auto expanded = towns.var.ExpandFileName(towns.var.CMOSFName);
+		if (!cpputil::WriteBinaryFile(
+		        expanded, TOWNS_CMOS_SIZE, towns.physMem.state.CMOSRAM))
+		{
+			if (nullptr != g_log_cb)
+			{
+				g_log_cb(RETRO_LOG_WARN,
+				         "[tsugaru] Failed to save CMOS to %s\n", expanded.c_str());
+			}
+		}
+	}
+}
+
+/* ============================================================
  *  卸载虚拟机并释放资源
  * ============================================================ */
 
 static void UnloadVM(void)
 {
+	/* 先把电池备份状态写回宿主机文件（CMOS/软盘/内存卡），
+	   否则退出后存档丢失。 */
+	SavePersistentState();
+
 	/* 注意：g_ow 的生存期覆盖整个 core（在 retro_init 创建、retro_deinit 销毁），
 	   这里只清理每次加载产生的音频/窗口接口与运行态，不删除 g_ow。 */
 	if (nullptr != g_ow)
@@ -770,6 +829,12 @@ static void ApplyCoreOptions(void)
 			g_towns_speed = (sp >= 0.5) ? sp : 1.0;
 		}
 	}
+
+	/* 额外 SCSI 硬盘镜像路径 */
+	{
+		const char *v = GetOpt("towns_hdd_path");
+		g_towns_hdd_path = (nullptr != v) ? v : "";
+	}
 }
 
 /* 运行时应用 CPU 频率：core option 变更后无需重新 Load Content 即可生效。
@@ -884,6 +949,25 @@ bool retro_load_game(const struct retro_game_info *game)
 		}
 	}
 
+	/* 额外挂载 SCSI 硬盘镜像（core option towns_hdd_path）。
+	   放入 scsiImg[1]（scsiImg[0] 保留给 .hdd/.vhd content）。这样玩家可在
+	   Load Content 一个 CD 镜像的同时，通过 option 挂一块可写虚拟硬盘存放
+	   游戏存档/系统（解决 3x3 Eyes 等 CD 游戏需要硬盘的问题）。
+	   若 content 本身就是 .hdd，则用 scsiImg[2] 避免冲突。 */
+	if (!g_towns_hdd_path.empty())
+	{
+		int hddSlot = 1;
+		if (params.scsiImg[0].imageType != TownsStartParameters::SCSIIMAGE_NONE)
+		{
+			hddSlot = 2; /* content 已占用 scsiImg[0]，改用下一个槽 */
+		}
+		if (hddSlot < TownsStartParameters::MAX_NUM_SCSI_DEVICES)
+		{
+			params.scsiImg[hddSlot].imageType = TownsStartParameters::SCSIIMAGE_HARDDISK;
+			params.scsiImg[hddSlot].imgFName  = g_towns_hdd_path;
+		}
+	}
+
 	/* 创建音频/窗口接口，并交给 Setup */
 	g_sound_ptr = g_ow->CreateSound();
 	g_window_ptr = g_ow->CreateWindowInterface();
@@ -903,12 +987,16 @@ bool retro_load_game(const struct retro_game_info *game)
 
 	g_loaded = true;
 	g_aborted = false;
+	/* 新游戏的状态大小可能不同，重置即时存档大小缓存 */
+	g_hasCachedSaveStateSize = false;
 	return true;
 }
 
 void retro_unload_game(void)
 {
 	UnloadVM();
+	/* 卸载后不再有有效状态，重置即时存档大小缓存 */
+	g_hasCachedSaveStateSize = false;
 }
 
 bool retro_load_game_special(unsigned, const struct retro_game_info *, size_t)
@@ -942,6 +1030,24 @@ void retro_run(void)
 	if (true != g_aborted)
 	{
 		StepFrame();
+	}
+
+	/* 定时写回软盘/内存卡改动（每虚拟秒一次，对齐官方 VMMainLoop 的
+	   nextSecondInTownsTime 逻辑，见 townsthread.cpp:296-300）。
+	   SCSI 硬盘直接 I/O 无需此处理；CMOS 由 UnloadVM 写回。 */
+	{
+		static uint64_t g_lastPersistSecond = 0;
+		uint64_t nowSec = towns.state.townsTime / 1000000ULL;
+		if (0 == g_lastPersistSecond)
+		{
+			g_lastPersistSecond = nowSec;
+		}
+		else if (nowSec != g_lastPersistSecond)
+		{
+			towns.fdc.SaveModifiedDiskImages();
+			towns.physMem.state.memCard.SaveRawImageIfModified();
+			g_lastPersistSecond = nowSec;
+		}
 	}
 
 	RenderAndPresent();
@@ -980,7 +1086,12 @@ size_t retro_serialize_size(void)
 	{
 		return 0;
 	}
-	return towns.SaveStateMem().size();
+	if (true != g_hasCachedSaveStateSize)
+	{
+		g_cachedSaveStateSize = towns.SaveStateMem().size();
+		g_hasCachedSaveStateSize = true;
+	}
+	return g_cachedSaveStateSize;
 }
 
 bool retro_serialize(void *data, size_t size)
@@ -992,8 +1103,13 @@ bool retro_serialize(void *data, size_t size)
 	auto s = towns.SaveStateMem();
 	if (s.size() > size)
 	{
+		/* 缓冲不足（运行中状态变大）：刷新缓存并报失败，前端应重查大小 */
+		g_cachedSaveStateSize = s.size();
+		g_hasCachedSaveStateSize = true;
 		return false;
 	}
+	g_cachedSaveStateSize = s.size();
+	g_hasCachedSaveStateSize = true;
 	std::memcpy(data, s.data(), s.size());
 	return true;
 }
