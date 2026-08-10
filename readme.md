@@ -8,9 +8,11 @@ so you can run FM Towns software inside RetroArch and any libretro frontend.
 - Core name: tsugaru_libretro
 - Base: TOWNSEMU v20260522 Pre-release
 - License: BSD 3-Clause (TOWNSEMU) + MIT (libretro.h)
+- Platform: **Windows x64 only** (x86/x64 build). Linux, macOS and Android
+  builds are not done yet (work in progress).
 - [Latest Release](https://github.com/duskgao/Tsugaru-libretro/releases)
 
-## Download
+## Download (Windows)
 
 Grab the prebuilt towns_libretro.dll from the
 [Releases](https://github.com/duskgao/Tsugaru-libretro/releases) page, rename it
