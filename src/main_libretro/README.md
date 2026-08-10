@@ -17,9 +17,22 @@
   排空。`CDDAPlay` 等控制函数留空（CDDA 音频已混入 FMPCM 通道）。
 - **输入**：键盘由 `RETROK_*` → `TOWNS_JISKEY_*`（见 `keymap.h`）经
   `keyboard.PushFifo(JIS_PRESS/RELEASE, ...)` 注入；手柄经 `SetGamePadState`；
-  鼠标经 `SetMouseMotion` + `SetMouseButtonState`。
+  鼠标经 `SetMouseMotion` + `SetMouseButtonState`。鼠标实现参考了 PC-98
+  模拟器 Neko Project II 系（NP2kai）的方式：**无条件读取** frontend 的
+  `RETRO_DEVICE_MOUSE` 相对位移，不依赖 gameport 设备类型，从而让 RetroArch
+  把物理鼠标的相对移动直接路由给 core。
 - **无 SDL 依赖**：仅链接 `towns` + `osinit`，排除 `fssimplewindow_connection`、
   `yssimplesound` 等 SDL 相关实现。
+
+## 参考源码
+
+- [TOWNSEMU (Tsugaru)](https://github.com/captainys/TOWNSEMU)：本 core 的母体，
+  全部虚拟机/CPU/声卡/画面逻辑来自它（BSD 3-clause）。
+- [NP2kai (Neko Project II kai)](https://github.com/AZO234/NP2kai)：PC-98 模拟器。
+  物理鼠标的 libretro 注入方式参考其做法，即不从 gameport 设备类型判断、无条件
+  读取 frontend 鼠标相对位移（见上文「输入」小节）。
+- [libretro.h](https://github.com/libretro/libretro-common/blob/master/include/libretro.h)：
+  libretro 前端接口定义（MIT），经 `libretro.h` 与 `libretro.def` 接入。
 
 许可：TOWNSEMU 为 BSD 3-clause，libretro.h 为 MIT，二者兼容。
 
