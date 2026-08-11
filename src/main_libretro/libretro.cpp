@@ -54,9 +54,41 @@ static LibRetro_World *g_ow = nullptr;
 static Outside_World::Sound *g_sound_ptr = nullptr;
 static Outside_World::WindowInterface *g_window_ptr = nullptr;
 
-/* 音频环形缓冲（int16 立体声，44100Hz） */
-static std::vector<int16_t> g_audio;
-static const size_t MAX_AUDIO_SAMPLES = 44100 * 2; /* 最多缓存 1 秒 */
+/* 音频环形缓冲（int16 立体声，44100Hz）。
+   用定长 power-of-2 环形缓冲替代 std::vector + erase(begin,...)：
+   后者每次输出/溢出都要 O(n) memmove 整个缓冲（最多 88200 元素），是每帧热点。
+   环形缓冲 push/pop 均为 O(推入/取出量)，且无内存搬移。 */
+class AudioRing {
+public:
+	static const size_t CAP = 1u << 17;   /* 131072 int16 ≈ 1.49s 立体声@44100，超过原 1s 上限 */
+	static const size_t MASK = CAP - 1;
+	int16_t buf[CAP];
+	size_t head, tail;
+	AudioRing() : head(0), tail(0) {}
+	void clear() { head = tail = 0; }
+	size_t size() const { return (tail - head) & MASK; }
+	bool empty() const { return head == tail; }
+	void push(const int16_t *p, size_t n) {
+		size_t freec = (CAP - 1) - size();
+		if (n > freec) {                          /* 满则丢弃最旧样本 */
+			head = (head + (n - freec)) & MASK;
+		}
+		for (size_t i = 0; i < n; ++i) {
+			buf[tail] = p[i];
+			tail = (tail + 1) & MASK;
+		}
+	}
+	size_t pop(int16_t *out, size_t n) {
+		size_t s = size();
+		size_t take = (n < s) ? n : s;
+		for (size_t i = 0; i < take; ++i) {
+			out[i] = buf[head];
+			head = (head + 1) & MASK;
+		}
+		return take;
+	}
+};
+static AudioRing g_audioRing;
 
 /* 音频生成跨帧累加器：TownsSound::ProcessSound 每次产出 FM_PCM_MILLISEC_PER_WAVE(20ms)
    波形，需在累积满 20ms 虚拟时间时才调用一次（见 StepFrame）。在 load/reset 时清零。 */
@@ -151,10 +183,24 @@ static bool     g_towns_boot_fast      = true;
    可能造成音画不同步或变速 —— 这是 libretro 前端 60fps 同步下的固有折衷。 */
 static double g_towns_speed = 1.0;
 
+/* 鼠标灵敏度倍率（core option towns_mouse_speed，默认 2.0）。
+   物理鼠标每帧的相对位移（RETRO_DEVICE_ID_MOUSE_X/Y）直接映射到 Towns 的
+   1280x1024 坐标空间时，宿主屏（常见 1920x1080+）上同样距离的鼠标移动在
+   Towns 内只移动很少像素 → 指针"慢、跟不上、要大幅甩鼠标才能横穿屏幕"。
+   用该系数放大相对位移，使游戏内指针速度与宿主鼠标匹配；对需要精细定位的
+   桌面操作调低（1.0），对快速移动调高（4.0+）。 */
+static double g_mouse_speed = 2.0;
+
 /* 额外挂载的 SCSI 硬盘镜像路径（core option towns_hdd_path）。用于需要一块可写
    虚拟硬盘来存放系统/存档的 CD 游戏（如 3x3 Eyes）：CD 走内部 CDROM（cdImgFName），
    这块硬盘走 SCSI 设备，二者并存。留空表示不额外挂载硬盘。 */
 static std::string g_towns_hdd_path;
+
+/* 额外挂载的软驱 0 镜像路径（core option towns_fd0_path）。用于需要一张可写
+   用户磁盘的游戏（如 3x3 Eyes 启动时要格式化用户盘）：
+   填一个镜像文件路径，文件不存在时自动创建空白 2HD D77（可被游戏格式化写盘），
+   挂到软驱 A（drive 0）。留空表示不额外挂载软盘。 */
+static std::string g_towns_fd0_path;
 
 /* 即时存档大小缓存（见 retro_serialize_size / retro_serialize） */
 static size_t g_cachedSaveStateSize = 0;
@@ -176,20 +222,7 @@ static void AudioIn(const std::vector<unsigned char> &wave)
 	}
 	const int16_t *p = reinterpret_cast<const int16_t *>(wave.data());
 	size_t n = wave.size() / 2;
-	/* 防止缓冲无限增长：超出上限时丢弃最旧样本 */
-	if (g_audio.size() + n > MAX_AUDIO_SAMPLES)
-	{
-		size_t drop = g_audio.size() + n - MAX_AUDIO_SAMPLES;
-		if (drop >= g_audio.size())
-		{
-			g_audio.clear();
-		}
-		else
-		{
-			g_audio.erase(g_audio.begin(), g_audio.begin() + drop);
-		}
-	}
-	g_audio.insert(g_audio.end(), p, p + n);
+	g_audioRing.push(p, n);   /* 满则内部丢弃最旧样本，O(n) 无 memmove */
 }
 
 /* ============================================================
@@ -322,11 +355,164 @@ static struct retro_variable g_variables[] =
 	   注意：加速时音频按比例变快，音画可能轻微不同步。 */
 	{ "towns_speed",
 	  "Speed Multiplier; 1.0|1.5|2.0|3.0|4.0" },
+	/* 鼠标灵敏度（放大物理鼠标相对位移到 Towns 1280x1024 指针空间） */
+	{ "towns_mouse_speed",
+	  "Mouse Sensitivity; 1.0|1.5|2.0|2.5|3.0|4.0|6.0|8.0" },
 	/* 额外挂载的 SCSI 硬盘镜像。用于需要虚拟硬盘存系统/存档的 CD 游戏。
 	   留空则不挂载。CD 镜像通过 Load Content 加载，此硬盘与 CD 并存。 */
 	{ "towns_hdd_path",
 	  "Extra SCSI Hard Disk Image (full path)" },
+	/* 额外挂载的软驱 0 用户盘镜像。需要可写用户盘的 CD 游戏（如 3x3 Eyes 格式化
+	   用户盘）填一个镜像路径；文件不存在时自动创建空白 2HD D77 供游戏格式化。 */
+	{ "towns_fd0_path",
+	  "Floppy Drive 0 User Disk Image (full path; blank 2HD D77 auto-created)" },
 	{ nullptr, nullptr }
+};
+
+/* 现代 core option 定义（RETRO_ENVIRONMENT_SET_CORE_OPTIONS，v1 结构）。
+   RetroArch 1.22 起，只有通过 SET_CORE_OPTIONS 注册的选项才会被 GET_VARIABLE
+   物化；老 SET_VARIABLES 接口下 GET_VARIABLE 一律返回 false，选项全部失效
+   （实测日志刷 [ERROR] GET_VARIABLE: towns_* - Not implemented）。
+   字符串型（路径）选项 values 数组仅放 { nullptr, nullptr } 终止符，
+   default_value 为 nullptr，前端会显示文本输入框。 */
+static struct retro_core_option_definition g_core_options[] =
+{
+	{
+		"towns_model",
+		"Machine Model",
+		"FM Towns / Marty machine model to emulate.",
+		{
+			{ "2MX", nullptr }, { "2UX", nullptr }, { "2CX", nullptr }, { "2UG", nullptr },
+			{ "2HG", nullptr }, { "2HR", nullptr }, { "2UR", nullptr }, { "2MA", nullptr },
+			{ "2ME", nullptr }, { "2MF", nullptr }, { "2HC", nullptr }, { "MODEL1_2", nullptr },
+			{ "1F_2F", nullptr }, { "10F_20F", nullptr }, { "FMR_50_60", nullptr },
+			{ "FMR_50S", nullptr }, { "FMR_70", nullptr }, { "MARTY", nullptr },
+			{ nullptr, nullptr },
+		},
+		"2MX",
+	},
+	{
+		"towns_cpu_freq",
+		"CPU Frequency (MHz)",
+		"Lower values run faster; high values can break timing-sensitive games.",
+		{
+			{ "5", nullptr }, { "8", nullptr }, { "10", nullptr }, { "12", nullptr },
+			{ "15", nullptr }, { "20", nullptr }, { "25", nullptr }, { "30", nullptr },
+			{ "35", nullptr }, { "40", nullptr }, { "50", nullptr }, { "66", nullptr },
+			{ nullptr, nullptr },
+		},
+		"25",
+	},
+	{
+		"towns_use_fpu",
+		"Use FPU",
+		nullptr,
+		{
+			{ "enabled", nullptr }, { "disabled", nullptr },
+			{ nullptr, nullptr },
+		},
+		"enabled",
+	},
+	{
+		"towns_mem_size",
+		"Main RAM Size (MB)",
+		nullptr,
+		{
+			{ "2", nullptr }, { "4", nullptr }, { "8", nullptr }, { "16", nullptr },
+			{ "32", nullptr }, { "64", nullptr },
+			{ nullptr, nullptr },
+		},
+		"4",
+	},
+	{
+		"towns_pretend_386dx",
+		"Report CPU as 386DX",
+		nullptr,
+		{
+			{ "disabled", nullptr }, { "enabled", nullptr },
+			{ nullptr, nullptr },
+		},
+		"disabled",
+	},
+	{
+		"towns_midi_cards",
+		"MIDI Cards",
+		nullptr,
+		{
+			{ "0", nullptr }, { "1", nullptr }, { "2", nullptr }, { "3", nullptr },
+			{ "4", nullptr },
+			{ nullptr, nullptr },
+		},
+		"0",
+	},
+	{
+		"towns_highres",
+		"High-Resolution CRTC",
+		nullptr,
+		{
+			{ "enabled", nullptr }, { "disabled", nullptr },
+			{ nullptr, nullptr },
+		},
+		"enabled",
+	},
+	{
+		"towns_highres_pcm",
+		"High-Resolution PCM",
+		nullptr,
+		{
+			{ "enabled", nullptr }, { "disabled", nullptr },
+			{ nullptr, nullptr },
+		},
+		"enabled",
+	},
+	{
+		"towns_cd_speed",
+		"CD Speed",
+		nullptr,
+		{
+			{ "default", nullptr }, { "1", nullptr }, { "2", nullptr }, { "4", nullptr },
+			{ "8", nullptr },
+			{ nullptr, nullptr },
+		},
+		"default",
+	},
+	{
+		"towns_boot_fast",
+		"Boot to FAST mode",
+		nullptr,
+		{
+			{ "enabled", nullptr }, { "disabled", nullptr },
+			{ nullptr, nullptr },
+		},
+		"enabled",
+	},
+	{
+		"towns_speed",
+		"Speed Multiplier",
+		"Speeds up slow games; audio pitch shifts proportionally.",
+		{
+			{ "1.0", nullptr }, { "1.5", nullptr }, { "2.0", nullptr }, { "3.0", nullptr },
+			{ "4.0", nullptr },
+			{ nullptr, nullptr },
+		},
+		"1.0",
+	},
+	{
+		"towns_mouse_speed",
+		"Mouse Sensitivity",
+		"Multiplier for physical mouse motion into the Towns 1280x1024 cursor space. Higher = faster cursor.",
+		{
+			{ "1.0", nullptr }, { "1.5", nullptr }, { "2.0", nullptr }, { "2.5", nullptr },
+			{ "3.0", nullptr }, { "4.0", nullptr }, { "6.0", nullptr }, { "8.0", nullptr },
+			{ nullptr, nullptr },
+		},
+		"2.0",
+	},
+	/* 注：towns_hdd_path / towns_fd0_path 是自由文本（路径）选项，故意不放
+	   SET_CORE_OPTIONS —— RetroArch 1.22 对 v1 字符串选项强制校验 values 列表并报
+	   "Invalid value"，导致 GET_VARIABLE 失败。改为在 ApplyCoreOptions 中
+       双路解析：core option（老前端）→ 保存目录约定路径（见下）。 */
+	{ nullptr, nullptr, nullptr, { { nullptr, nullptr } }, nullptr },
 };
 
 /* ============================================================
@@ -400,6 +586,13 @@ static void PollAndInjectInput(void)
 		mouseDY = g_input_state(0, RETRO_DEVICE_MOUSE, 0, RETRO_DEVICE_ID_MOUSE_Y);
 		ml = (0 != g_input_state(0, RETRO_DEVICE_MOUSE, 0, RETRO_DEVICE_ID_MOUSE_LEFT));
 		mr = (0 != g_input_state(0, RETRO_DEVICE_MOUSE, 0, RETRO_DEVICE_ID_MOUSE_RIGHT));
+		/* 灵敏度放大：宿主屏分辨率通常远大于 Towns 的 1280x1024 指针空间，
+		   原始相对位移映射过去会偏慢。按 g_mouse_speed 放大后再注入。 */
+		if (g_mouse_speed > 1.0001)
+		{
+			mouseDX = (int)((double) mouseDX * g_mouse_speed);
+			mouseDY = (int)((double) mouseDY * g_mouse_speed);
+		}
 		mrelX -= mouseDX;   /* +X=左 约定下，右移(正) 应取负 */
 		mrelY -= mouseDY;
 	}
@@ -599,6 +792,28 @@ static void RenderAndPresent(void)
 			/* RGBA8888 -> XRGB8888（小端下内存布局为 B,G,R,0xFF，frontend 忽略 alpha） */
 			g_frameBuf[i] = (0xFFu << 24) | ((uint32_t) r << 16) | ((uint32_t) g << 8) | (uint32_t) b;
 		}
+		/* 动态几何：帧尺寸变化时通知前端（如进入高分辨率 1024x768 模式），
+		   否则前端按初始 640x480 分配纹理，高分辨率画面会被裁切/错配。
+		   仅在实际变化时调用 SET_SYSTEM_AV_INFO（RA 会重配视频），避免每帧抖动。 */
+		static int lastW = 0, lastH = 0;
+		if (img.wid != lastW || img.hei != lastH)
+		{
+			lastW = img.wid;
+			lastH = img.hei;
+			if (nullptr != g_environ_cb && img.hei > 0)
+			{
+				struct retro_system_av_info av;
+				memset(&av, 0, sizeof(av));
+				av.geometry.base_width   = img.wid;
+				av.geometry.base_height  = img.hei;
+				av.geometry.max_width    = 1024;
+				av.geometry.max_height   = 768;
+				av.geometry.aspect_ratio = (float) img.wid / (float) img.hei;
+				av.timing.fps            = 60.0;
+				av.timing.sample_rate    = 44100.0;
+				g_environ_cb(RETRO_ENVIRONMENT_SET_SYSTEM_AV_INFO, &av);
+			}
+		}
 		if (nullptr != g_video_refresh)
 		{
 			g_video_refresh(g_frameBuf.data(), img.wid, img.hei, (size_t) img.wid * 4);
@@ -673,7 +888,7 @@ static void UnloadVM(void)
 			g_window_ptr = nullptr;
 		}
 	}
-	g_audio.clear();
+	g_audioRing.clear();
 	g_audioGenAccum = 0;
 	g_mouseAbsX = 0;
 	g_mouseAbsY = 0;
@@ -714,7 +929,13 @@ void retro_set_environment(retro_environment_t cb)
 	}
 	if (nullptr != g_environ_cb)
 	{
-		g_environ_cb(RETRO_ENVIRONMENT_SET_VARIABLES, (void *) g_variables);
+		/* 优先现代接口 SET_CORE_OPTIONS(53)：RA 1.22 下选项才会被 GET_VARIABLE
+		   物化。老 SET_VARIABLES 在 RA 1.22 下 GET_VARIABLE 一律返回 false，
+		   选项全部失效（见 g_core_options 注释）。前端不支持则回退老接口。 */
+		if (!g_environ_cb(RETRO_ENVIRONMENT_SET_CORE_OPTIONS, (void *) g_core_options))
+		{
+			g_environ_cb(RETRO_ENVIRONMENT_SET_VARIABLES, (void *) g_variables);
+		}
 	}
 	if (nullptr != g_environ_cb)
 	{
@@ -830,10 +1051,87 @@ static void ApplyCoreOptions(void)
 		}
 	}
 
-	/* 额外 SCSI 硬盘镜像路径 */
+	/* 鼠标灵敏度（字符串 "2.0" 等） */
+	{
+		const char *v = GetOpt("towns_mouse_speed");
+		if (nullptr != v)
+		{
+			double ms = atof(v);
+			g_mouse_speed = (ms >= 0.25) ? ms : 1.0;
+		}
+	}
+
+	/* 额外 SCSI 硬盘镜像路径（core option towns_hdd_path）。
+	   towns_hdd_path / towns_fd0_path 未注册进 SET_CORE_OPTIONS（RA 1.22
+	   字符串选项强制校验 values 报 Invalid value），故优先读 core option
+	   （老前端仍可用），读不到则为空（不挂载）。 */
 	{
 		const char *v = GetOpt("towns_hdd_path");
 		g_towns_hdd_path = (nullptr != v) ? v : "";
+	}
+
+	/* 软驱 0 用户盘镜像路径。
+	   优先 core option towns_fd0_path；读不到则回退到约定路径
+	   <save_dir>/userdisk.img。注意 GET_SAVE_DIRECTORY 返回的已经是 per-core
+	   目录（RA 自动按 core 名创建，如 ...\saves\Tsugaru），不要再拼子目录，
+	   否则目录不存在导致 WriteBinaryFile 失败（实测报 WARN）。
+	   用 .img 扩展名：EnsureBlankUserDisk 生成 1232KB 全零 RAW 2HD，
+	   LoadRawBinary 按大小识别为 MEDIA_2HD_1232KB。 */
+	{
+		const char *v = GetOpt("towns_fd0_path");
+		g_towns_fd0_path = (nullptr != v) ? v : "";
+		if (g_towns_fd0_path.empty())
+		{
+			const char *dir = nullptr;
+			if (g_environ_cb(RETRO_ENVIRONMENT_GET_SAVE_DIRECTORY, &dir) &&
+			    nullptr != dir && '\0' != dir[0])
+			{
+				g_towns_fd0_path = std::string(dir) + "/userdisk.img";
+			}
+			else if (g_environ_cb(RETRO_ENVIRONMENT_GET_SYSTEM_DIRECTORY, &dir) &&
+			         nullptr != dir && '\0' != dir[0])
+			{
+				g_towns_fd0_path = std::string(dir) + "/userdisk.img";
+			}
+		}
+	}
+}
+
+/* 在指定路径创建一个空白 2HD 用户盘镜像。
+   不能用"真空盘"（如 672B D77 头+空磁道表）：IdentifyDiskMediaType 按已写磁道
+   总容量判定介质，0 磁道 → totalSize=0 → 判为 MEDIA_2D，与游戏期望的
+   MEDIA_2HD 不兼容，游戏"正在制作"后中止格式化（实测 3x3 Eyes 制作用户盘失败，
+   且 userdisk.d77 始终保持 672B，FORMAT TRACK 从未触发）。
+   改用 1261568 字节全零 RAW（FM Towns 标准 1232KB 2HD）：DiskImage::SetRawBinary
+   按文件大小识别介质并自动建立全部磁道+扇区（d77.cpp:2304-2396），
+   IdentifyDiskMediaType 判为 MEDIA_2HD_1232KB，游戏格式化介质兼容。
+   扩展名必须非 .d77/.rdd 才能走 LoadRawBinary（diskdrive.cpp:852-868），
+   故用 .img。文件已存在则跳过，避免覆盖用户已有数据。 */
+static void EnsureBlankUserDisk(const std::string &path)
+{
+	if (path.empty())
+	{
+		return;
+	}
+	if (cpputil::FileExists(path))
+	{
+		return;
+	}
+	/* 1232KB 2HD：1024B/sector × 8 sectors/track × 77 tracks × 2 sides */
+	const unsigned int kRaw2HDSize = 1261568;
+	std::vector<unsigned char> raw(kRaw2HDSize, 0);
+	if (!cpputil::WriteBinaryFile(path, raw.size(), raw.data()))
+	{
+		if (nullptr != g_log_cb)
+		{
+			g_log_cb(RETRO_LOG_WARN,
+			         "[tsugaru] Failed to create blank user disk: %s\n", path.c_str());
+		}
+	}
+	else if (nullptr != g_log_cb)
+	{
+		g_log_cb(RETRO_LOG_INFO,
+		         "[tsugaru] Created blank 1232KB 2HD user disk: %s\n", path.c_str());
 	}
 }
 
@@ -850,6 +1148,33 @@ static void ReadAndApplyCpuFreq(void)
 	{
 		return;
 	}
+	/* 性能优化：原实现每帧无条件调用 2 次 GET_VARIABLE，产生大量环境回调
+	   （RA 1.22 下因选项未初始化还会刷 [ERROR] 日志，约 120 条/秒）。
+	   改用 GET_VARIABLE_UPDATE 门控：仅在前端报告选项变化时才重新读取。
+	   GET_VARIABLE_UPDATE 不支持时回退到周期性轮询（约 1 次/秒）。 */
+	static bool updateSupported = true;
+	static unsigned throttle = 0;
+	if (updateSupported)
+	{
+		bool changed = false;
+		if (!g_environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE_UPDATE, &changed))
+		{
+			updateSupported = false;   /* 前端不支持，回退周期性 */
+		}
+		else if (!changed)
+		{
+			return;                    /* 选项未变，跳过本帧读取 */
+		}
+	}
+	else if (++throttle < 60)
+	{
+		return;                        /* 周期回退：约 1 次/秒 */
+	}
+	else
+	{
+		throttle = 0;
+	}
+
 	struct retro_variable var;
 	var.key = "towns_cpu_freq";
 	var.value = nullptr;
@@ -871,6 +1196,14 @@ static void ReadAndApplyCpuFreq(void)
 	{
 		double sp = atof(var.value);
 		g_towns_speed = (sp >= 0.5) ? sp : 1.0;
+	}
+
+	var.key = "towns_mouse_speed";
+	var.value = nullptr;
+	if (g_environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && nullptr != var.value)
+	{
+		double ms = atof(var.value);
+		g_mouse_speed = (ms >= 0.25) ? ms : 1.0;
 	}
 }
 
@@ -968,6 +1301,20 @@ bool retro_load_game(const struct retro_game_info *game)
 		}
 	}
 
+	/* 额外挂载软驱 0 用户盘镜像（core option towns_fd0_path）。
+	   文件不存在时自动创建空白 2HD D77，供游戏格式化写盘（如 3x3 Eyes 的用户盘）。
+	   若 content 本身就是软盘镜像（已占用 fdImgFName[0]），则挂到 drive 1 避免冲突。 */
+	if (!g_towns_fd0_path.empty())
+	{
+		EnsureBlankUserDisk(g_towns_fd0_path);
+		int fdSlot = 0;
+		if (!params.fdImgFName[0].empty())
+		{
+			fdSlot = 1; /* content 已占用 fdImgFName[0]，改用 drive 1 */
+		}
+		params.fdImgFName[fdSlot] = g_towns_fd0_path;
+	}
+
 	/* 创建音频/窗口接口，并交给 Setup */
 	g_sound_ptr = g_ow->CreateSound();
 	g_window_ptr = g_ow->CreateWindowInterface();
@@ -1009,7 +1356,7 @@ void retro_reset(void)
 	if (true == g_loaded)
 	{
 		towns.Reset();
-		g_audio.clear();
+		g_audioRing.clear();
 		g_audioGenAccum = 0;
 		g_aborted = false;
 	}
@@ -1059,24 +1406,15 @@ void retro_run(void)
 	if (nullptr != g_audio_batch)
 	{
 		const size_t kFramesPerTick = 735;      /* 44100 / 60 */
-		size_t avail  = g_audio.size() / 2;
-		if (avail >= kFramesPerTick)
+		/* 从环形缓冲取出 735 立体声帧；不足部分补静音（underrun 保护）。
+		   取代旧的 std::vector + erase(begin,...)：无 O(n) memmove，无每帧堆分配。 */
+		int16_t outBuf[kFramesPerTick * 2];
+		size_t got = g_audioRing.pop(outBuf, kFramesPerTick * 2);
+		for (size_t i = got; i < kFramesPerTick * 2; ++i)
 		{
-			g_audio_batch(g_audio.data(), kFramesPerTick);
-			g_audio.erase(g_audio.begin(), g_audio.begin() + (kFramesPerTick * 2));
+			outBuf[i] = 0;
 		}
-		else
-		{
-			/* 缓冲不足：先把已有输出，再补静音到 735 帧 */
-			static std::vector<int16_t> g_padBuf;
-			g_padBuf.assign(kFramesPerTick * 2, 0);   /* 全静音 */
-			if (avail > 0)
-			{
-				std::copy(g_audio.begin(), g_audio.end(), g_padBuf.begin());
-				g_audio.clear();
-			}
-			g_audio_batch(g_padBuf.data(), kFramesPerTick);
-		}
+		g_audio_batch(outBuf, kFramesPerTick);
 	}
 }
 
@@ -1167,8 +1505,11 @@ void retro_get_system_av_info(struct retro_system_av_info *info)
 	   frontend 会按帧尺寸缩放，这里给出基准几何。 */
 	info->geometry.base_width   = 640;
 	info->geometry.base_height  = 480;
-	info->geometry.max_width    = 640;
-	info->geometry.max_height   = 480;
+	/* max 取 FM Towns 高分辨率模式上限 1024x768（core option towns_highres 默认 enabled）。
+	   base 仍为标准 640x480；运行中若帧尺寸变化会通过 SET_SYSTEM_AV_INFO 动态通知前端，
+	   否则前端按初始 640x480 分配纹理，高分辨率画面会被裁切。 */
+	info->geometry.max_width    = 1024;
+	info->geometry.max_height   = 768;
 	info->geometry.aspect_ratio = 4.0f / 3.0f;
 	info->timing.fps            = 60.0;
 	info->timing.sample_rate    = 44100.0;
