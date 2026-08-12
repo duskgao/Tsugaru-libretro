@@ -1390,6 +1390,7 @@ bool retro_load_game(const struct retro_game_info *game)
 			if (ParseM3U(path, items))
 			{
 				g_diskPaths.clear();
+				std::vector<std::string> floppies;   /* 软盘条目（按出现顺序） */
 				for (auto &item : items)
 				{
 					/* 取扩展名判断类型 */
@@ -1408,14 +1409,23 @@ bool retro_load_game(const struct retro_game_info *game)
 					}
 					else if (!isCDEntry)
 					{
-						g_diskPaths.push_back(item);   /* 软盘条目加入 disk control */
+						floppies.push_back(item);   /* 软盘条目 */
 					}
 				}
-				if (!g_diskPaths.empty())
+				/* 前两张软盘分别挂到软驱0(FD0)和软驱1(FD1)：
+				   很多双盘游戏（如 D.P.S.）要求 FD0+FD1 同时插盘才能启动，
+				   仅挂第一张会导致 IPL 引导时访问 FD1 失败而黑屏。
+				   其余软盘加入 disk control 列表供运行中换盘。 */
+				if (floppies.size() >= 1) params.fdImgFName[0] = floppies[0];
+				if (floppies.size() >= 2) params.fdImgFName[1] = floppies[1];
+				for (size_t i = 2; i < floppies.size(); ++i)
+				{
+					g_diskPaths.push_back(floppies[i]);   /* 第三张起进 disk control */
+				}
+				if (!floppies.empty())
 				{
 					g_diskIndex = 0;
 					g_diskEjected = false;
-					params.fdImgFName[0] = g_diskPaths[0];   /* 第一张软盘挂到软驱0 */
 					loadedFD = true;
 				}
 				/* 若既有 CD 又有软盘，则两者都挂载；CD 引导 + 软盘数据。 */
@@ -1492,6 +1502,14 @@ bool retro_load_game(const struct retro_game_info *game)
 	else
 	{
 		g_fdBootActive = false;
+	}
+
+	/* [DEBUG] 挂载诊断：确认 FD0/FD1 路径是否正确传入 */
+	if (nullptr != g_log_cb)
+	{
+		g_log_cb(RETRO_LOG_INFO, "[tsugaru] mount: fd0=[%s] fd1=[%s] cd=[%s] bootKeyComb=%u fdBoot=%d\n",
+		         params.fdImgFName[0].c_str(), params.fdImgFName[1].c_str(),
+		         params.cdImgFName.c_str(), params.bootKeyComb, (int)g_fdBootActive);
 	}
 
 	/* 额外挂载 SCSI 硬盘镜像（core option towns_hdd_path）。
@@ -1584,9 +1602,12 @@ void retro_run(void)
 	/* 纯软盘引导：每帧重新注入 BOOT_KEYCOMB_F0。
 	   NotifyDiskRead() 会在 FDC/CD 读扇区时清空 bootKeyComb，若 BIOS 在读到 F0
 	   之前先触发了磁盘读（libretro 单帧步进下的时序差异），引导就会失效、卡在
-	   警告屏。持续重新注入可确保 BIOS 有机会检测到 F0 从软盘 IPL 引导。
-	   一旦软盘 IPL 真正执行（游戏接管），bootKeyComb 被消费后即使再设置也无害。 */
-	if (g_fdBootActive)
+	   警告屏。
+	   关键约束：只在 BIOS"尚未开始读取 F0 键序列"时注入（bootKeyCombSequenceCounter==0）。
+	   SetBootKeyCombination() 会把 bootKeyCombSequenceCounter 重置为 0，若 BIOS
+	   正在分多次读取 F0 键序列（每次键盘 I/O 递增 counter），每帧重置会打断序列、
+	   导致 F0 永远读不完 → 引导卡死。故 counter>0（BIOS 正在读序列）时绝不覆盖。 */
+	if (g_fdBootActive && 0 == towns.keyboard.state.bootKeyCombSequenceCounter)
 	{
 		towns.keyboard.SetBootKeyCombination(BOOT_KEYCOMB_F0);
 		towns.gameport.SetBootKeyCombination(BOOT_KEYCOMB_F0);
