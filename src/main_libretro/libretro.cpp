@@ -1246,7 +1246,9 @@ bool retro_load_game(const struct retro_game_info *game)
 	}
 	else
 	{
-		/* 依据扩展名判断内容类型：CD / 软盘 / SCSI 硬盘 */
+		/* 依据扩展名判断内容类型：CD / 软盘 / SCSI 硬盘。
+		   注意 .bin 既可能是 CD 轨道也可能是软盘镜像（raw dump），需按文件大小区分：
+		   FM Towns 软盘为 320/640/720/1232/1440KB，CD 轨道通常远大于此。 */
 		std::string path = game->path;
 		std::string ext;
 		auto dot = path.rfind('.');
@@ -1256,11 +1258,36 @@ bool retro_load_game(const struct retro_game_info *game)
 			for (auto &c : ext) { c = (char) ::tolower((unsigned char) c); }
 		}
 
-		bool isCD = (ext == "cue" || ext == "ccd" || ext == "mds" || ext == "iso" ||
-		             ext == "toc" || ext == "bin");
-		bool isFD = (ext == "d77" || ext == "dsk" || ext == "imd" || ext == "td0" ||
-		             ext == "img");
+		bool isCD = false;
+		bool isFD = (ext == "d77" || ext == "d88" || ext == "dsk" || ext == "imd" ||
+		             ext == "td0" || ext == "img");
 		bool isHD = (ext == "hdd" || ext == "vhd");
+
+		/* .bin 判断：按文件大小判定是软盘还是 CD 轨道。
+		   TOWNSEMU 的 D77 加载器按大小识别介质（SetRawBinary）：
+		   1261568=2HD1232K, 1474560=2HD1440K, 655360=2DD640K, 737280=2DD720K, 327680=2D320K */
+		if (ext == "bin")
+		{
+			unsigned long long sz = 0;
+			{
+				FILE *fp = fopen(path.c_str(), "rb");
+				if (fp) { fseek(fp, 0, SEEK_END); sz = (unsigned long long) ftell(fp); fclose(fp); }
+			}
+			if (sz == 327680ULL || sz == 655360ULL || sz == 737280ULL ||
+			    sz == 1261568ULL || sz == 1474560ULL)
+			{
+				isFD = true;   /* 软盘大小的 .bin → 软盘镜像 */
+			}
+			else
+			{
+				isCD = true;   /* 否则 → CD 轨道 */
+			}
+		}
+		else
+		{
+			isCD = (ext == "cue" || ext == "ccd" || ext == "mds" || ext == "iso" ||
+			        ext == "toc");
+		}
 
 		if (isCD)
 		{
@@ -1490,7 +1517,7 @@ void retro_get_system_info(struct retro_system_info *info)
 	}
 	info->library_name = "Tsugaru";
 	info->library_version = "v20260522 Pre-release";
-	info->valid_extensions = "cue|ccd|mds|iso|toc|bin|img|d77|dsk|imd|td0|hdd|vhd";
+	info->valid_extensions = "cue|ccd|mds|iso|toc|bin|img|d77|d88|dsk|imd|td0|hdd|vhd";
 	info->need_fullpath = true;  /* 通过文件路径加载 CD/软盘镜像 */
 	info->block_extract = false;
 }
