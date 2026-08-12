@@ -122,6 +122,12 @@ static std::vector<std::string> g_diskPaths;   /* 当前 .m3u 里的所有盘路
 static unsigned g_diskIndex = 0;               /* 当前插入的盘索引 */
 static bool g_diskEjected = false;             /* 托盘是否弹出 */
 
+/* 纯软盘引导激活标志：加载的是软盘内容（无 CD）时置 true。
+   在 retro_run 里每帧重新注入 BOOT_KEYCOMB_F0，直到 BIOS 真正从软盘 IPL 引导。
+   原因：NotifyDiskRead()（FDC/CD 读扇区时）会清空 bootKeyComb，
+   libretro 单帧步进下可能在 BIOS 读到 F0 之前就触发磁盘读 → 引导失效卡在警告屏。 */
+static bool g_fdBootActive = false;
+
 /* 解析 .m3u 播放列表：每行一个镜像路径（跳过空行/注释/#EXTINF）。 */
 static bool ParseM3U(const std::string &path, std::vector<std::string> &out)
 {
@@ -937,10 +943,11 @@ static void UnloadVM(void)
 	g_mouseAbsY = 0;
 	g_frameBuf.clear();
 	memset(g_keyPrev, 0, sizeof(g_keyPrev));
-	/* 重置 disk control 状态 */
+	/* 重置 disk control 与软盘引导状态 */
 	g_diskPaths.clear();
 	g_diskIndex = 0;
 	g_diskEjected = false;
+	g_fdBootActive = false;
 	g_loaded = false;
 	g_aborted = false;
 }
@@ -1480,6 +1487,11 @@ bool retro_load_game(const struct retro_game_info *game)
 	if (loadedFD && params.cdImgFName.empty())
 	{
 		params.bootKeyComb = BOOT_KEYCOMB_F0;
+		g_fdBootActive = true;   /* 纯软盘引导：retro_run 里持续注入 F0 */
+	}
+	else
+	{
+		g_fdBootActive = false;
 	}
 
 	/* 额外挂载 SCSI 硬盘镜像（core option towns_hdd_path）。
@@ -1567,6 +1579,17 @@ void retro_run(void)
 	if (true != g_loaded)
 	{
 		return;
+	}
+
+	/* 纯软盘引导：每帧重新注入 BOOT_KEYCOMB_F0。
+	   NotifyDiskRead() 会在 FDC/CD 读扇区时清空 bootKeyComb，若 BIOS 在读到 F0
+	   之前先触发了磁盘读（libretro 单帧步进下的时序差异），引导就会失效、卡在
+	   警告屏。持续重新注入可确保 BIOS 有机会检测到 F0 从软盘 IPL 引导。
+	   一旦软盘 IPL 真正执行（游戏接管），bootKeyComb 被消费后即使再设置也无害。 */
+	if (g_fdBootActive)
+	{
+		towns.keyboard.SetBootKeyCombination(BOOT_KEYCOMB_F0);
+		towns.gameport.SetBootKeyCombination(BOOT_KEYCOMB_F0);
 	}
 
 	PollAndInjectInput();
