@@ -1374,14 +1374,44 @@ bool retro_load_game(const struct retro_game_info *game)
 
 		if (ext == "m3u")
 		{
-			/* 多盘 .m3u 播放列表：解析所有盘路径，把第一张盘挂到软驱0。
-			   后续可用 disk control 在运行中切盘。 */
-			if (ParseM3U(path, g_diskPaths) && !g_diskPaths.empty())
+			/* 多盘 .m3u 播放列表：遍历条目，区分 CD 与软盘。
+			   - .cue/.iso/.ccd 条目 → 引导 CD（cdImgFName）
+			   - 软盘条目（.d88/.d77/.bin 等）→ 加入 g_diskPaths（disk control 列表），
+			     其中第一张软盘挂到软驱0（fdImgFName[0]）
+			   这样可同时引导 Towns OS（CD）并挂载游戏数据盘（软盘）。 */
+			std::vector<std::string> items;
+			if (ParseM3U(path, items))
 			{
-				g_diskIndex = 0;
-				g_diskEjected = false;
-				params.fdImgFName[0] = g_diskPaths[0];
-				loadedFD = true;
+				g_diskPaths.clear();
+				for (auto &item : items)
+				{
+					/* 取扩展名判断类型 */
+					std::string iext;
+					auto idot = item.rfind('.');
+					if (std::string::npos != idot)
+					{
+						iext = item.substr(idot + 1);
+						for (auto &c : iext) { c = (char) ::tolower((unsigned char) c); }
+					}
+					bool isCDEntry = (iext == "cue" || iext == "iso" || iext == "ccd" ||
+					                  iext == "mds" || iext == "toc");
+					if (isCDEntry && params.cdImgFName.empty())
+					{
+						params.cdImgFName = item;   /* 首个 CD 条目作为引导 */
+					}
+					else if (!isCDEntry)
+					{
+						g_diskPaths.push_back(item);   /* 软盘条目加入 disk control */
+					}
+				}
+				if (!g_diskPaths.empty())
+				{
+					g_diskIndex = 0;
+					g_diskEjected = false;
+					params.fdImgFName[0] = g_diskPaths[0];   /* 第一张软盘挂到软驱0 */
+					loadedFD = true;
+				}
+				/* 若既有 CD 又有软盘，则两者都挂载；CD 引导 + 软盘数据。 */
 			}
 			else
 			{
@@ -1443,10 +1473,11 @@ bool retro_load_game(const struct retro_game_info *game)
 	}
 
 	/* FM Towns BIOS 默认不自动从软盘引导：需要按 F0（软盘引导组合键）才会从软驱0
-	   的 IPL 启动。加载软盘内容时自动设置 BOOT_KEYCOMB_F0，让单盘软盘游戏开箱即用，
-	   无需用户手动按 F0。CD/HD 内容保持默认（BOOT_KEYCOMB_NONE，由 BIOS 自动或按 F1/F3）。
+	   的 IPL 启动。加载"纯软盘内容"时自动设置 BOOT_KEYCOMB_F0，让单盘软盘游戏开箱即用，
+	   无需用户手动按 F0。CD 引导（有 cdImgFName）或 HD 内容保持默认（BOOT_KEYCOMB_NONE，
+	   由 BIOS 自动或按 F1/F3）。
 	   （TOWNSEMU：towns.cpp:305 在 Setup 时 SetBootKeyCombination(params.bootKeyComb)） */
-	if (loadedFD)
+	if (loadedFD && params.cdImgFName.empty())
 	{
 		params.bootKeyComb = BOOT_KEYCOMB_F0;
 	}
