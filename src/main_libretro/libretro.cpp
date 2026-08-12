@@ -122,12 +122,6 @@ static std::vector<std::string> g_diskPaths;   /* 当前 .m3u 里的所有盘路
 static unsigned g_diskIndex = 0;               /* 当前插入的盘索引 */
 static bool g_diskEjected = false;             /* 托盘是否弹出 */
 
-/* 纯软盘引导激活标志：加载的是软盘内容（无 CD）时置 true。
-   在 retro_run 里每帧重新注入 BOOT_KEYCOMB_F0，直到 BIOS 真正从软盘 IPL 引导。
-   原因：NotifyDiskRead()（FDC/CD 读扇区时）会清空 bootKeyComb，
-   libretro 单帧步进下可能在 BIOS 读到 F0 之前就触发磁盘读 → 引导失效卡在警告屏。 */
-static bool g_fdBootActive = false;
-
 /* 解析 .m3u 播放列表：每行一个镜像路径（跳过空行/注释/#EXTINF）。 */
 static bool ParseM3U(const std::string &path, std::vector<std::string> &out)
 {
@@ -256,8 +250,11 @@ static size_t g_cachedSaveStateSize = 0;
 static bool  g_hasCachedSaveStateSize = false;
 
 /* 时间常量（与 TOWNSEMU 内部一致）
- * TOWNS_RENDERING_FREQUENCY 直接取自 townsdef.h（const uint64_t），不在此重复定义。 */
+ * TOWNS_RENDERING_FREQUENCY 直接取自 townsdef.h（const uint64_t），不在此重复定义。
+ * TIME_DEFICIT_PAYBACK_PER_INSTRUCTION 取自 townsthread.h（每条指令把虚拟时间推进
+ * 最多 1us），见 StepFrame。 */
 static const long long NANOSECONDS_PER_TIME_SYNC = 1000000LL;          /* 1ms */
+static const long long TIME_DEFICIT_PAYBACK_PER_INSTRUCTION = 1000LL;  /* 1us */
 
 /* ============================================================
  *  音频收集
@@ -761,11 +758,24 @@ static void StepFrame(void)
 		}
 
 		// 内层：执行指令直到 nextFastDevicePollingTime（或帧结束）。
+		// payBack 机制对齐官方 TownsThread::VMMainLoopTemplate（townsthread.cpp:142-144）：
+		// 每条指令后把虚拟时间推进最多 1us（TIME_DEFICIT_PAYBACK_PER_INSTRUCTION），
+		// 使每帧执行的指令量匹配真实 CPU 频率。缺了它 townsTime 只由 RunOneInstruction
+		// 按真实时钟推进，每帧指令量远少，FDC/CD 完成事件（依赖 townsTime 调度）来不及
+		// 触发 → BIOS/DOS 等待 FDC 完成时空转卡死（实测 D.P.S. 卡在 CS:0092 EIP:6 86）。
 		while (towns.state.townsTime <= (uint64_t) towns.state.nextFastDevicePollingTime &&
 		       0 == towns.GetStopFlags())
 		{
 			towns.RunOneInstruction();
 			towns.pic.ProcessIRQ(towns.CPU(), towns.mem);
+			/* payBack：快速推进 townsTime 到轮询边界，避免每帧指令量不足。 */
+			{
+				int64_t timeDeficit = towns.state.timeDeficit;
+				uint32_t payBack = (uint32_t) std::min<int64_t>(
+					TIME_DEFICIT_PAYBACK_PER_INSTRUCTION, timeDeficit);
+				towns.state.townsTime += payBack;
+				towns.state.timeDeficit = timeDeficit - payBack;
+			}
 			if (towns.state.townsTime >= targetTime)
 			{
 				break;
@@ -947,7 +957,6 @@ static void UnloadVM(void)
 	g_diskPaths.clear();
 	g_diskIndex = 0;
 	g_diskEjected = false;
-	g_fdBootActive = false;
 	g_loaded = false;
 	g_aborted = false;
 }
@@ -1497,20 +1506,9 @@ bool retro_load_game(const struct retro_game_info *game)
 	if (loadedFD && params.cdImgFName.empty())
 	{
 		params.bootKeyComb = BOOT_KEYCOMB_F0;
-		g_fdBootActive = true;   /* 纯软盘引导：retro_run 里持续注入 F0 */
-	}
-	else
-	{
-		g_fdBootActive = false;
 	}
 
-	/* [DEBUG] 挂载诊断：确认 FD0/FD1 路径是否正确传入 */
-	if (nullptr != g_log_cb)
-	{
-		g_log_cb(RETRO_LOG_INFO, "[tsugaru] mount: fd0=[%s] fd1=[%s] cd=[%s] bootKeyComb=%u fdBoot=%d\n",
-		         params.fdImgFName[0].c_str(), params.fdImgFName[1].c_str(),
-		         params.cdImgFName.c_str(), params.bootKeyComb, (int)g_fdBootActive);
-	}
+
 
 	/* 额外挂载 SCSI 硬盘镜像（core option towns_hdd_path）。
 	   放入 scsiImg[1]（scsiImg[0] 保留给 .hdd/.vhd content）。这样玩家可在
@@ -1597,20 +1595,6 @@ void retro_run(void)
 	if (true != g_loaded)
 	{
 		return;
-	}
-
-	/* 纯软盘引导：每帧重新注入 BOOT_KEYCOMB_F0。
-	   NotifyDiskRead() 会在 FDC/CD 读扇区时清空 bootKeyComb，若 BIOS 在读到 F0
-	   之前先触发了磁盘读（libretro 单帧步进下的时序差异），引导就会失效、卡在
-	   警告屏。
-	   关键约束：只在 BIOS"尚未开始读取 F0 键序列"时注入（bootKeyCombSequenceCounter==0）。
-	   SetBootKeyCombination() 会把 bootKeyCombSequenceCounter 重置为 0，若 BIOS
-	   正在分多次读取 F0 键序列（每次键盘 I/O 递增 counter），每帧重置会打断序列、
-	   导致 F0 永远读不完 → 引导卡死。故 counter>0（BIOS 正在读序列）时绝不覆盖。 */
-	if (g_fdBootActive && 0 == towns.keyboard.state.bootKeyCombSequenceCounter)
-	{
-		towns.keyboard.SetBootKeyCombination(BOOT_KEYCOMB_F0);
-		towns.gameport.SetBootKeyCombination(BOOT_KEYCOMB_F0);
 	}
 
 	PollAndInjectInput();
