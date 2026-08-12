@@ -1449,7 +1449,7 @@ bool retro_load_game(const struct retro_game_info *game)
 		{
 			bool isCD = false;
 			bool isFD = (ext == "d77" || ext == "d88" || ext == "dsk" || ext == "imd" ||
-			             ext == "td0" || ext == "img");
+			             ext == "td0" || ext == "img" || ext == "xdf");
 			bool isHD = (ext == "hdd" || ext == "vhd");
 
 			/* .bin 判断：按文件大小判定是软盘还是 CD 轨道。 */
@@ -1718,7 +1718,7 @@ void retro_get_system_info(struct retro_system_info *info)
 	}
 	info->library_name = "Tsugaru";
 	info->library_version = "v20260522 Pre-release";
-	info->valid_extensions = "cue|ccd|mds|iso|toc|bin|img|m3u|d77|d88|dsk|imd|td0|hdd|vhd";
+	info->valid_extensions = "cue|ccd|mds|iso|toc|bin|img|m3u|d77|d88|dsk|imd|td0|xdf|hdd|vhd";
 	info->need_fullpath = true;  /* 通过文件路径加载 CD/软盘镜像 */
 	info->block_extract = false;
 }

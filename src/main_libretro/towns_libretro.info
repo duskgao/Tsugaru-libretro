@@ -1,6 +1,6 @@
 display_name = "Fujitsu - FM Towns (Tsugaru)"
 authors = "CaptainYS|tsugaru"
-supported_extensions = "cue|ccd|mds|iso|toc|bin|img|m3u|d77|d88|dsk|imd|td0|hdd|vhd"
+supported_extensions = "cue|ccd|mds|iso|toc|bin|img|m3u|d77|d88|dsk|imd|td0|xdf|hdd|vhd"
 corename = "Tsugaru"
 manufacturer = "Fujitsu"
 categories = "Emulator"
