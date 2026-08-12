@@ -111,6 +111,49 @@ static bool g_aborted = false;
 static std::string g_system_dir;
 static std::string g_save_dir;
 
+/* ============================================================
+ *  disk control（软盘热换盘，多盘游戏用）
+ *  ============================================================
+ *  FM Towns 多盘软盘游戏（如 Emit、Mad Paradox）每张盘是独立镜像。
+ *  通过 .m3u 播放列表把一个游戏的多张盘串起来，加载 .m3u 后前端可用
+ *  disk control 在运行中切盘（Eject → 换盘 → Insert），core 把新盘
+ *  重新加载到软驱 0。 */
+static std::vector<std::string> g_diskPaths;   /* 当前 .m3u 里的所有盘路径 */
+static unsigned g_diskIndex = 0;               /* 当前插入的盘索引 */
+static bool g_diskEjected = false;             /* 托盘是否弹出 */
+
+/* 解析 .m3u 播放列表：每行一个镜像路径（跳过空行/注释/#EXTINF）。 */
+static bool ParseM3U(const std::string &path, std::vector<std::string> &out)
+{
+	out.clear();
+	FILE *fp = fopen(path.c_str(), "r");
+	if (!fp) return false;
+	char line[4096];
+	while (fgets(line, sizeof(line), fp))
+	{
+		std::string s = line;
+		/* 去掉行尾换行/回车 */
+		while (!s.empty() && (s.back() == '\n' || s.back() == '\r')) s.pop_back();
+		if (s.empty() || s[0] == '#') continue;          /* 跳过空行和注释/#EXTINF */
+		out.push_back(s);
+	}
+	fclose(fp);
+	return !out.empty();
+}
+
+/* 把当前盘索引对应的镜像加载到软驱 0。若为空路径则弹出软盘。 */
+static void MountCurrentDisk(void)
+{
+	if (g_diskIndex < g_diskPaths.size())
+	{
+		towns.fdc.LoadD77orRDDorRAW(0, g_diskPaths[g_diskIndex].c_str(), towns.state.townsTime);
+	}
+	else
+	{
+		towns.fdc.Eject(0);
+	}
+}
+
 /* 控制器端口设备类型（port0=手柄，port1=鼠标） */
 static unsigned g_port_device[2] = { RETRO_DEVICE_JOYPAD, RETRO_DEVICE_JOYPAD };
 
@@ -894,6 +937,10 @@ static void UnloadVM(void)
 	g_mouseAbsY = 0;
 	g_frameBuf.clear();
 	memset(g_keyPrev, 0, sizeof(g_keyPrev));
+	/* 重置 disk control 状态 */
+	g_diskPaths.clear();
+	g_diskIndex = 0;
+	g_diskEjected = false;
 	g_loaded = false;
 	g_aborted = false;
 }
@@ -904,6 +951,59 @@ static void UnloadVM(void)
 
 extern "C"
 {
+
+/* ============================================================
+ *  disk control 回调（软盘热换盘）
+ *  ============================================================ */
+
+/* 设置托盘弹出/装入状态。ejected=true 时弹出软盘（软驱0 脱离镜像）。 */
+static bool dc_set_eject_state(bool ejected)
+{
+	g_diskEjected = ejected;
+	if (ejected)
+	{
+		towns.fdc.Eject(0);
+	}
+	else
+	{
+		/* 装入：重新挂载当前索引对应的盘（若索引在列表内）。 */
+		if (g_diskIndex < g_diskPaths.size())
+		{
+			MountCurrentDisk();
+		}
+	}
+	return true;
+}
+
+static bool dc_get_eject_state(void)
+{
+	return g_diskEjected;
+}
+
+static unsigned dc_get_image_index(void)
+{
+	return g_diskIndex;
+}
+
+/* 切盘到指定索引（仅在托盘弹出时）。 */
+static bool dc_set_image_index(unsigned index)
+{
+	if (index >= g_diskPaths.size())
+	{
+		return false;
+	}
+	if (!g_diskEjected)
+	{
+		return false;   /* 必须先在托盘弹出状态下切盘 */
+	}
+	g_diskIndex = index;
+	return true;
+}
+
+static unsigned dc_get_num_images(void)
+{
+	return (unsigned) g_diskPaths.size();
+}
 
 unsigned retro_api_version(void)
 {
@@ -944,6 +1044,19 @@ void retro_set_environment(retro_environment_t cb)
 	if (nullptr != g_environ_cb)
 	{
 		g_environ_cb(RETRO_ENVIRONMENT_SET_CONTROLLER_INFO, (void *) g_controller_info);
+	}
+	/* 注册 disk control（软盘热换盘）。多盘软盘游戏（.m3u）运行时换盘靠它。 */
+	if (nullptr != g_environ_cb)
+	{
+		static struct retro_disk_control_callback dc;
+		dc.set_eject_state  = dc_set_eject_state;
+		dc.get_eject_state  = dc_get_eject_state;
+		dc.get_image_index  = dc_get_image_index;
+		dc.set_image_index  = dc_set_image_index;
+		dc.get_num_images   = dc_get_num_images;
+		dc.replace_image_index = nullptr;
+		dc.add_image_index  = nullptr;
+		g_environ_cb(RETRO_ENVIRONMENT_SET_DISK_CONTROL_INTERFACE, (void *) &dc);
 	}
 }
 
@@ -1220,6 +1333,7 @@ bool retro_load_game(const struct retro_game_info *game)
 	params.ROMPath = g_system_dir.empty() ? "." : g_system_dir;
 	params.townsType = g_towns_model;
 	params.autoSaveCMOS = true;
+	bool loadedFD = false;   /* 本次加载是否为软盘内容（决定是否自动 F0 引导） */
 	/* CPU 频率：0 表示不改变（用默认 FREQUENCY_DEFAULT）。用户可调低以提速卡顿的
 	   游戏，或保持高值以贴近真实时序。 */
 	params.freq = g_towns_freq;
@@ -1246,7 +1360,7 @@ bool retro_load_game(const struct retro_game_info *game)
 	}
 	else
 	{
-		/* 依据扩展名判断内容类型：CD / 软盘 / SCSI 硬盘。
+		/* 依据扩展名判断内容类型：CD / 软盘 / SCSI 硬盘 / 多盘 .m3u。
 		   注意 .bin 既可能是 CD 轨道也可能是软盘镜像（raw dump），需按文件大小区分：
 		   FM Towns 软盘为 320/640/720/1232/1440KB，CD 轨道通常远大于此。 */
 		std::string path = game->path;
@@ -1258,55 +1372,83 @@ bool retro_load_game(const struct retro_game_info *game)
 			for (auto &c : ext) { c = (char) ::tolower((unsigned char) c); }
 		}
 
-		bool isCD = false;
-		bool isFD = (ext == "d77" || ext == "d88" || ext == "dsk" || ext == "imd" ||
-		             ext == "td0" || ext == "img");
-		bool isHD = (ext == "hdd" || ext == "vhd");
-
-		/* .bin 判断：按文件大小判定是软盘还是 CD 轨道。
-		   TOWNSEMU 的 D77 加载器按大小识别介质（SetRawBinary）：
-		   1261568=2HD1232K, 1474560=2HD1440K, 655360=2DD640K, 737280=2DD720K, 327680=2D320K */
-		if (ext == "bin")
+		if (ext == "m3u")
 		{
-			unsigned long long sz = 0;
+			/* 多盘 .m3u 播放列表：解析所有盘路径，把第一张盘挂到软驱0。
+			   后续可用 disk control 在运行中切盘。 */
+			if (ParseM3U(path, g_diskPaths) && !g_diskPaths.empty())
 			{
-				FILE *fp = fopen(path.c_str(), "rb");
-				if (fp) { fseek(fp, 0, SEEK_END); sz = (unsigned long long) ftell(fp); fclose(fp); }
-			}
-			if (sz == 327680ULL || sz == 655360ULL || sz == 737280ULL ||
-			    sz == 1261568ULL || sz == 1474560ULL)
-			{
-				isFD = true;   /* 软盘大小的 .bin → 软盘镜像 */
+				g_diskIndex = 0;
+				g_diskEjected = false;
+				params.fdImgFName[0] = g_diskPaths[0];
+				loadedFD = true;
 			}
 			else
 			{
-				isCD = true;   /* 否则 → CD 轨道 */
+				/* 空/无效 .m3u：当作 CD 处理（fallback） */
+				params.cdImgFName = path;
 			}
 		}
 		else
 		{
-			isCD = (ext == "cue" || ext == "ccd" || ext == "mds" || ext == "iso" ||
-			        ext == "toc");
-		}
+			bool isCD = false;
+			bool isFD = (ext == "d77" || ext == "d88" || ext == "dsk" || ext == "imd" ||
+			             ext == "td0" || ext == "img");
+			bool isHD = (ext == "hdd" || ext == "vhd");
 
-		if (isCD)
-		{
-			params.cdImgFName = path;
+			/* .bin 判断：按文件大小判定是软盘还是 CD 轨道。 */
+			if (ext == "bin")
+			{
+				unsigned long long sz = 0;
+				{
+					FILE *fp = fopen(path.c_str(), "rb");
+					if (fp) { fseek(fp, 0, SEEK_END); sz = (unsigned long long) ftell(fp); fclose(fp); }
+				}
+				if (sz == 327680ULL || sz == 655360ULL || sz == 737280ULL ||
+				    sz == 1261568ULL || sz == 1474560ULL)
+				{
+					isFD = true;
+				}
+				else
+				{
+					isCD = true;
+				}
+			}
+			else
+			{
+				isCD = (ext == "cue" || ext == "ccd" || ext == "mds" || ext == "iso" ||
+				        ext == "toc");
+			}
+
+			if (isCD)
+			{
+				params.cdImgFName = path;
+			}
+			else if (isFD)
+			{
+				params.fdImgFName[0] = path;
+				loadedFD = true;
+			}
+			else if (isHD)
+			{
+				params.scsiImg[0].imageType = TownsStartParameters::SCSIIMAGE_HARDDISK;
+				params.scsiImg[0].imgFName = path;
+			}
+			else
+			{
+				/* 未知扩展名：当作 CD 镜像处理（最常见情形） */
+				params.cdImgFName = path;
+			}
 		}
-		else if (isFD)
-		{
-			params.fdImgFName[0] = path;
-		}
-		else if (isHD)
-		{
-			params.scsiImg[0].imageType = TownsStartParameters::SCSIIMAGE_HARDDISK;
-			params.scsiImg[0].imgFName = path;
-		}
-		else
-		{
-			/* 未知扩展名：当作 CD 镜像处理（最常见情形） */
-			params.cdImgFName = path;
-		}
+	}
+
+	/* FM Towns BIOS 默认不自动从软盘引导：需要按 F0（软盘引导组合键）才会从软驱0
+	   的 IPL 启动。加载软盘内容时自动设置 BOOT_KEYCOMB_F0，让单盘软盘游戏开箱即用，
+	   无需用户手动按 F0。CD/HD 内容保持默认（BOOT_KEYCOMB_NONE，由 BIOS 自动或按 F1/F3）。
+	   （TOWNSEMU：towns.cpp:305 在 Setup 时 SetBootKeyCombination(params.bootKeyComb)） */
+	if (loadedFD)
+	{
+		params.bootKeyComb = BOOT_KEYCOMB_F0;
 	}
 
 	/* 额外挂载 SCSI 硬盘镜像（core option towns_hdd_path）。
@@ -1517,7 +1659,7 @@ void retro_get_system_info(struct retro_system_info *info)
 	}
 	info->library_name = "Tsugaru";
 	info->library_version = "v20260522 Pre-release";
-	info->valid_extensions = "cue|ccd|mds|iso|toc|bin|img|d77|d88|dsk|imd|td0|hdd|vhd";
+	info->valid_extensions = "cue|ccd|mds|iso|toc|bin|img|m3u|d77|d88|dsk|imd|td0|hdd|vhd";
 	info->need_fullpath = true;  /* 通过文件路径加载 CD/软盘镜像 */
 	info->block_extract = false;
 }
