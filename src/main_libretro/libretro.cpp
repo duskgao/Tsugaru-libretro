@@ -141,7 +141,11 @@ static bool ParseM3U(const std::string &path, std::vector<std::string> &out)
 	return !out.empty();
 }
 
-/* 把当前盘索引对应的镜像加载到软驱 0。若为空路径则弹出软盘。 */
+/* 把当前盘索引对应的镜像加载到软驱 0。若为空路径则弹出软盘。
+   诊断表明：Image 这类游戏（ADV-SHELL 引擎）始终访问软驱 0（A 盘，
+   FDC driveSelectBit 恒为 1=drive0），报错 "B:IMAGES1x.ADV" 是它把当前
+   A 盘逻辑映射为 B: 盘符。游戏需要的是"把 Disk2 放入 A 盘"（换盘机制），
+   而非访问 drive 1。故 disk control 换盘时只需把选中盘加载到软驱 0。 */
 static void MountCurrentDisk(void)
 {
 	if (g_diskIndex < g_diskPaths.size())
@@ -1421,15 +1425,19 @@ bool retro_load_game(const struct retro_game_info *game)
 						floppies.push_back(item);   /* 软盘条目 */
 					}
 				}
-				/* 前两张软盘分别挂到软驱0(FD0)和软驱1(FD1)：
-				   很多双盘游戏（如 D.P.S.）要求 FD0+FD1 同时插盘才能启动，
-				   仅挂第一张会导致 IPL 引导时访问 FD1 失败而黑屏。
-				   其余软盘加入 disk control 列表供运行中换盘。 */
-				if (floppies.size() >= 1) params.fdImgFName[0] = floppies[0];
-				if (floppies.size() >= 2) params.fdImgFName[1] = floppies[1];
-				for (size_t i = 2; i < floppies.size(); ++i)
+				/* 所有软盘都挂载：
+				   - 前两张分别挂到软驱0(FD0)和软驱1(FD1)：很多双盘游戏（如 D.P.S.）
+				     要求 FD0+FD1 同时插盘才能启动，仅挂第一张会导致 IPL 引导时访问
+				     FD1 失败而黑屏。
+				   - 同时把【所有】软盘加入 g_diskPaths（disk control 列表），否则
+				     RA 的 Disk Control 菜单 get_num_images() 返回 0，菜单为空，
+				     用户无法在游戏运行中换盘（双盘游戏读取 B 盘文件需要换盘）。
+				   disk control 切换时 MountCurrentDisk 会把选中盘重新加载到软驱0。 */
+				for (size_t i = 0; i < floppies.size(); ++i)
 				{
-					g_diskPaths.push_back(floppies[i]);   /* 第三张起进 disk control */
+					g_diskPaths.push_back(floppies[i]);
+					if (0 == i) params.fdImgFName[0] = floppies[i];
+					else if (1 == i) params.fdImgFName[1] = floppies[i];
 				}
 				if (!floppies.empty())
 				{
@@ -1531,16 +1539,15 @@ bool retro_load_game(const struct retro_game_info *game)
 
 	/* 额外挂载软驱 0 用户盘镜像（core option towns_fd0_path）。
 	   文件不存在时自动创建空白 2HD D77，供游戏格式化写盘（如 3x3 Eyes 的用户盘）。
-	   若 content 本身就是软盘镜像（已占用 fdImgFName[0]），则挂到 drive 1 避免冲突。 */
-	if (!g_towns_fd0_path.empty())
+	   注意：若内容本身是多盘软盘游戏（.m3u 已占用 FD0 甚至 FD1，如 Image 的
+	   Disk1→FD0、Disk2→FD1），绝不能再自动挂 userdisk.img —— 它会覆盖 FD1 的
+	   Disk2，导致游戏从 B 盘读不到数据文件（B:IMAGES1x.ADV 找不到）而死机。
+	   仅在 CD/单盘场景需要用户盘时自动挂载。 */
+	if (!g_towns_fd0_path.empty() &&
+	    params.fdImgFName[0].empty() && params.fdImgFName[1].empty())
 	{
 		EnsureBlankUserDisk(g_towns_fd0_path);
-		int fdSlot = 0;
-		if (!params.fdImgFName[0].empty())
-		{
-			fdSlot = 1; /* content 已占用 fdImgFName[0]，改用 drive 1 */
-		}
-		params.fdImgFName[fdSlot] = g_towns_fd0_path;
+		params.fdImgFName[0] = g_towns_fd0_path;
 	}
 
 	/* 创建音频/窗口接口，并交给 Setup */
