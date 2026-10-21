@@ -8,8 +8,10 @@ so you can run FM Towns software inside RetroArch and any libretro frontend.
 - Core name: tsugaru_libretro
 - Base: TOWNSEMU v20260522 Pre-release
 - License: BSD 3-Clause (TOWNSEMU) + MIT (libretro.h)
-- Platform: **Windows x64 only** (x86/x64 build). Linux, macOS and Android
-  builds are not done yet (work in progress).
+- Platforms: Windows x64, Linux x86_64 and aarch64, macOS arm64 and x86_64,
+  Android arm64-v8a, armeabi-v7a and x86_64. The GitHub Actions workflow
+  `libretro.yml` builds all of them; `.gitlab-ci.yml` is the recipe for the
+  libretro buildbot, which names the core `tsugaru_libretro`.
 - [Latest Release](https://github.com/duskgao/Tsugaru-libretro/releases)
 
 ## Download (Windows)
@@ -17,7 +19,9 @@ so you can run FM Towns software inside RetroArch and any libretro frontend.
 Grab the prebuilt towns_libretro.dll from the
 [Releases](https://github.com/duskgao/Tsugaru-libretro/releases) page, rename it
 to tsugaru_libretro.dll, and place it in RetroArch's cores/ directory.
-Put FMT_SYS.ROM (required BIOS) in RetroArch's system/.
+Put the BIOS ROMs in RetroArch's system/: FMT_SYS.ROM, FMT_DOS.ROM,
+FMT_FNT.ROM and FMT_DIC.ROM are required (FMT_F20.ROM is optional), or a
+combined FMT_ALL.ROM.
 
 ## Features
 

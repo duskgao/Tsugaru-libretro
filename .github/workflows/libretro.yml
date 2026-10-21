@@ -1,0 +1,148 @@
+name: libretro core
+
+# Builds the core (towns_libretro, copied as tsugaru_libretro) for every platform RetroArch runs on. The Windows
+# build is the one build_libretro_win.ps1 makes (MSYS2 MinGW, statically
+# linked); the others build the same CMake target with the platform's own
+# toolchain. Each job checks that the core exports the libretro API and lists
+# the libraries it needs at run time.
+on:
+  push:
+  pull_request:
+    branches: [ libretro ]
+  workflow_dispatch:
+
+jobs:
+  unix:
+    name: ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # 22.04: a core built against its glibc (2.35) loads on most distributions
+          - {name: Linux x86_64, os: ubuntu-22.04, artifact: tsugaru_libretro-linux-x86_64, lib: tsugaru_libretro.so}
+          - {name: Linux aarch64, os: ubuntu-22.04-arm, artifact: tsugaru_libretro-linux-aarch64, lib: tsugaru_libretro.so}
+          - {name: macOS arm64, os: macos-15, artifact: tsugaru_libretro-macos-arm64, lib: tsugaru_libretro.dylib, cmake: '-DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_OSX_DEPLOYMENT_TARGET=10.15'}
+          - {name: macOS x86_64, os: macos-15-intel, artifact: tsugaru_libretro-macos-x86_64, lib: tsugaru_libretro.dylib, cmake: '-DCMAKE_OSX_ARCHITECTURES=x86_64 -DCMAKE_OSX_DEPLOYMENT_TARGET=10.15'}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build
+        run: |
+          cmake -S src -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_LIBRETRO=ON \
+            -DCMAKE_POSITION_INDEPENDENT_CODE=ON ${{ matrix.cmake }}
+          cmake --build build --target tsugaru_libretro --parallel 4
+      - name: Check
+        run: |
+          set -e
+          lib=build/main_libretro/${{ matrix.lib }}
+          if [ "$RUNNER_OS" = macOS ]; then
+            cp "$lib" .; lib=tsugaru_libretro.dylib
+            lipo -info "$lib"; otool -L "$lib"
+            nm -gU "$lib" | grep ' _retro_' | wc -l
+          else
+            cp "$lib" .; lib=tsugaru_libretro.so
+            readelf -d "$lib" | grep NEEDED
+            nm -D --defined-only "$lib" | grep -c ' retro_'
+            nm -D --defined-only "$lib" | grep -v ' retro_' || true
+          fi
+      - uses: actions/upload-artifact@v6
+        with:
+          name: ${{ matrix.artifact }}
+          path: |
+            tsugaru_libretro.so
+            tsugaru_libretro.dylib
+            tsugaru_libretro.info
+          if-no-files-found: ignore
+
+  android:
+    name: Android ${{ matrix.abi }}
+    strategy:
+      fail-fast: false
+      matrix:
+        abi: [arm64-v8a, armeabi-v7a, x86_64]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build
+        run: |
+          cmake -S src -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_LIBRETRO=ON \
+            -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_LATEST_HOME/build/cmake/android.toolchain.cmake \
+            -DANDROID_ABI=${{ matrix.abi }} -DANDROID_PLATFORM=android-21 -DANDROID_STL=c++_static
+          cmake --build build --target tsugaru_libretro --parallel 4
+      - name: Check
+        run: |
+          set -e
+          tools=$ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin
+          cp build/main_libretro/tsugaru_libretro.so tsugaru_libretro_android.so
+          $tools/llvm-strip tsugaru_libretro_android.so
+          $tools/llvm-readelf -d tsugaru_libretro_android.so | grep NEEDED
+          $tools/llvm-nm -D --defined-only tsugaru_libretro_android.so | grep -c ' retro_'
+      - uses: actions/upload-artifact@v6
+        with:
+          name: tsugaru_libretro-android-${{ matrix.abi }}
+          path: tsugaru_libretro_android.so
+
+  windows:
+    name: Windows x86_64
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          install: mingw-w64-x86_64-toolchain mingw-w64-x86_64-cmake make
+      - name: Build
+        run: |
+          cmake -S src -B build -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DBUILD_LIBRETRO=ON
+          cmake --build build --target tsugaru_libretro --parallel 4
+      - name: Check
+        run: |
+          cp build/main_libretro/tsugaru_libretro.dll .
+          objdump -p tsugaru_libretro.dll | grep "DLL Name"
+          objdump -p tsugaru_libretro.dll | grep -c " retro_"
+      - uses: actions/upload-artifact@v6
+        with:
+          name: tsugaru_libretro-windows-x86_64
+          path: tsugaru_libretro.dll
+
+  # The buildbot's own environments, approximated: its Linux x86_64 image is
+  # xenial with gcc 9 and its Windows one is MXE (MinGW, static). Each runs the
+  # recipe's configure and build lines.
+  buildbot-linux-gcc9:
+    name: Buildbot preflight, Linux gcc 9
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build in ubuntu:focal with gcc 9
+        run: |
+          docker run --rm -v "$PWD":/src -w /src ubuntu:focal sh -c '
+            set -e
+            export DEBIAN_FRONTEND=noninteractive
+            apt-get update -qq && apt-get install -yqq g++ python3-pip make >/dev/null
+            pip3 install -q "cmake<4"
+            g++ --version | head -1
+            cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_LIBRETRO=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON src -Bbuild/linux-x86_64
+            cmake --build build/linux-x86_64 --target tsugaru_libretro --config Release -- -j 4
+            mv build/linux-x86_64/main_libretro/tsugaru_libretro.so tsugaru_libretro.so
+            strip --strip-unneeded tsugaru_libretro.so
+            objdump -T tsugaru_libretro.so | grep -o "GLIBC_[0-9.]*" | sort -uV | tail -1
+            objdump -p tsugaru_libretro.so | grep NEEDED'
+
+  buildbot-windows-mingw:
+    name: Buildbot preflight, Windows MinGW cross
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - name: Cross-build with MinGW-w64 (posix threads)
+        run: |
+          set -e
+          sudo apt-get update -qq && sudo apt-get install -yqq g++-mingw-w64-x86-64-posix cmake >/dev/null
+          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_LIBRETRO=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+            -DCMAKE_SYSTEM_NAME=Windows -DCMAKE_C_COMPILER=x86_64-w64-mingw32-gcc-posix \
+            -DCMAKE_CXX_COMPILER=x86_64-w64-mingw32-g++-posix src -Bbuild/windows-x86_64
+          cmake --build build/windows-x86_64 --target tsugaru_libretro --config Release -- -j 4
+          mv build/windows-x86_64/main_libretro/tsugaru_libretro.dll tsugaru_libretro.dll
+          x86_64-w64-mingw32-objdump -p tsugaru_libretro.dll | grep "DLL Name"

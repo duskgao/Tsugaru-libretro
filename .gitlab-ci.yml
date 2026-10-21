@@ -1,0 +1,108 @@
+# DESCRIPTION: GitLab CI/CD for libRetro (NOT FOR GitLab-proper)
+#
+# The recipe the libretro buildbot (git.libretro.com) reads to build the
+# Tsugaru core for RetroArch's Online Updater. The core is the CMake project in
+# src/; its target tsugaru_libretro builds towns_libretro and copies it under
+# the buildbot's name (src/main_libretro/CMakeLists.txt). It is C++17 and needs
+# no libraries beyond the system's: sound, video and input go through libretro.
+
+##############################################################################
+################################# BOILERPLATE ################################
+##############################################################################
+
+# Core definitions
+.core-defs:
+  variables:
+    CORENAME: tsugaru
+    CMAKE_SOURCE_ROOT: src
+    EXTRA_PATH: main_libretro
+    CORE_ARGS: -DBUILD_LIBRETRO=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+
+# Inclusion templates, required for the build to work
+include:
+  ################################## DESKTOPS ################################
+  # Linux
+  - project: 'libretro-infrastructure/ci-templates'
+    file: '/linux-cmake.yml'
+
+  # Windows
+  - project: 'libretro-infrastructure/ci-templates'
+    file: '/windows-cmake-mingw.yml'
+
+  # macOS
+  - project: 'libretro-infrastructure/ci-templates'
+    file: '/osx-cmake-arm64.yml'
+  - project: 'libretro-infrastructure/ci-templates'
+    file: '/osx-cmake-x86.yml'
+
+  ################################## CELLULAR ################################
+  # Android
+  - project: 'libretro-infrastructure/ci-templates'
+    file: '/android-cmake.yml'
+
+# Stages for building
+stages:
+  - build-prepare
+  - build-shared
+  - build-static
+
+##############################################################################
+#################################### STAGES ##################################
+##############################################################################
+#
+################################### DESKTOPS #################################
+# Linux 64-bit
+libretro-build-linux-x64:
+  extends:
+    - .libretro-linux-cmake-x86_64
+    - .core-defs
+
+# Linux 64-bit (ARM)
+libretro-build-linux-arm64:
+  extends:
+    - .libretro-linux-cmake-aarch64
+    - .core-defs
+
+# Windows 64-bit (MXE)
+libretro-build-windows-x64:
+  extends:
+    - .libretro-windows-cmake-x86_64
+    - .core-defs
+
+# macOS: the template's before_script sets NUMPROC with nproc, a coreutils
+# binary the buildbot's Macs do not have
+.core-defs-osx:
+  extends: .core-defs
+  before_script:
+    - export NUMPROC=$(($(sysctl -n hw.ncpu)/5)); [ "$NUMPROC" -ge 1 ] || NUMPROC=1
+
+# macOS 64-bit (ARM)
+libretro-build-osx-arm64:
+  extends:
+    - .libretro-osx-cmake-arm64
+    - .core-defs-osx
+
+# macOS 64-bit (Intel)
+libretro-build-osx-x64:
+  extends:
+    - .libretro-osx-cmake-x86_64
+    - .core-defs-osx
+
+################################### CELLULAR #################################
+# Android ARMv7a
+android-armeabi-v7a:
+  extends:
+    - .libretro-android-cmake-armeabi-v7a
+    - .core-defs
+
+# Android ARMv8a
+android-arm64-v8a:
+  extends:
+    - .libretro-android-cmake-arm64-v8a
+    - .core-defs
+
+# Android 64-bit x86
+android-x86_64:
+  extends:
+    - .libretro-android-cmake-x86_64
+    - .core-defs
